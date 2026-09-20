@@ -1,0 +1,811 @@
+{
+  "grupy": [
+    {
+      "id": "lekarz",
+      "nazwa_pl": "Lekarz",
+      "nazwa_en": "",
+      "kolor": "ogien",
+      "zmienna": "--ogien",
+      "haslo_pl": "Ty przy fotelu",
+      "opis_pl": "Motywacja pacjenta do leczenia, komunikacja, przekonania, przywództwo. Rdzeń metody: cykl MEMS."
+    },
+    {
+      "id": "pacjent",
+      "nazwa_pl": "Przy pacjencie",
+      "nazwa_en": "",
+      "kolor": "ziemia",
+      "zmienna": "--ziemia",
+      "haslo_pl": "Asystentka, higienistka, opiekun",
+      "opis_pl": "Ludzie w bezpośrednim kontakcie z pacjentem. Struktura wizyty, charyzma, praca z emocjami."
+    },
+    {
+      "id": "kontakt",
+      "nazwa_pl": "Pierwszy kontakt",
+      "nazwa_en": "",
+      "kolor": "slonce",
+      "zmienna": "--slonce",
+      "haslo_pl": "Rejestracja i telefon",
+      "opis_pl": "Pierwsze trzydzieści sekund decyduje o tym, czy pacjent umówi wizytę. I czy na nią przyjdzie."
+    },
+    {
+      "id": "zarzad",
+      "nazwa_pl": "Zarządzanie",
+      "nazwa_en": "",
+      "kolor": "chlod",
+      "zmienna": "--chlod",
+      "haslo_pl": "Właściciel i menedżer",
+      "opis_pl": "Procesy, rekrutacja, rentowność. Praktyka jako firma, nie jako gabinet z kalendarzem."
+    },
+    {
+      "id": "zespol",
+      "nazwa_pl": "Cały zespół",
+      "nazwa_en": "",
+      "kolor": "ink",
+      "zmienna": "--ink",
+      "haslo_pl": "Gabinet jako jeden organizm",
+      "opis_pl": "Szkolenia, na których wszystkie role spotykają się przy jednym stole i ustalają wspólny standard."
+    }
+  ],
+  "szkolenia": [
+    {
+      "id": "psychologia-motywacji-do-leczenia-cz-1",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 1. Psychologia motywacji do leczenia cz. 1",
+      "tytul_en": "",
+      "lead_pl": "Nauczysz się prowadzenia w pełni profesjonalnej rozmowy z pierwszorazowym pacjentem, która pozwoli określić stan jego świadomości zdrowotnej i wyjściowej motywacji.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Nauczysz się prowadzenia w pełni profesjonalnej rozmowy z pierwszorazowym pacjentem, która pozwoli określić stan jego świadomości zdrowotnej i wyjściowej motywacji.",
+        "Dowiesz się, jak rozpoznawać obawy pacjentów i ich ograniczające przekonania, które nie pozwoliły im do tej pory uzyskiwać pełnego zdrowia jamy ustnej.",
+        "Dowiesz się, jak rozmawiać z pacjentem o jego problemach, aby utrzymywać jego uwagę i zaangażowanie.",
+        "Nauczysz się pracy z obrazem, który pomaga kształtować świadomość pacjenta i jego motywację do podjęcia leczenia.",
+        "Nauczysz się wykorzystywać proste rysunki, które wzmacniają przekaz i - obok prostego języka - wpływają na zrozumienie problematyki medycznej.",
+        "Odwrócisz proporcje rozmowy - to pacjent będzie mówił więcej, dzięki celnym i skłaniającym do refleksji pytaniom.",
+        "Twoi pacjenci będą otrzymywali czytelny plan leczenia, który będzie stanowił dla nich dodatkową motywację do jego kontynuacji i zakończenia."
+      ],
+      "korzysci_en": [],
+      "cena": 2920,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 1
+    },
+    {
+      "id": "psychologia-motywacji-do-leczenia-cz-2",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 2. Psychologia motywacji do leczenia cz. 2",
+      "tytul_en": "",
+      "lead_pl": "Poznasz unikatowy model 15-minutowej rozmowy z pacjentem na temat kompleksowej zmiany uśmiechu.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Poznasz unikatowy model 15-minutowej rozmowy z pacjentem na temat kompleksowej zmiany uśmiechu.",
+        "Dowiesz się, jak i po co prowadzić rozmowę, w której zaledwie 30% czasu stanowią wypowiedzi lekarza, a 70% - wypowiedzi pacjenta.",
+        "Nauczysz się kształtować chęć zmiany uśmiechu pacjenta jeszcze zanim padną konkretne rozwiązania i ceny.",
+        "Dowiesz się, jak pracować z obrazem i jak efektywnie wykorzystywać portfolio własnych prac.",
+        "Nauczysz się budować pogłębione relacje, dzięki trafnym pytaniom, które otwierają pacjenta i skłaniają go do refleksji na temat jego wartości, przekonań i motywacji.",
+        "Dowiesz się, jak kreować wizję zdrowego i pięknego uśmiechu, tak, aby jej realizacja stanowiła priorytet dla Twoich pacjentów"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 2
+    },
+    {
+      "id": "inteligencja-komunikacji",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 3. Inteligencja komunikacji",
+      "tytul_en": "",
+      "lead_pl": "Dowiesz się, czym jest inteligencja emocjonalna i jakie jest jej znaczenie w Twoim życiu.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Dowiesz się, czym jest inteligencja emocjonalna i jakie jest jej znaczenie w Twoim życiu.",
+        "Zrozumiesz, dlaczego reagujesz w określony sposób w trudnych sytuacjach i jakie informacje możesz o sobie czerpać na podstawie doświadczanych emocji.",
+        "Poznasz proste, ale bardzo skuteczne strategie budowania zasobnego stanu emocjonalnego w sytuacjach stanowiących dla Ciebie wyzwanie.",
+        "Dowiesz się, jak wykorzystywać wiedzę o emocjach w pracy z pacjentem - jak budować określony stan emocjonalny, który wspiera motywację.",
+        "Nauczysz się sposobów reagowania na negatywne odczucia pacjenta.",
+        "Poznasz pojęcie „pozytywnej intencji” i zyskasz umiejętność rozpoznawania jej u innych, co zmieni Twój sposób postrzegania zachowań innych ludzi.",
+        "Zyskasz większą pewność siebie, np. podczas rozmów o cenach."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 3
+    },
+    {
+      "id": "kolorowe-ja",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 4. Kolorowe Ja",
+      "tytul_en": "",
+      "lead_pl": "Zrobisz test osobowości, który pozwoli Ci lepiej poznać samego siebie - Twoje potrzeby psychologiczne, zasoby i słabości.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Zrobisz test osobowości, który pozwoli Ci lepiej poznać samego siebie - Twoje potrzeby psychologiczne, zasoby i słabości.",
+        "Dowiesz się, co i jak w sobie rozwijać, a co zaakceptować jako silną stronę.",
+        "Poznasz cztery typy osobowości i towarzyszące im strategie myślenia, zdobywania informacji, motywowania - wykorzystasz tę wiedzę w rozmowach z pacjentami.",
+        "Zrozumiesz, dlaczego z niektórymi dobrze Ci się współpracuje, a praca z innymi nie układa się łatwo.",
+        "Inaczej spojrzysz na pacjentów i innych ludzi w swoim otoczeniu - będziesz mieć więcej zrozumienia dla tych, którzy do tej pory wydawali Ci się „dziwni” albo „trudni”.",
+        "Poprawisz swoje relacje zawodowe i osobiste. Zyskasz większą elastyczność w kontaktach z innymi."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 4
+    },
+    {
+      "id": "przekonania",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 5. Przekonania",
+      "tytul_en": "",
+      "lead_pl": "Dowiesz się, czym są przekonania i jaką rolę pełnią w Twoim życiu.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Dowiesz się, czym są przekonania i jaką rolę pełnią w Twoim życiu.",
+        "Zdobędziesz zasoby, które pozwolą Ci patrzeć na rzeczywistość przez pryzmat wyzwań, a nie przeszkód i ograniczeń.",
+        "Zrozumiesz, skąd biorą się Twoje trudności w pracy z pacjentem oraz stworzysz plan ich przezwyciężenia.",
+        "Nauczysz się, jak rozpoznawać przekonania pacjenta i jak pomóc mu je zmieniać, aby mógł podejmować najlepsze z medycznego punktu widzenia decyzje.",
+        "Zobaczysz, co ogranicza Cię w realizacji celów i osiąganiu sukcesów w niektórych obszarach, które uznajesz za ważne.",
+        "Nauczysz się wykorzystywać swoje mocne strony i zasoby do konstruktywnych zmian w obszarach, które do tej pory stanowiły duże wyzwanie."
+      ],
+      "korzysci_en": [],
+      "cena": 2920,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 5
+    },
+    {
+      "id": "przywodztwo",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 6. Przywództwo",
+      "tytul_en": "",
+      "lead_pl": "Wykonasz test, który pozwoli Ci odkryć Twoje wzorce myślowe w kontakcie z pacjentem, co da Ci zupełnie nowe spojrzenie na dotychczasową pracę.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Wykonasz test, który pozwoli Ci odkryć Twoje wzorce myślowe w kontakcie z pacjentem, co da Ci zupełnie nowe spojrzenie na dotychczasową pracę.",
+        "Zwiększysz swój autorytet w oczach pacjentów oraz poznasz strategie wspierające budowanie zaufania.",
+        "Dowiesz się, jakie cechy łączą najlepszych lekarzy dentystów w kraju i jak rozwinąć je u siebie.",
+        "Nauczysz się, jak być stanowczym, a równocześnie nie tracić z oczu relacji, np. w kontakcie ze współpracownikami lub bliskimi.",
+        "Zrozumiesz, dlaczego niektórych pacjentów postrzegałeś jako „trudnych” i jak sobie z nimi radzić.",
+        "Rozwiniesz swoją asertywność oraz staniesz się w oczach pacjentów bardziej spójny i autentyczny."
+      ],
+      "korzysci_en": [],
+      "cena": 2920,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 6
+    },
+    {
+      "id": "integracja-modelu-pracy-z-pacjentem",
+      "grupa": "lekarz",
+      "tytul_pl": "MEMS 7. Integracja modelu pracy z pacjentem",
+      "tytul_en": "",
+      "lead_pl": "Dostrzeżesz, jak wszystkie poznane elementy składają się w jedną spójną całość; zobaczysz, że gotowe narzędzia otrzymane podczas 1 i 2 części działają wówczas, gdy wspierają je emocje, przekonania i przywództwo.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Dostrzeżesz, jak wszystkie poznane elementy składają się w jedną spójną całość; zobaczysz, że gotowe narzędzia otrzymane podczas 1 i 2 części działają wówczas, gdy wspierają je emocje, przekonania i przywództwo.",
+        "Weźmiesz udział w licznych scenkach i symulacjach i otrzymasz indywidualną informację zwrotną od trenera.",
+        "Skorygujesz niuanse, które uczynią Twoją komunikację z pacjentem jeszcze bardziej satysfakcjonującą, efektywną i profesjonalną.",
+        "Uszczegółowisz, zintegrujesz i pogłębisz swoją wiedzę o motywacji.",
+        "Będziesz miał możliwość wymiany doświadczeń z innymi uczestnikami - zobaczysz, jak na tle grupy postępuje Twój rozwój i jakie obszary stanowią jeszcze wyzwanie.",
+        "Uzyskasz certyfikat zaświadczający o wysokim poziomie umiejętności interpersonalnych, przyznawany przez Fundację Psychologia w Medycynie."
+      ],
+      "korzysci_en": [],
+      "cena": 2920,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": 7
+    },
+    {
+      "id": "efektywnosc-dzialania-pewnosc-siebie-odpornosc-i-wrazliwosc-",
+      "grupa": "lekarz",
+      "tytul_pl": "Efektywność działania: pewność siebie, odporność i wrażliwość wg Oboda Group",
+      "tytul_en": "",
+      "lead_pl": "Poznasz swój poziom wrażliwości i odporności psychicznej w oparciu o specjalistyczne narzędzie psychometryczne - test MTQ Plus.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Poznasz swój poziom wrażliwości i odporności psychicznej w oparciu o specjalistyczne narzędzie psychometryczne - test MTQ Plus.",
+        "Nauczysz się świadomie korzystać z wrażliwości jako atutu w relacjach biznesowych.",
+        "Zwiększysz poczucie wpływu i sprawczości oraz kontrolę nad emocjami w trudnych sytuacjach.",
+        "Poznasz narzędzia mentalne dla utrzymania efektywności w obliczu zmian.",
+        "Otrzymasz narzędzia do budowania stabilnej wiary we własne kompetencje interpersonalne.",
+        "Nauczysz się metod zachowaniu work-life balance i unikania wypalenia zawodowego.",
+        "Zwiększysz swoją efektywność w zakresie jakości i ilości wykonywanej pracy."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "kolorowe-ja-dla-zaawansowanych",
+      "grupa": "lekarz",
+      "tytul_pl": "KOLOROWE JA dla zaawansowanych",
+      "tytul_en": "",
+      "lead_pl": "To co najważniejsze, to głębiej zrozumiesz siebie i poznasz swój typ osobowości.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "To co najważniejsze, to głębiej zrozumiesz siebie i poznasz swój typ osobowości.",
+        "To co równie ważne, to to, że poznasz i zrozumiesz lepiej tych z którymi kooperujesz na co dzień.",
+        "Zrozumiesz, dlaczego osoby w ramach jednej energii tak znacząco różnią się od siebie.",
+        "Z opinii ekspertów Insight Discovery dominującą energię rozpoznaje się poprzez analizę funkcji Jungowskich, które są właśnie tematem tego szkolenia - uświadomisz sobie, dlaczego pułapką/ błędem jest mówienie, że ktoś jest „czerwony”, „zielony”, „żółty” lub „niebieski”.",
+        "Sposób, w jaki przekazujemy wiedzę sprawi, że przekonasz się, że łatwiej jest zidentyfikować preferencje Jungowskie niż energie kolorystyczne.",
+        "Będziemy ćwiczyli na autorskich materiałach audio, na których są wypowiedzi lekarzy oraz na wywiadch video przedstawiających 8 typów osobowości.",
+        "Dowiesz się, jak w większym stopniu praktycznie wykorzystać wiedzę na temat osobowości do lepszej współpracy z pacjentami, z zespołem i najbliższymi."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalny-model-rozmowy-z-pacjentem-ortodontycznym",
+      "grupa": "lekarz",
+      "tytul_pl": "Profesjonalny model rozmowy z pacjentem ORTOdontycznym",
+      "tytul_en": "",
+      "lead_pl": "Zrozumiesz psychologię decyzji pacjenta - dowiesz się, jakimi emocjami i logiką kieruje się pacjent ortodontyczny (dorosły, nastolatek czy rodzic dziecka) przy wyborze lekarza.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Zrozumiesz psychologię decyzji pacjenta - dowiesz się, jakimi emocjami i logiką kieruje się pacjent ortodontyczny (dorosły, nastolatek czy rodzic dziecka) przy wyborze lekarza.",
+        "Wdrożysz sprawdzony, 5-etapowy model rozmowy - otrzymasz gotowy schemat 30-minutowej konsultacji, który prowadzi pacjenta od budowania zaufania, przez edukację, aż po akceptację planu leczenia.",
+        "Wyeliminujesz mikrobłędy komunikacyjne - nauczysz się rozpoznawać nawyki, które nieświadomie osłabiają Twój autorytet lub budują opór u pacjenta.",
+        "Z łatwością porozmawiasz o kosztach i czasie leczenia - poznasz techniki prezentowania kwestii finansowych w sposób naturalny i pozbawiony presji.",
+        "Otrzymasz gotowy „niezbędnik praktyka” - wyjdziesz ze szkolenia z checklistami dobrych praktyk, skryptami psychologicznymi oraz schematem rozmowy do natychmiastowego zastosowania.",
+        "Zwiększysz akceptowalność planów leczenia - nauczysz się tak mówić o medycznych aspektach wady zgryzu, aby pacjent naprawdę zrozumiał ich wagę i konieczność podjęcia działania."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "instrukcja-pracy-z-pacjentem",
+      "grupa": "pacjent",
+      "tytul_pl": "Instrukcja pracy z pacjentem",
+      "tytul_en": "",
+      "lead_pl": "Poznasz strukturę modelowo prowadzonej rozmowy z pacjentem.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Poznasz strukturę modelowo prowadzonej rozmowy z pacjentem.",
+        "Nauczysz się rozpoznawać poziom motywacji pacjenta do podjęcia i zakończenia kompleksowego leczenia",
+        "Nauczysz się reagować w sposób adekwatny i elegancki do rozpoznanego wcześniej poziomu motywacji pacjenta, wykorzystując różnorodne narzędzia motywacyjne.",
+        "Dowiesz się, jak rozpoznawać ewentualne wątpliwości i jak na nie reagować.",
+        "Nauczysz się rozmawiać swobodnie o finansowaniu leczenia, możliwościach kredytowania, skupiając się na nadrzędnej wartości, jaką dzięki temu uzyska pacjent, a mianowicie: zdrowa jama ustna i możliwość utrzymania własnych zębów przez całe życie.",
+        "Nauczysz się rozmawiać z pacjentem na temat planu kompleksowego leczenia, rozwiniesz w sobie zdolność do przekonania go do realizacji wizyt, które będą zaplanowane zgodnie z najbardziej rentowną dla praktyki formułą komasowania leczenia i efektywnego wykorzystania czasu pracy lekarza specjalisty.",
+        "Otrzymasz narzędzie, które pozwoli Ci monitorować ruch pacjenta w procesie kompleksowego leczenia.",
+        "Dowiesz się, jak mimo krótkiego czasu kontaktu z pacjentem zbudować relację, która otworzy go na szczerą i konstruktywną rozmowę."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "mendalne-przywodztwo-vs-ograniczajace-przekonania",
+      "grupa": "pacjent",
+      "tytul_pl": "Mendalne przywództwo vs. ograniczające przekonania",
+      "tytul_en": "",
+      "lead_pl": "Dowiesz się, czym są przekonania i jaką rolę pełnią w Twoim codziennym życiu oraz życiu Twoich pacjentów.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Dowiesz się, czym są przekonania i jaką rolę pełnią w Twoim codziennym życiu oraz życiu Twoich pacjentów.",
+        "Rozwiniesz w sobie umiejętności, które pozwolą Ci postrzegać rzeczywistość w kategoriach wyzwań i możliwości a nie problemów i barier.",
+        "Nauczysz się identyfikować własne ograniczające przekonania i przeformułowywać je na takie, które służą Twoim celom.",
+        "Rozpoznasz swoje ograniczenia w osiąganiu sukcesów w ważnych dla siebie obszarach pracy z pacjentem.",
+        "Nauczysz się, jak rozpoznawać ograniczające przekonania pacjenta i pomożesz mu je zmieniać, aby dzięki temu mógł doświadczyć zaangażowania i motywacji, które pozwolą mu osiągnąć zdrowie jamy ustnej."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "mentalne-przywodztwo-vs-ograniczajace-przekonania",
+      "grupa": "pacjent",
+      "tytul_pl": "Mentalne przywództwo vs. ograniczające przekonania",
+      "tytul_en": "",
+      "lead_pl": "Dowiesz się, czym są przekonania i jaką rolę pełnią w Twoim codziennym życiu oraz życiu Twoich pacjentów.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Dowiesz się, czym są przekonania i jaką rolę pełnią w Twoim codziennym życiu oraz życiu Twoich pacjentów.",
+        "Rozwiniesz w sobie umiejętności, które pozwolą Ci postrzegać rzeczywistość w kategoriach wyzwań i możliwości a nie problemów i barier.",
+        "Nauczysz się identyfikować własne ograniczające przekonania i przeformułowywać je na takie, które służą Twoim celom.",
+        "Rozpoznasz swoje ograniczenia w osiąganiu sukcesów w ważnych dla siebie obszarach pracy z pacjentem.",
+        "Nauczysz się, jak rozpoznawać ograniczające przekonania pacjenta i pomożesz mu je zmieniać, aby dzięki temu mógł doświadczyć zaangażowania i motywacji, które pozwolą mu osiągnąć zdrowie jamy ustnej."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "model-pracy-z-pacjentem-struktura-wizyty-i-budowanie-motywac",
+      "grupa": "pacjent",
+      "tytul_pl": "Model pracy z pacjentem, struktura wizyty i budowanie motywacji",
+      "tytul_en": "",
+      "lead_pl": "Poznasz najbardziej efektywny model pracy z pacjentem, który krok po kroku opisuje sposób postępowania na każdym etapie wizyty.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Poznasz najbardziej efektywny model pracy z pacjentem, który krok po kroku opisuje sposób postępowania na każdym etapie wizyty.",
+        "Nauczysz się prowadzić rozmowę wstępną, pozwalającą rozpoznać świadomość pacjenta i jegomotywację.",
+        "Dowiesz się, jak omawiać sytuację w jamie ustnej pacjenta, aby w maksymalnym stopniu utrzymać jego uwagę i wzbudzić zaangażowanie.",
+        "Nauczysz się prezentować zdjęcia i wykonywać proste, przemawiające do wyobraźni rysunki ilustrujące omawianą problematykę.",
+        "Nauczysz się prostego, wyzbytego specjalistycznej terminologii sposobu rozmawiania na tematpróchnicy i kamienia z wykorzystaniem storytellingu.",
+        "Sprawisz, że to pacjentowi a nie Tobie będzie bardziej zależało na usunięciu kamienia.",
+        "Poznasz sposoby motywowania pacjenta „od problemu” i „na cel”.",
+        "Dowiesz się, jak prowadzić instruktaż higieny, aby pacjent czuł zaangażowanie w zmianę nawyków i odpowiedzialność za stan swoich zębów."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalna-asystentka-stomatologiczna-cz-1",
+      "grupa": "pacjent",
+      "tytul_pl": "Profesjonalna asystentka stomatologiczna cz. 1",
+      "tytul_en": "",
+      "lead_pl": "Pokażemy Ci konkretne momenty wizyty, w których mimo małej ilości czasu jest przestrzeń do nawiązania relacji z pacjentem i otoczenie go wyjątkowa opieką",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Pokażemy Ci konkretne momenty wizyty, w których mimo małej ilości czasu jest przestrzeń do nawiązania relacji z pacjentem i otoczenie go wyjątkowa opieką",
+        "Rozwiniesz wewnętrzne zasoby inteligencji emocjonalnej i asertywności, które pozwolą Ci na zbudowanie co najmniej poprawnej relacji z każdym lekarzem",
+        "Pokazujemy, jaki powinien być idealny model współpracy, w którym pacjent czuje się ważny i doświadcza profesjonalnej opieki",
+        "Poznasz najbardziej efektywne schematy zachowań w trudnych sytuacjach z lekarzem, pacjentem, w trakcie opóźnień i nieprzewidzianych sytuacji",
+        "Każdy ma zły dzień - uświadomisz sobie, jaka jest wówczas Twoja niewerbalna komunikacja jak wpływa na innych i na relacje z nimi i w jakim stopniu tworzy kolejne niechciane sytuacje",
+        "Porozmawiamy o stresie: wypełnisz test, dzięki któremu poznasz swoją strategię radzenia sobie ze stresem i zwiększysz swoją elastyczność w reagowaniu na trudne sytuacje",
+        "W relacjach z innymi (pacjent, lekarz, przełożony, współpracownik) przyjmujemy jedną z kilku zdefiniowanych w psychologii postaw - zobaczysz, jak wpływają one na płynność komunikacji i jej efektywność - elementy Analizy Transakcyjnej",
+        "Zrozumiesz, że asertywność to nie tylko umiejętność mówienia „nie”, ale spójna koncepcja przejrzystej komunikacji, która respektuje potrzeby obydwu stron"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalna-asystentka-stomatologiczna-cz-2-psychologia-os",
+      "grupa": "pacjent",
+      "tytul_pl": "Profesjonalna asystentka stomatologiczna cz. 2 Psychologia osobowości",
+      "tytul_en": "",
+      "lead_pl": "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+        "W takim samym stopniu, w jakim poznasz siebie, poznasz też innych, co pozwoli Ci spojrzeć inaczej na dotychczasowe relacje i zrozumieć, dlaczego nie wszystkie były satysfakcjonujące",
+        "Zyskasz wiedzę na temat innych, która zmieni Twoje relacje i zwiększy Twoją elastyczność w kontaktach z lekarzem, pacjentem, współpracownikiem, bliskimi",
+        "Nauczysz się budować przekaz, który jest dopasowany do innego stylu funkcjonowania, co uczyni Twoją komunikację bardziej efektywną - korzyści z tego są nieocenione",
+        "Pojęcie „trudny pacjent” nabierze dla Ciebie zupełnie innego znaczenia",
+        "Zobaczysz rzeczywistość w wielu kolorach i - co najważniejsze - poprawisz swoje relacje zawodowe i osobiste"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "psychologia-osobowosci",
+      "grupa": "pacjent",
+      "tytul_pl": "Psychologia osobowości",
+      "tytul_en": "",
+      "lead_pl": "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+        "W takim samym stopniu, w jakim poznasz siebie, poznasz też innych, co pozwoli Ci spojrzeć inaczej na dotychczasowe relacje i zrozumieć, dlaczego nie wszystkie były satysfakcjonujące",
+        "Zyskasz wiedzę na temat innych, która zmieni Twoje relacje i zwiększy Twoją elastyczność w kontaktach z lekarzem, pacjentem, współpracownikiem, bliskimi",
+        "Nauczysz się budować przekaz, który jest dopasowany do innego stylu funkcjonowania, co uczyni Twoją komunikację bardziej efektywną - korzyści z tego są nieocenione",
+        "Pojęcie „trudny pacjent” nabierze dla Ciebie zupełnie innego znaczenia",
+        "Zobaczysz rzeczywistość w wielu kolorach i - co najważniejsze - poprawisz swoje relacje zawodowe i osobiste"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "psychologia-osobowosci",
+      "grupa": "pacjent",
+      "tytul_pl": "Psychologia osobowości",
+      "tytul_en": "",
+      "lead_pl": "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+        "W takim samym stopniu, w jakim poznasz siebie, poznasz też innych, co pozwoli Ci spojrzeć inaczej na dotychczasowe relacje i zrozumieć, dlaczego nie wszystkie były satysfakcjonujące",
+        "Zyskasz wiedzę na temat innych, która zmieni Twoje relacje i zwiększy Twoją elastyczność w kontaktach z lekarzem, pacjentem, współpracownikiem, bliskimi",
+        "Nauczysz się budować przekaz, który jest dopasowany do innego stylu funkcjonowania, co uczyni Twoją komunikację bardziej efektywną - korzyści z tego są nieocenione",
+        "Pojęcie „trudny pacjent” nabierze dla Ciebie zupełnie innego znaczenia",
+        "Zobaczysz rzeczywistość w wielu kolorach i - co najważniejsze - poprawisz swoje relacje zawodowe i osobiste"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "rozwoj-charyzmy-i-inteligencji-emocjonalnej",
+      "grupa": "pacjent",
+      "tytul_pl": "Rozwój charyzmy i inteligencji emocjonalnej",
+      "tytul_en": "",
+      "lead_pl": "Pogłębisz wiedzę i przećwiczysz umiejętności poznane na poprzednim warsztacie.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Pogłębisz wiedzę i przećwiczysz umiejętności poznane na poprzednim warsztacie.",
+        "Dowiesz się, czym jest inteligencja emocjonalna i jakie jest jej znaczenie w Twoim życiu zawodowym i prywatnym.",
+        "Rozwiniesz kluczowe elementy inteligencji emocjonalnej mające wpływ na Twoją postawę i jakość prowadzonych rozmów z pacjentem.",
+        "Nauczysz się budować zasobny stan emocjonalny, który uda Ci się utrzymać nawet w wymagających warunkach (np. presja czasu, kontakt z tzw. „trudnym pacjentem”).",
+        "Dowiesz się, jak wpływać na stan emocjonalny pacjenta, który jest niezbędnym elementem budowania zaangażowania i motywacji.",
+        "Poznasz elementy składowe charyzmy i rozwiniesz je w sobie.",
+        "Będziesz uczestnikiem wielu ćwiczeń, które będą rozwijały Twoją świadomość roli i znaczenia komunikacji niewerbalnej. Wykorzystasz to w pracy z pacjentem, aby Twój przekaz był bardzo wiarygodny i spójny w oczach pacjentów."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "rozwoj-charyzmy-i-inteligencji-emocjonalnej",
+      "grupa": "pacjent",
+      "tytul_pl": "Rozwój charyzmy i inteligencji emocjonalnej",
+      "tytul_en": "",
+      "lead_pl": "Rozwiniesz wewnętrzne zasoby, które pozwolą Ci efektywnie osiągać zawodowe cele.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Rozwiniesz wewnętrzne zasoby, które pozwolą Ci efektywnie osiągać zawodowe cele.",
+        "Dowiesz się, czym jest charyzma i jakie jej elementy musisz w sobie rozwinąć, aby była ona zauważalna w rozmowie z pacjentem.",
+        "Nauczysz się wykorzystywać storytelling do motywacji podczas rozmowy z pacjentem.",
+        "Będziesz uczestnikiem wielu ćwiczeń, które będą rozwijały Twoją świadomość roli i znaczenia komunikacji niewerbalnej. Wykorzystasz to w pracy z pacjentem, aby Twój przekaz był bardzo wiarygodny i spójny w oczach pacjentów.",
+        "Nauczysz się budować zasobny stan emocjonalny, który uda Ci się utrzymać nawet w wymagających warunkach (np. presja czasu, kontakt z tzw. „trudnym pacjentem”).",
+        "Przećwiczysz w praktyce te elementy pracy z pacjentem, które stanowią dla Ciebie największe wyzwanie.",
+        "Nauczysz się kreować w oczach pacjenta własny autorytet, który wspomaga efektywną komunikację."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalna-rejestratorka-cz-1-rozmowa-telefoniczna",
+      "grupa": "kontakt",
+      "tytul_pl": "Profesjonalna rejestratorka cz. 1 - rozmowa telefoniczna",
+      "tytul_en": "",
+      "lead_pl": "Poznasz strukturę modelowo prowadzonej rozmowy telefonicznej z pacjentem",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Poznasz strukturę modelowo prowadzonej rozmowy telefonicznej z pacjentem",
+        "Nauczysz się przejmowania inicjatywy w rozmowie, dzięki czemu będzie ona realizowała cel praktyki - umówienie wizyty",
+        "Dowiesz się, jak odpowiadać na najczęstsze pytania pacjentów, aby nie wpaść w pułapkę diagnozowania przez telefon",
+        "Nauczysz się prostego języka, dzięki czemu łatwo i krótko wytłumaczysz pacjentowi istotę procedur, o które pyta",
+        "Dowiesz się, jak reagować na obiekcje pacjenta, np. dotyczące zbyt odległych terminów, wysokich cen, bezpieczeństwa zabiegów itd.",
+        "Nauczysz się rozmawiać o cenach",
+        "Dowiesz się, jak postępować z pacjentem sondującym rynek",
+        "Poznasz rolę komunikacji niewerbalnej w kształtowaniu klimatu rozmowy",
+        "Weźmiesz udział w licznych scenkach, symulacjach i ćwiczeniach"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalna-rejestratorka-cz-2-bezposredni-kontakt",
+      "grupa": "kontakt",
+      "tytul_pl": "Profesjonalna rejestratorka cz. 2 - bezpośredni kontakt",
+      "tytul_en": "",
+      "lead_pl": "Dowiesz się, jak budować z pacjentem relację, która zostaje przez niego zapamiętana i wywołuje pozytywne emocjonalne skojarzenia z gabinetem, który reprezentujesz",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Dowiesz się, jak budować z pacjentem relację, która zostaje przez niego zapamiętana i wywołuje pozytywne emocjonalne skojarzenia z gabinetem, który reprezentujesz",
+        "Na podstawie badań Tajemniczego Pacjenta (kilkaset wizyt) opowiemy o poszczególnych elementach kontaktu widzianych oczami pacjentów. Zyskasz wiele cennych wskazówek",
+        "Dowiesz się, jak przekazywać pacjentowi informacje o opóźnieniach i innych zmianach, aby minimalizować negatywne odczucia pacjentów",
+        "Nauczysz się, jak zachować spokój i opanowanie w sytuacjach, gdy pacjent próbuje przerzucić na Ciebie odpowiedzialność za nieprzewidziane sytuacje w gabinecie",
+        "Dowiesz się, jak ustalać priorytety i kolejność podejmowanych działań w sytuacjach natężenia ruchu i konkurujących zadań (pacjent, telefon, lekarz, kurier)",
+        "Nauczysz się postępowania w nietypowych sytuacjach, np. kontakt z niesfornym dzieckiem, niezadowolony pacjent",
+        "Przekonasz się, w jakim stopniu Twoje myśli (fantazje) dotyczące pacjenta manifestują się w Twojej komunikacji i jak wpływa to na postawę pacjenta wobec Ciebie",
+        "Pogłębisz swoją wiedzę na temat komunikacji niewerbalnej i zaczniesz świadomie wykorzystywać ją do budowania satysfakcjonujących relacji i swojego profesjonalnego wizerunku w oczach pacjenta",
+        "Podczas licznych ćwiczeń nauczysz się technik asertywnej komunikacji",
+        "Zauważysz, że zdecydowanie zmalała liczba tzw. „trudnych pacjentów”. Jeśli pojawią się jeszcze wyjątki, dowiesz się, jak z nimi postępować."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalna-rejestratorka-cz-3-rozwoj-kompetencji-interper",
+      "grupa": "kontakt",
+      "tytul_pl": "Profesjonalna rejestratorka cz. 3 - rozwój kompetencji interpersonalnych",
+      "tytul_en": "",
+      "lead_pl": "Porozmawiamy o „magicznym” połączeniu wiedzy, umiejętności, doświadczenia i zawodowego flirtu - pozwoli Ci to prowadzić rozmowy w jeszcze bardziej skuteczny i satysfakcjonujący sposób",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Porozmawiamy o „magicznym” połączeniu wiedzy, umiejętności, doświadczenia i zawodowego flirtu - pozwoli Ci to prowadzić rozmowy w jeszcze bardziej skuteczny i satysfakcjonujący sposób",
+        "Inspirując się koncepcją modelu kompetencji komunikacyjnej Spitzberga i Cupacha, powiemy Ci, co jeszcze potrzebujesz w sobie rozwinąć, aby Twoja komunikacja stała się optymalna (zarówno relacyjna, jak i skuteczna)",
+        "W praktyczny sposób przećwiczysz udzielanie odpowiedzi na najtrudniejsze w Twojej ocenie pytania pacjentów, które wciąż stanowią dla Ciebie wyzwanie",
+        "Otrzymasz informację zwrotną na temat Twoich mocnych i słabych stron oraz kierunków dalszego rozwoju",
+        "Porozmawiamy o stresie - wypełnisz specjalistyczny test, otrzymasz narzędzia pozwalające radzić sobie ze stresem oraz trudnymi emocjami",
+        "W relacjach z innymi (pacjent, lekarz, przełożony, współpracownik) przyjmujemy jedną z kilku zdefiniowanych w psychologii postaw - zobaczysz, jak wpływają one na płynność komunikacji i jej efektywność - elementy Analizy Transakcyjnej",
+        "Dowiesz się, jaka jest, a jaka powinna być, w danej sytuacji Twoja strategia postępowania w obliczu konfliktu",
+        "Odczarujemy pojęcie empatii i pokażemy jej negatywny wpływ w niektórych sytuacjach zawodowych i interpersonalnych"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "profesjonalna-rejestratorka-cz-4-psychologia-osobowosci",
+      "grupa": "kontakt",
+      "tytul_pl": "Profesjonalna rejestratorka cz. 4 - Psychologia osobowości",
+      "tytul_en": "",
+      "lead_pl": "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Ważnym elementem szkolenia jest uznany w środowisku psychologicznym test Insights Discovery® oparty o typy psychologiczne C.G. Junga. Będzie on dla Ciebie nieocenioną lekturą na Twój własny temat; pozwoli Ci lepiej zrozumieć siebie i zdefiniować Twoje mocne i słabe strony w codziennym życiu",
+        "W takim samym stopniu, w jakim poznasz siebie, poznasz też innych, co pozwoli Ci spojrzeć inaczej na dotychczasowe relacje i zrozumieć, dlaczego nie wszystkie były satysfakcjonujące",
+        "Zyskasz wiedzę na temat innych, która zmieni Twoje relacje i zwiększy Twoją elastyczność w kontaktach z lekarzem, pacjentem, współpracownikiem, bliskimi",
+        "Nauczysz się budować przekaz, który jest dopasowany do innego stylu funkcjonowania, co uczyni Twoją komunikację bardziej efektywną - korzyści z tego są nieocenione",
+        "Pojęcie „trudny pacjent” nabierze dla Ciebie zupełnie innego znaczenia",
+        "Zobaczysz rzeczywistość w wielu kolorach i - co najważniejsze - poprawisz swoje relacje zawodowe i osobiste"
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "tajemniczy-pacjent-przez-telefon",
+      "grupa": "kontakt",
+      "tytul_pl": "Tajemniczy pacjent przez telefon",
+      "tytul_en": "",
+      "lead_pl": "Konsekwentne prowadzenie w kierunku umówienia wizyty",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Konsekwentne prowadzenie w kierunku umówienia wizyty",
+        "Umiejętne rekomendowanie lekarzy, higienistek, jakości oferowanych usług",
+        "Unikanie „diagnozowania” przez telefon i rozmów o konkretnych rozwiązaniach",
+        "Kreowanie przyjaznego klimatu rozmowy, który pomaga budować zaufanie pacjenta i jego pozytywne nastawienie do wizyty."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "tajemniczy-pacjent-w-praktyce",
+      "grupa": "kontakt",
+      "tytul_pl": "Tajemniczy pacjent w praktyce",
+      "tytul_en": "",
+      "lead_pl": "niskiego odsetka pacjentów podejmujących kompleksowe leczenie",
+      "lead_en": "",
+      "korzysci_pl": [
+        "niskiego odsetka pacjentów podejmujących kompleksowe leczenie",
+        "niskiego poziomu motywacji pacjentów do wyboru zaawansowanych rozwiązań",
+        "poziomu profesjonalizmu realizowania procedur."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "ekonomia-gabinetu",
+      "grupa": "zarzad",
+      "tytul_pl": "Ekonomia gabinetu",
+      "tytul_en": "",
+      "lead_pl": "",
+      "lead_en": "",
+      "korzysci_pl": [],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": true,
+      "mems": null
+    },
+    {
+      "id": "lider",
+      "grupa": "zarzad",
+      "tytul_pl": "Lider",
+      "tytul_en": "",
+      "lead_pl": "Jest to praktyczne szkolenie, którego celem jest pokazanie, jak powinna być zorganizowana praktyka, aby w stopniu wysokim i mierzalnym zdecydowanie wzrosły jej wskaźniki ekonomiczne.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Jest to praktyczne szkolenie, którego celem jest pokazanie, jak powinna być zorganizowana praktyka, aby w stopniu wysokim i mierzalnym zdecydowanie wzrosły jej wskaźniki ekonomiczne.",
+        "Pokazuje kluczową rolę postawy lidera, uczy jej i wskazuje na różnicę w postawie lidera managera.",
+        "Zwracamy uwagę na komplementarny charakter tych dwóch postaw.",
+        "Lider działa na innych poziomach logicznych, buduje zaangażowany i współpracujący zespół zdolny do osiągania bardzo ambitnych celów.",
+        "Tworzy także kulturę zespołu, w której ludzie czują się ważni i docenieni.",
+        "Postawa lidera jest tym, co sprawia, że ludzie się rozwijają i wzrastają.",
+        "Lider wpływa na to, jakich pacjentów ma praktyka, na to czy jest wyróżniającą się praktyką czy przeciętną.",
+        "To zespół określonych cech tworzy lidera i decyduje o tym, co jest sztuką, a co rzemiosłem."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "manager",
+      "grupa": "zarzad",
+      "tytul_pl": "Manager",
+      "tytul_en": "",
+      "lead_pl": "Manager materializuje wizje wykreowane z pozycji lidera, działa na innych poziomach logicznych niż lider, w większym stopniu skupiając się na analizach i wskaźnikach.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Manager materializuje wizje wykreowane z pozycji lidera, działa na innych poziomach logicznych niż lider, w większym stopniu skupiając się na analizach i wskaźnikach.",
+        "Wykorzystuje profesjonalne narzędzia do planowania, delegowania i oceny realizacji zadań, tworzy środowisko, w którym możliwy jest rozwój gabinetu i osiąganie z zespołem założonych ambitnych celów.",
+        "Podczas tego szkolenia zaprezentowane zostaną praktyczne, sprawdzone sposoby zarządzania zleconymi zadaniami, z naciskiem na monitorowanie jakości ich wykonania przy zastosowaniu narzędzi uniwersalnej komunikacji.",
+        "Pokażemy, że rentowność praktyki nie jest celem managera a efektem jego działań, skutkiem połączenia postawy lidera i menadżera.",
+        "Podczas szkolenia poznasz skuteczne metody zarządzania zespołem, rozwiniesz umiejętności rozwiązywania konfliktów, nauczysz się zbierania i analizowania wskaźników, które obrazują efektywne funkcjonowanie praktyki."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "rekrutacja",
+      "grupa": "zarzad",
+      "tytul_pl": "Rekrutacja",
+      "tytul_en": "",
+      "lead_pl": "Na szkoleniu dowiesz się, jak spośród wielu kandydatów wybrać osobę, której wiedza, kompetencje i umiejętności spełnią, a może przekroczą Twoje oczekiwania.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Na szkoleniu dowiesz się, jak spośród wielu kandydatów wybrać osobę, której wiedza, kompetencje i umiejętności spełnią, a może przekroczą Twoje oczekiwania.",
+        "Nauczysz się także wybierać kandydatów, którzy pomogą realizować Twoje ambitne cele i będą dobrze współpracowali z resztą zespołu."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "zarzadzanie-procesami",
+      "grupa": "zarzad",
+      "tytul_pl": "Zarządzanie procesami",
+      "tytul_en": "",
+      "lead_pl": "U podstaw tego szkolenia leży operacjonalizacja ogólnych założeń wizji lidera i przypisanie obszarom zarządzania konkretnych działań i empirycznego pomiaru wskaźników, które warto monitorować.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "U podstaw tego szkolenia leży operacjonalizacja ogólnych założeń wizji lidera i przypisanie obszarom zarządzania konkretnych działań i empirycznego pomiaru wskaźników, które warto monitorować.",
+        "Szkolenie ma na celu nauczenie lekarzy dentystów i kierujących praktykami stomatologicznymi efektywnego zarządzania poszczególnymi procesami zachodzącymi w gabinecie."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "integracja-i-budowanie-ducha-zespolowosci",
+      "grupa": "zespol",
+      "tytul_pl": "Integracja i budowanie ducha zespołowości.",
+      "tytul_en": "",
+      "lead_pl": "Program tego szkolenia koncentruje się wokół szeroko rozumianej integracji i budowania ducha współpracy i współzależności.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Program tego szkolenia koncentruje się wokół szeroko rozumianej integracji i budowania ducha współpracy i współzależności.",
+        "Szkolenie służy wzajemnemu poznaniu i zbudowaniu kultury silnej współpracy w oparciu o zasoby poszczególnych członków zespołu.",
+        "Szkolenie pokazuje, jak efektywna współpraca i dobrze zorganizowana praca pozwala osiągać ambitne cele zawodowe, co wiąże się z lepszymi wynikami finansowymi praktyki.",
+        "Szkolenie obfituje w specjalnie przygotowane gry i zabawy.",
+        "Łączy w sobie edukację, zabawę i rozwój osobisty.",
+        "Poczucie bycia częścią czegoś większego, sprawia, że ludzie się otwierają, wspierają się., co sprzyja większemu zaangażowaniu."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "integracja-i-budowanie-kultury-komunikacji-w-oparciu-o-typy-",
+      "grupa": "zespol",
+      "tytul_pl": "Integracja i budowanie kultury komunikacji - w oparciu o typy osobowości",
+      "tytul_en": "",
+      "lead_pl": "Szkolenie to jest, oparte o profesjonalną wiedzę na temat typów osobowości.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Szkolenie to jest, oparte o profesjonalną wiedzę na temat typów osobowości.",
+        "Pozwala w znacznym stopniu zwiększyć wzajemne zrozumienie różnic.",
+        "Dostarcza wiedzę na temat uwarunkowanych i często trudnych do zmiany różnic jakie są między ludźmi.",
+        "Gry, zabawy i ćwiczenia obnażą te różnice i pokazują, jak je wykorzystać do budowania dobrej komunikacji, atmosfery opartej o głębsze wzajemne zrozumienie.",
+        "Skutkuje bardziej efektywną komunikacją.",
+        "Wprowadza fundamenty efektywnej współpracy wewnątrz zespołu.",
+        "To szkolenie uświadamia lekarzom w jakim stopniu różne typy osobowości podejmują decyzję, jakiej ilości i jakości informacji potrzebują w swoim procesie decyzyjnym.",
+        "W przystępny sposób pokazuje różnice w sposobie myślenia, działania, podejmowania decyzji i komunikowania się z pacjentami.",
+        "Uczestnicy poznają swoje mocne i słabe strony, zyskują lepsze rozumienie różnic i dostrzegają korzyści, które wynikają z różnorodności zespołu.",
+        "Przed spotkaniem każdy z uczestników wypełnia specjalistyczny test, którego wynik otrzymuje po 1 dniu szkolenia."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "szkolenie-szyte-na-miare",
+      "grupa": "zespol",
+      "tytul_pl": "szkolenie szyte na miarę",
+      "tytul_en": "",
+      "lead_pl": "W wyniku rozmów badania, audytu, może się okazać, że potrzeby danej praktyki są inne niż ww.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "W wyniku rozmów badania, audytu, może się okazać, że potrzeby danej praktyki są inne niż ww.",
+        "W takiej sytuacji dokładnie rozpoznamy sytuację i przygotujemy program, który w maksymalnym stopniu będzie odpowiadał celom właściciela.",
+        "Możliwości programowe mamy niemal nieograniczone.",
+        "Na etapie przygotowania możemy wesprzeć właściciela w ustalaniu strategicznych celów jakie chce osiągnąć.",
+        "Przyświeca nam idea, że szkolenie jest środkiem, a nie celem.",
+        "Poświęcamy tyle czasy ile potrzeba, aby nasze szkolenie w krótkim czasie realizowały zamierzone cele i zmiany, która są widoczne w monitorowanych wskaźnikach ekonomicznych."
+      ],
+      "korzysci_en": [],
+      "cena": 0,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    },
+    {
+      "id": "wprowadzenie-profesjonalnych-standardow-pracy-gabinetu",
+      "grupa": "zespol",
+      "tytul_pl": "Wprowadzenie profesjonalnych standardów pracy gabinetu",
+      "tytul_en": "",
+      "lead_pl": "Szkolenie poprzedzone jest rozmowami z właścicielem, wizytą Tajemniczego Pacjenta oraz analizą wskaźników ekonomicznych.",
+      "lead_en": "",
+      "korzysci_pl": [
+        "Szkolenie poprzedzone jest rozmowami z właścicielem, wizytą Tajemniczego Pacjenta oraz analizą wskaźników ekonomicznych.",
+        "W oparciu o wnioski wynikające z takiej analizy oraz zdefiniowanego przez właściciela celu projektu trener przygotowuje program zmiany.",
+        "Najczęściej jest to cykl szkoleń w których biorą udział albo wszystkie osoby, albo w niektórych szkoleniach rekomendujemy udział tylko wyznaczonych osób.",
+        "Poniżej prezentujemy korzyści jakie osiągamy przy współpracy obejmującej cykl szkoleń."
+      ],
+      "korzysci_en": [],
+      "cena": 2620,
+      "waluta": "PLN",
+      "do_zatwierdzenia": false,
+      "mems": null
+    }
+  ],
+  "warianty_mems": [
+    {
+      "id": "mems-caly-projekt-platnosc-w-trzech-ratach",
+      "nazwa_pl": "Mems - cały projekt - płatność w trzech ratach",
+      "nazwa_en": "",
+      "cena": 5791,
+      "waluta": "PLN"
+    },
+    {
+      "id": "mems-caly-projekt-platnosc-w-dwoch-ratach",
+      "nazwa_pl": "Mems - cały projekt - płatność w dwóch ratach",
+      "nazwa_en": "",
+      "cena": 8176,
+      "waluta": "PLN"
+    },
+    {
+      "id": "mems-caly-projekt-platnosc-jednorazowa",
+      "nazwa_pl": "Mems - cały projekt - płatność jednorazowa",
+      "nazwa_en": "",
+      "cena": 15330,
+      "waluta": "PLN"
+    }
+  ]
+}

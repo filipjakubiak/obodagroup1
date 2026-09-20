@@ -12,15 +12,77 @@
 
 <link rel="stylesheet" href="./css/tokens.css">
 <link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/uklad.css">
+<link rel="stylesheet" href="./css/komponenty.css">
 </head>
 <body>
 
 <a class="skip" href="#tresc">Przejdź do treści</a>
 
-<main id="tresc">
-  <h1>Oboda Group</h1>
-  <p class="lead">Fundament stoi. Kolejne zadania dokładają powłokę, hero i sekcje.</p>
+<!-- Hero startuje na czerwieni: to kolor MEMS-a, czyli rdzenia oferty.
+     Bez JavaScriptu zostaje w tym stanie i jest kompletny. -->
+<header class="hero pole pole--ogien" id="hero">
+
+  <div class="naglowek">
+    <div class="pas naglowek__pas">
+      <a href="./index.html" aria-label="Oboda Group, strona główna">
+        <img class="naglowek__logo" src="./assets/marka/logo.webp" alt="Oboda Group" width="452" height="122">
+      </a>
+      <nav class="naglowek__nawigacja" aria-label="Główna">
+        <a class="naglowek__link" href="./mems.html">MEMS</a>
+        <a class="naglowek__link" href="./szkolenia.html">Szkolenia</a>
+        <a class="naglowek__link" href="./zespol.html">Zespół</a>
+        <a class="naglowek__link" href="./wyjazdy.html">Wyjazdy</a>
+        <a class="naglowek__link" href="./kontakt.html">Kontakt</a>
+        <a class="naglowek__jezyk" href="./en/" hreflang="en">EN</a>
+      </nav>
+    </div>
+  </div>
+
+  <img class="hero__portret" src="./assets/zespol/about-mariusz.webp"
+       alt="" aria-hidden="true" width="766" height="963" fetchpriority="high">
+
+  <div class="pas hero__srodek" id="tresc">
+    <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
+
+    <h1 class="hero__tytul">
+      <span class="hero__slowo">Szkolimy</span><!--
+   --><span class="hero__rola"
+             data-role='["lekarza","rejestratorkę","higienistkę","menedżera","cały zespół"]'>lekarza</span>
+    </h1>
+
+    <p class="sr-only">
+      Szkolimy lekarzy, rejestratorki, higienistki, menedżerów i całe zespoły
+      praktyk stomatologicznych.
+    </p>
+  </div>
+
+  <div class="pas hero__stopka">
+    <p class="hero__lead">
+      Gabinet to nie fotel i kalendarz. To pięcioro ludzi, z których każdy
+      może rozwinąć inną część tej samej rozmowy z pacjentem.
+    </p>
+    <div class="hero__akcje">
+      <a class="btn btn--gl" href="./szkolenia.html">Zobacz szkolenia</a>
+      <a class="btn" href="./mems.html">Czym jest MEMS</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pole pole--ogien sekcja--grunt">
+    <div class="pas">
+      <h2>Tu staną kolejne sekcje</h2>
+      <p class="lead">Dowód, MEMS, Twój gabinet, katalog, wyjazdy, zespół, kontakt.</p>
+    </div>
+  </section>
 </main>
+
+<script type="module">
+  import { uruchomHero } from "./js/hero.js";
+  document.documentElement.classList.add("js");
+  uruchomHero(document.getElementById("hero"));
+</script>
 
 </body>
 </html>

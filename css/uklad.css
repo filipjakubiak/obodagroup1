@@ -1,0 +1,236 @@
+/* ==========================================================================
+   OBODA GROUP — układ: siatka, powłoka, hero.
+   ========================================================================== */
+
+/* ---------- kontenery ---------- */
+
+.pas {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--margines);
+}
+
+.siatka {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--rynna);
+}
+
+/* ---------- nagłówek ---------- */
+
+.naglowek {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-naglowek);
+  /* Nagłówek nie ma własnego tła: leży na gruncie sekcji i dziedziczy jej
+     kolor tekstu. Dzięki temu przy przejściu przez pola koloru nie powstaje
+     pasek, który „nie należy" do żadnej sekcji. */
+  color: inherit;
+  mix-blend-mode: normal;
+}
+
+.naglowek__pas {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  height: 72px;
+}
+
+.naglowek__logo { display: block; height: 26px; width: auto; flex: none; }
+/* Ciemne grunty (błękit, fiolet) niosą biały tekst, więc logo też musi
+   pojaśnieć. Na czerwieni, kwasie i słońcu tekst jest atramentowy i logo
+   zostaje ciemne. */
+.pole--chlod .naglowek__logo,
+.pole--fiolet .naglowek__logo { filter: brightness(0) invert(1); }
+.pole--ogien .naglowek__logo,
+.pole--kwas .naglowek__logo,
+.pole--slonce .naglowek__logo { filter: brightness(0); }
+
+.naglowek__nawigacja {
+  display: flex;
+  gap: clamp(12px, 2vw, 28px);
+  margin-left: auto;
+  align-items: center;
+}
+
+.naglowek__link {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 6px 0;
+  position: relative;
+  white-space: nowrap;
+}
+/* Podkreślenie wyjeżdża od lewej — jedno z trzech miejsc, gdzie używamy
+   ruchu mikro. Nie animujemy koloru, bo na czterech różnych gruntach
+   zachowywałby się za każdym razem inaczej. */
+.naglowek__link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-mikro) var(--ease);
+}
+.naglowek__link:hover::after,
+.naglowek__link[aria-current="page"]::after { transform: scaleX(1); }
+
+.naglowek__jezyk {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.55;
+  text-decoration: none;
+}
+.naglowek__jezyk:hover { opacity: 1; }
+
+/* ==========================================================================
+   HERO — maszyna osobowościowa.
+   Zmienia się nie samo słowo, tylko cały ekran: grunt, kolor tekstu i tempo.
+   Ten sam człowiek w kadrze, inny kolor wokół niego. To jest zdanie, które
+   ta firma sprzedaje, wykonane jako mechanizm, a nie napisane w akapicie.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--kolor);
+  color: var(--na-kolorze);
+  overflow: hidden;
+  /* Tempo przejścia gruntu ustawia JS osobno dla każdego koloru — czerwony
+     przełącza się szybko i twardo, niebieski wolno i miękko. */
+  transition: background-color var(--tempo, var(--t-odslona)) var(--ease),
+              color var(--tempo, var(--t-odslona)) var(--ease);
+}
+
+.hero__srodek {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Do dołu, nie na środek: nagłówek ma siedzieć tuż nad leadem, a powietrze
+     zbierać się nad nim. Wyśrodkowanie zostawiało dziurę między napisem
+     a akapitem i hero rozpadało się na dwa oddzielne kawałki. */
+  justify-content: center;
+  position: relative;
+  z-index: var(--z-tresc);
+  padding-block: clamp(16px, 3vh, 36px) clamp(12px, 2vh, 24px);
+}
+
+.hero__etykieta {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  margin-bottom: clamp(20px, 4vh, 44px);
+}
+
+/* ---------- nagłówek hero ---------- */
+
+.hero__tytul {
+  font-size: var(--t-display-xl);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  margin: 0;
+  /* Nagłówek musi móc mierzyć swoją szerokość — stąd blokowy układ
+     i brak balansowania, które zmieniałoby wynik pomiaru. */
+  text-wrap: nowrap;
+}
+
+.hero__slowo { display: block; }
+
+/* Słowo-rola dostaje własny wiersz i wypełnia go co do piksela. Nie jest
+   wyśrodkowane ani rozstrzelone — jest ROZCIĄGNIĘTE osią szerokości fontu. */
+.hero__rola {
+  /* 🚨 width: fit-content jest OBOWIAZKOWE. Element blokowy ma szerokosc
+     kontenera, wiec getBoundingClientRect zwracalby zawsze pelna szerokosc
+     wiersza niezaleznie od tresci - bisekcja porownywalaby 1296 z 1296
+     i zbiegala do najwezszej osi. Pudelko musi obejmowac sam tekst. */
+  display: block;
+  width: fit-content;
+  font-variation-settings: "wdth" 100;
+  white-space: nowrap;
+  transition: font-variation-settings var(--tempo, var(--t-odslona)) var(--ease),
+              opacity var(--t-mikro) var(--ease);
+  will-change: font-variation-settings;
+}
+
+/* Lead i przyciski stoją w jednej kolumnie po lewej i NIE wchodzą pod
+   sylwetkę — wcześniej przycisk "Czym jest MEMS" lądował na ciemnej
+   marynarce i był nieczytelny. Kolumna kończy się tam, gdzie zaczyna
+   się portret. */
+.hero__stopka {
+  position: relative;
+  z-index: var(--z-tresc);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(18px, 3vh, 30px);
+  padding-bottom: clamp(28px, 6vh, 64px);
+}
+/* 🚨 Ograniczenie szerokosci NIE moze siedziec na .pas: .pas ma
+   margin-inline:auto, wiec wezszy blok zostalby wysrodkowany zamiast
+   przyklejony do lewej. Limit idzie na zawartosc. */
+.hero__stopka > * { max-width: min(52ch, 56vw); }
+
+.hero__lead {
+  font-size: var(--t-lead);
+  line-height: 1.35;
+  max-width: 34ch;
+  font-weight: 500;
+}
+
+.hero__akcje { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- portret ----------
+   Człowiek zostaje czarno-biały przez CAŁY czas, na każdym kolorze. To jest
+   sedno: ten sam człowiek, inny kolor wokół niego. Dlatego żadnego
+   mix-blend-mode — multiply barwił sylwetkę na kolor gruntu i cały sens
+   znikał. Wycinanka ma przezroczyste tło, więc wystarczy odbarwienie. */
+
+.hero__portret {
+  position: absolute;
+  /* Wycinanka ma wtopione kolorowe bryly przy krawedziach. Po odbarwieniu
+     czytaly sie jak szary brud, wiec powiekszamy kadr i wypychamy je poza
+     ekran - w widoku zostaje sam czlowiek. Klient dostanie prosbe
+     o oryginaly bez tla, wtedy ten zabieg zniknie. */
+  right: -10vw;
+  bottom: -6vh;
+  width: clamp(320px, 46vw, 760px);
+  z-index: var(--z-tlo);
+  pointer-events: none;
+  filter: grayscale(1) contrast(1.22) brightness(0.97);
+}
+
+@media (max-width: 860px) {
+  .hero__portret { width: 74vw; right: -12vw; opacity: 0.28; }
+  .hero__stopka { max-width: none; }
+  .naglowek__nawigacja { display: none; }
+}
+
+/* ---------- sekcje ---------- */
+
+section { padding-block: var(--sekcja); }
+
+.sekcja--grunt { background: var(--kolor-mgla); color: var(--ink); }
+.sekcja--pelna { background: var(--kolor); color: var(--na-kolorze); }
+
+@media (max-width: 860px) {
+  .siatka { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

@@ -1,41 +1,57 @@
 /* ==========================================================================
    OBODA GROUP — tokeny.
    Jedyny plik, w którym wolno zdefiniować wartość koloru, rozmiaru albo czasu.
-   Wszystko inne odwołuje się do tych zmiennych.
 
-   Myśl przewodnia: kolor jest metodą, nie dekoracją. Cztery kolory typologii
-   osobowości (narzędzie pracy firmy) = cztery role w gabinecie = cztery ścieżki
-   szkoleniowe. Baza jest niemal monochromatyczna, żeby kolor — gdy się pojawia —
-   coś znaczył.
+   MYŚL PRZEWODNIA
+   Ta firma uczy psychologii osobowości. Kolor jest u niej nazwą typu człowieka,
+   nie dekoracją. Dlatego strona nie jest biała z akcentami — jest zbudowana
+   z pełnych pól koloru, a każda grupa szkoleń ma swój.
+
+   SKĄD KOLORY
+   Nie z palety korporacyjnej, tylko ODCZYTANE Z ICH WŁASNYCH MATERIAŁÓW.
+   Zmierzone udziały w kadrze na okładkach i zdjęciach:
+     „Psychologia motywacji"   #ff1800 29% · #ff9000 22% · #fff000 7%
+     „Przekonania"             #00d800 54% · #7800d8 21%
+     zdjęcia rejestratorki     #ff7830 63%
+     zdjęcia Akademii Zarz.    #6090d8 89%
+     zdjęcia higienistek       #00c0f0 14%
+   Stąd elektryczne nasycenie: taka jest ich marka. Oficjalne barwy Insights
+   Discovery okazały się na to za grzeczne.
    ========================================================================== */
 
 :root {
   /* ---------- baza ---------- */
   --ink:        #141210;   /* prawie czarny, ciepły */
   --paper:      #F4F1EB;   /* ciepła biel */
-  --paper-gleb: #EBE6DD;   /* drugi poziom tła w obrębie tego samego motywu */
-  --ink-dim:    #5E584F;   /* tekst drugorzędny na paper */
+  --paper-gleb: #EBE6DD;
+  --ink-dim:    #5E584F;
   --line:       rgba(20, 18, 16, 0.14);
   --line-mocna: rgba(20, 18, 16, 0.32);
 
-  /* ---------- cztery kolory metody ----------
-     Wersja MARKOWA (--x) służy do wypełnień i dużych pól.
-     Wersja CZYTELNA (--x-tekst) to ta sama barwa dociemniona tak, by przeszła
-     4.5:1 na papierze. Rozdzielamy je, bo markowa czerwień jako tekst bywa
-     na granicy, a „prawie przechodzi" to znaczy nie przechodzi. */
-  --ogien:        #E4002B;  --ogien-tekst:  #C40025;  /* lekarz */
-  --ziemia:       #00A758;  --ziemia-tekst: #00703B;  /* przy pacjencie */
-  --slonce:       #FFC72C;  --slonce-tekst: #6B4A00;  /* pierwszy kontakt */
-  --chlod:        #0076BF;  --chlod-tekst:  #005A91;  /* zarządzanie */
+  /* ---------- pięć kolorów metody ----------
+     Każdy ma trzy postacie, bo każda robi co innego:
+       --x        MARKOWA   pełne pole, blok rozdziału, wypełnienie
+       --x-mgla   GRUNT     rozbielona powierzchnia całej sekcji
+       --x-tekst  CZYTELNA  dociemniona tak, by przeszła 4.5:1 na gruncie
+     Rozdzielenie jest konieczne: markowa czerwień jako tekst jest na granicy,
+     a „prawie przechodzi" znaczy nie przechodzi. */
+  --ogien:  #FF1800;  --ogien-mgla:  #FFE4DE;  --ogien-tekst:  #C21200;  /* lekarz, MEMS */
+  --kwas:   #00D800;  --kwas-mgla:   #DFF7D6;  --kwas-tekst:   #1F6B00;  /* przy pacjencie */
+  --slonce: #FFD800;  --slonce-mgla: #FFF3C4;  --slonce-tekst: #6B5200;  /* pierwszy kontakt */
+  --chlod:  #0060F0;  --chlod-mgla:  #DDE8FD;  --chlod-tekst:  #0049B8;  /* zarządzanie */
+  --fiolet: #7800D8;  --fiolet-mgla: #EEE0FB;  --fiolet-tekst: #6200B0;  /* cały zespół */
 
-  /* Tekst kładziony NA polu danego koloru. Paleta dzieli się sama na dwie pary:
-     ogień i chłód są ciemne, więc biorą biały tekst; ziemia i słońce są jasne,
-     więc biorą tekst atramentowy. Zmierzone: biały na ziemi to tylko 3.15:1,
-     atrament na ziemi 5.89:1. Reguła jest więc systemem, nie wyjątkiem. */
-  --na-ogniu:    #FFFFFF;
-  --na-chlodzie: #FFFFFF;
-  --na-ziemi:    #141210;
-  --na-sloncu:   #141210;
+  /* Tekst kładziony NA pełnym polu koloru. Paleta dzieli się sama na dwie
+     grupy: ciemne barwy biorą biel, jasne biorą atrament. To nie jest wyjątek,
+     tylko reguła — i jest pilnowana testem kontrastu, nie dobrą wolą. */
+     Ich czerwień jest jaskrawa: biel daje na niej 3.90 (za mało), a atrament
+     4.79 (przechodzi). Zmieniamy więc kolor tekstu, a nie ich kolor marki —
+     czarny na jaskrawej czerwieni jest zresztą mocniejszy plakatowo. */
+  --na-ogniu:   #141210;
+  --na-kwasie:  #141210;
+  --na-sloncu:  #141210;
+  --na-chlodzie:#FFFFFF;
+  --na-fiolecie:#FFFFFF;
 
   /* ---------- typografia ---------- */
   --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
@@ -59,22 +75,29 @@
   --rynna:    24px;
 
   /* ---------- kształt ----------
-     Jeden system narożników na cały projekt: ostry układ, pigułkowe elementy
-     interaktywne. Mieszanie promieni to najczęstszy objaw braku systemu. */
+     Jeden system na cały projekt: płaszczyzny ostre, elementy interaktywne
+     pigułkowe. Mieszanie promieni to najczęstszy objaw braku systemu. */
   --r-plaszczyzna: 0px;
   --r-karta:       2px;
   --r-pigulka:     999px;
 
   /* ---------- ruch ----------
-     Jedno easing na wszystko, trzy czasy. Restrykcja jest tu cechą, nie
-     ograniczeniem: to ona sprawia, że strona sprawia wrażenie jednego wyrobu. */
+     Jedno easing. Trzy czasy bazowe. Do tego TEMPERAMENT: każdy kolor ma
+     własne tempo, bo w tej metodzie kolor oznacza typ człowieka. Czerwony
+     jest szybki i twardy, niebieski wolny i miękki. Temperament jest
+     w animacji, a nie w akapicie, który o nim opowiada. */
   --ease:      cubic-bezier(0.65, 0, 0.35, 1);
   --t-mikro:   200ms;
   --t-stan:    420ms;
   --t-odslona: 760ms;
 
-  /* ---------- warstwy ----------
-     Jawna skala zamiast rozsypanych z-index: 9999 po całym arkuszu. */
+  --tempo-ogien:  440ms;   /* ognisty: szybko, zdecydowanie */
+  --tempo-slonce: 620ms;   /* słoneczny: żwawo, ciepło */
+  --tempo-kwas:   900ms;   /* spokojny: powoli, miękko */
+  --tempo-chlod:  1050ms;  /* analityczny: najwolniej, najprecyzyjniej */
+  --tempo-fiolet: 760ms;
+
+  /* ---------- warstwy ---------- */
   --z-tlo:      0;
   --z-tresc:    1;
   --z-naglowek: 50;
@@ -82,22 +105,51 @@
 }
 
 /* ==========================================================================
-   Tryb ciemny. Ten sam system, odwrócona baza: ink staje się powierzchnią,
-   paper tekstem. Kolory markowe zostają (to znaki rozpoznawcze), ale wersje
-   czytelne muszą pojaśnieć — na ciemnym tle ciemna czerwień jest nieczytelna.
+   Tryb ciemny. Ten sam system, odwrócona baza: ink staje się kolorem tekstu,
+   paper kolorem powierzchni. Barwy markowe zostają bez zmian (to znaki
+   rozpoznawcze), ale wersje czytelne i grunty muszą się odwrócić.
    ========================================================================== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink:        #F4F1EB;   /* zamiana ról: „ink" to zawsze kolor tekstu */
-    --paper:      #121110;   /* „paper" to zawsze kolor powierzchni */
+    --ink:        #F4F1EB;
+    --paper:      #121110;
     --paper-gleb: #1C1A17;
     --ink-dim:    #A49C90;
     --line:       rgba(244, 241, 235, 0.16);
     --line-mocna: rgba(244, 241, 235, 0.34);
 
-    --ogien-tekst:  #FF6B80;
-    --ziemia-tekst: #4FD48C;
-    --slonce-tekst: #FFC72C;   /* żółty na ciemnym jest czytelny — jedyny taki przypadek */
-    --chlod-tekst:  #6FB8EE;
+    --ogien-tekst:  #FF7A66;
+    --kwas-tekst:   #57E33D;
+    --slonce-tekst: #FFD800;
+    --chlod-tekst:  #6FA6FF;
+    --fiolet-tekst: #C07CF5;
+
+    /* Grunty nocą są przyciemnionymi barwami, nie rozbielonymi. Sekcja dalej
+       ma swój kolor — inaczej po zmroku strona traciłaby to, na czym stoi. */
+    --ogien-mgla:  #2C1310;
+    --kwas-mgla:   #112A0C;
+    --slonce-mgla: #2A2408;
+    --chlod-mgla:  #0D1A33;
+    --fiolet-mgla: #1F0B2E;
   }
 }
+
+/* ==========================================================================
+   Grunt sekcji. Sekcja deklaruje swój kolor JEDNĄ klasą, a grunt, akcent,
+   kolor tekstu na pełnym polu i tempo animacji wynikają z niej same.
+   To jest mechanizm pilnujący reguły „jedna sekcja = jeden kolor": żeby ją
+   złamać, trzeba by świadomie wpisać drugi kolor z ręki.
+   ========================================================================== */
+
+.pole {
+  --kolor: var(--ink);
+  --kolor-mgla: var(--paper);
+  --kolor-tekst: var(--ink);
+  --na-kolorze: var(--paper);
+  --tempo: var(--t-odslona);
+}
+.pole--ogien  { --kolor: var(--ogien);  --kolor-mgla: var(--ogien-mgla);  --kolor-tekst: var(--ogien-tekst);  --na-kolorze: var(--na-ogniu);    --tempo: var(--tempo-ogien); }
+.pole--kwas   { --kolor: var(--kwas);   --kolor-mgla: var(--kwas-mgla);   --kolor-tekst: var(--kwas-tekst);   --na-kolorze: var(--na-kwasie);   --tempo: var(--tempo-kwas); }
+.pole--slonce { --kolor: var(--slonce); --kolor-mgla: var(--slonce-mgla); --kolor-tekst: var(--slonce-tekst); --na-kolorze: var(--na-sloncu);   --tempo: var(--tempo-slonce); }
+.pole--chlod  { --kolor: var(--chlod);  --kolor-mgla: var(--chlod-mgla);  --kolor-tekst: var(--chlod-tekst);  --na-kolorze: var(--na-chlodzie); --tempo: var(--tempo-chlod); }
+.pole--fiolet { --kolor: var(--fiolet); --kolor-mgla: var(--fiolet-mgla); --kolor-tekst: var(--fiolet-tekst); --na-kolorze: var(--na-fiolecie); --tempo: var(--tempo-fiolet); }

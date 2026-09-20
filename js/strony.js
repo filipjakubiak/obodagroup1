@@ -81,15 +81,22 @@ export async function zbudujWyjazdy(host) {
     img.loading = "lazy";
     kadr.appendChild(img);
 
+    /* Na zdjęciu ROK, nie nazwa kraju: nazwa stoi obok jako nagłówek
+       i powtórzona byłaby szumem, a nie kolażem. Rok jest informacją,
+       której obok nie ma, i od razu porządkuje pięć wyjazdów w czasie. */
+    if (w.rok) kadr.appendChild(el("span", "wyjazd__napis", String(w.rok)));
+
     const tresc = el("div", "wyjazd__tresc");
-    const glowa = el("div", "wyjazd__glowa");
-    glowa.appendChild(el("h2", "wyjazd__kraj", pole(w, "kraj")));
     const kiedy = [pole(w, "termin"), w.rok].filter(Boolean).join(", ");
-    if (kiedy) glowa.appendChild(el("span", "wyjazd__termin", kiedy));
-    tresc.appendChild(glowa);
+    if (kiedy) tresc.appendChild(el("span", "wyjazd__termin", kiedy));
+    tresc.appendChild(el("h2", "wyjazd__kraj", pole(w, "kraj")));
     tresc.appendChild(el("p", "wyjazd__program", pole(w, "program")));
     tresc.appendChild(el("p", "wyjazd__opis", pole(w, "opis")));
     if (w.do_zatwierdzenia) tresc.appendChild(el("span", "znacznik", "opis do uzupełnienia"));
+
+    /* Co drugi wyjazd ma zdjęcie po drugiej stronie — pięć jednakowych
+       wierszy czytałoby się jak tabela. */
+    if (i % 2) art.classList.add("wyjazd--odwrotnie");
 
     art.append(kadr, tresc);
     lista.appendChild(art);
@@ -119,20 +126,51 @@ export async function zbudujKontakt(host) {
   if (!host) return;
   const [ustawienia, szk] = await Promise.all([pobierz("ustawienia"), pobierz("szkolenia")]);
 
-  /* ---------- ludzie ---------- */
+  /* ---------- ludzie: kolaż z wycinanek ----------
+     Trzy wycinane portrety na polach koloru, jak na ich własnych okładkach.
+     Karta jest interaktywna: przycisk podstawia osobę do formularza niżej,
+     zamiast kazać człowiekowi przepisywać adres. */
   const ludzie = el("ul", "ludzie");
   const KOLORY = ["slonce", "kwas", "chlod"];
+  const kartyOsob = [];
+
   ustawienia.ludzie.forEach((o, i) => {
     const li = el("li", `czlowiek pole pole--${KOLORY[i % KOLORY.length]}`);
-    li.appendChild(el("p", "czlowiek__imie", o.imie));
-    li.appendChild(el("p", "czlowiek__rola", pole(o, "rola")));
+
+    const kadr = el("div", "czlowiek__kadr");
+    const img = document.createElement("img");
+    img.className = "czlowiek__foto";
+    img.src = "./assets/zespol/" + o.foto;
+    img.alt = o.imie;
+    img.loading = "lazy";
+    img.width = 470;
+    img.height = 684;
+    kadr.appendChild(img);
+    li.appendChild(kadr);
+
+    const tresc = el("div", "czlowiek__tresc");
+    tresc.appendChild(el("p", "czlowiek__imie", o.imie));
+    tresc.appendChild(el("p", "czlowiek__rola", pole(o, "rola")));
+
     const tel = el("a", "czlowiek__tel", o.telefon);
     tel.href = "tel:+48" + o.telefon.replace(/\s/g, "");
-    li.appendChild(tel);
+    tresc.appendChild(tel);
+
     const mail = el("a", "czlowiek__mail", o.email);
     mail.href = "mailto:" + o.email;
-    li.appendChild(mail);
+    tresc.appendChild(mail);
+
+    /* Rodzaj gramatyczny z danych, nie zgadywany z imienia. Adrian jest
+       jedynym mężczyzną w tej trójce, ale zgadywanie po imieniu to
+       droga do wpadki przy pierwszej nowej osobie. */
+    const wybierz = el("button", "czlowiek__wybierz",
+      o.rodzaj === "m" ? "Napisz do niego" : "Napisz do niej");
+    wybierz.type = "button";
+    tresc.appendChild(wybierz);
+
+    li.appendChild(tresc);
     ludzie.appendChild(li);
+    kartyOsob.push({ li, wybierz, osoba: o });
   });
   host.appendChild(ludzie);
 
@@ -267,6 +305,37 @@ export async function zbudujKontakt(host) {
   });
 
   host.appendChild(form);
+
+  /* ---------- wybór adresata ----------
+     Kliknięcie w karcie człowieka podstawia adresata i przenosi do
+     formularza. Bez tego trzeba przepisać adres z karty do własnej poczty,
+     a tego nikt nie robi — pisze na ogólny i czeka dzień dłużej. */
+  const doKogo = el("p", "form__adresat");
+  doKogo.hidden = true;
+  form.insertBefore(doKogo, form.firstChild);
+
+  const mniejRuchu = matchMedia("(prefers-reduced-motion: reduce)");
+
+  for (const { li, wybierz, osoba } of kartyOsob) {
+    wybierz.addEventListener("click", () => {
+      kartyOsob.forEach((k) => {
+        const aktywna = k.li === li;
+        k.li.classList.toggle("is-on", aktywna);
+        k.wybierz.setAttribute("aria-pressed", String(aktywna));
+      });
+
+      doKogo.hidden = false;
+      doKogo.textContent = "Wiadomość trafi do: " + osoba.imie + " (" + pole(osoba, "rola") + ").";
+      /* Adresat trafia do ładunku formularza, więc faza druga dostanie go
+         bez zmian w interfejsie. */
+      form.dataset.adresat = osoba.email;
+
+      form.scrollIntoView({ behavior: mniejRuchu.matches ? "auto" : "smooth", block: "start" });
+      /* preventScroll, bo przewijaniem steruje scrollIntoView powyżej —
+         bez tego przeglądarka skacze dwa razy. */
+      document.getElementById("f-imie").focus({ preventScroll: true });
+    });
+  }
 
   /* Wejscie z karty szkolenia: ?szkolenie=<id> podpowiada temat i wiadomosc. */
   const id = new URL(location.href).searchParams.get("szkolenie");

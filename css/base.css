@@ -19,6 +19,14 @@ html {
    wystarcza - musi byc tam, gdzie sa elementy. */
 html, body { touch-action: manipulation; }
 
+/* Naglowek jest przyklejony i ma 72 px, wiec kazdy cel przewijania musi
+   zostawic pod nim miejsce - inaczej przewijanie do kotwicy albo do
+   formularza chowa jego poczatek pod paskiem. Zlapane na zrzucie:
+   potwierdzenie adresata w kontakcie znikalo pod naglowkiem. */
+:target,
+[id],
+.form { scroll-margin-top: 92px; }
+
 body {
   background: var(--paper);
   color: var(--ink);

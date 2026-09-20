@@ -134,4 +134,48 @@ console.log("\n== bez JavaScriptu ==");
 
 await b.close();
 s.stop();
+
+console.log("\n== wybor adresata w kontakcie ==");
+{
+  const s2 = await startSerwera(4330);
+  const b2 = await chromium.launch();
+  const p3 = await b2.newPage({ viewport: { width: 1440, height: 900 } });
+  await p3.goto(s2.url + "kontakt.html", { waitUntil: "networkidle" });
+  await p3.waitForSelector(".czlowiek__wybierz");
+
+  sprawdz("kontakt: trzy wycinanki w kolazu", (await p3.locator(".czlowiek__foto").count()) === 3);
+  /* Rodzaj gramatyczny idzie z danych, nie ze zgadywania po imieniu. */
+  const napisy = await p3.$$eval(".czlowiek__wybierz", (n) => n.map((x) => x.textContent.trim()));
+  sprawdz("kontakt: forma przycisku zgadza sie z rodzajem",
+    JSON.stringify(napisy) === JSON.stringify(["Napisz do niej", "Napisz do niej", "Napisz do niego"]),
+    JSON.stringify(napisy));
+
+  await p3.click(".czlowiek:nth-child(3) .czlowiek__wybierz");
+  await p3.waitForTimeout(700);
+  const stan2 = await p3.evaluate(() => ({
+    ile: document.querySelectorAll(".czlowiek.is-on").length,
+    tekst: document.querySelector(".form__adresat").textContent,
+    ukryty: document.querySelector(".form__adresat").hidden,
+    adres: document.querySelector(".form").dataset.adresat,
+    aria: document.querySelector(".czlowiek.is-on .czlowiek__wybierz").getAttribute("aria-pressed"),
+  }));
+  sprawdz("kontakt: wybrana jest dokladnie jedna osoba", stan2.ile === 1, String(stan2.ile));
+  sprawdz("kontakt: potwierdzenie adresata jest widoczne",
+    !stan2.ukryty && stan2.tekst.includes("Adrian"), JSON.stringify(stan2));
+  sprawdz("kontakt: adres trafia do danych formularza",
+    stan2.adres === "adrian.majewski@oboda.pl", stan2.adres);
+  sprawdz("kontakt: wybor oznaczony dla czytnika ekranu", stan2.aria === "true");
+
+  /* Naglowek jest przyklejony, wiec poczatek formularza nie moze pod nim zniknac. */
+  const pod = await p3.evaluate(() => {
+    const f = document.querySelector(".form__adresat").getBoundingClientRect();
+    const h = document.querySelector(".naglowek").getBoundingClientRect();
+    return { gora: Math.round(f.top), dolNaglowka: Math.round(h.bottom) };
+  });
+  sprawdz("kontakt: potwierdzenie nie chowa sie pod przyklejonym naglowkiem",
+    pod.gora >= pod.dolNaglowka - 2, JSON.stringify(pod));
+
+  await b2.close();
+  s2.stop();
+}
 wynik();

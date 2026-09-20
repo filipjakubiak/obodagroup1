@@ -927,64 +927,95 @@
 @media (max-width: 860px) { .osoba { grid-template-columns: 1fr; } }
 
 /* ==========================================================================
-   WYJAZDY
+   WYJAZDY — nazwa kraju wchodzi NA zdjęcie.
    ========================================================================== */
 
-.wyjazdy__lista { display: flex; flex-direction: column; gap: clamp(16px, 2.4vh, 32px); margin-top: clamp(32px, 5vh, 64px); }
+.wyjazdy__lista { display: flex; flex-direction: column; gap: clamp(28px, 4vh, 64px); margin-top: clamp(40px, 6vh, 72px); }
 
 .wyjazd {
   display: grid;
-  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 48px);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(20px, 3.5vw, 60px);
   align-items: center;
-  padding: clamp(18px, 2vw, 30px);
-  background: var(--kolor-mgla);
-  border-radius: var(--r-karta);
 }
-.js .wyjazd { opacity: 0; transform: translateY(20px); }
-.js .wyjazd.widoczna {
-  opacity: 1; transform: none;
-  transition: opacity var(--tempo) var(--ease-wejscie), transform var(--tempo) var(--ease-wejscie);
-}
-/* Sklejki z telefonu: pokazujemy je w kafelku w oryginalnych proporcjach,
-   nigdy przyciete na pelna szerokosc - jakosc by tego nie udzwignela. */
-.wyjazd__kadr img { width: 100%; height: auto; border-radius: var(--r-karta); }
+/* Co drugi wiersz ma zdjecie po drugiej stronie: piec jednakowych ukladow
+   czytaloby sie jak tabela, a to ma byc opowiesc o podrozach. */
+.wyjazd--odwrotnie .wyjazd__kadr { order: 2; }
 
-.wyjazd__glowa { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
-.wyjazd__kraj { font-size: clamp(1.9rem, 3.4vw, 3.2rem); text-transform: uppercase; }
+.wyjazd__kadr {
+  position: relative;
+  border-radius: var(--r-karta);
+  overflow: hidden;
+  background: var(--kolor-mgla);
+}
+.wyjazd__kadr img { width: 100%; height: auto; display: block; }
+
+/* Napis na zdjeciu. Sklejki z telefonu nie udzwigna pelnego ekranu,
+   ale udzwigna nalozony napis - typografia przykrywa slabosc materialu
+   i robi z tego kolaz, ten sam co w hero. */
+.wyjazd__napis {
+  position: absolute;
+  right: clamp(12px, 1.6vw, 22px);
+  top: clamp(6px, 1vw, 14px);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: var(--kolor);
+  /* Obrys biala farba: na kazdym z pieciu zdjec tlo jest inne, wiec sam
+     kolor nie wystarczy - kontur gwarantuje czytelnosc niezaleznie od kadru. */
+  -webkit-text-stroke: 2px #FFFFFF;
+  paint-order: stroke fill;
+  pointer-events: none;
+}
+
+.wyjazd__tresc { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+
 .wyjazd__termin {
   font-family: var(--font-display);
   font-size: var(--t-meta);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--kolor-tekst);
 }
+.wyjazd__kraj { font-size: clamp(1.9rem, 3.4vw, 3.2rem); text-transform: uppercase; line-height: 0.95; }
 .wyjazd__program {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
-  margin-top: 8px;
+  color: var(--kolor-tekst);
 }
-.wyjazd__opis { margin-top: 10px; line-height: 1.6; }
+.wyjazd__opis { line-height: 1.6; color: var(--ink-dim); max-width: 48ch; }
+
+.js .wyjazd { opacity: 0; transform: translateY(22px); }
+.js .wyjazd.widoczna {
+  opacity: 1; transform: none;
+  transition: opacity var(--tempo) var(--ease-wejscie), transform var(--tempo) var(--ease-wejscie);
+}
 
 .wkrotce {
-  margin-top: clamp(28px, 4vh, 56px);
-  padding: clamp(24px, 3vw, 48px);
+  margin-top: clamp(36px, 5vh, 72px);
+  padding: clamp(28px, 3.4vw, 56px);
   background: var(--kolor);
   color: var(--na-kolorze);
   border-radius: var(--r-karta);
 }
 .wkrotce__tytul { font-size: var(--t-display-m); text-transform: uppercase; }
-.wkrotce__tresc { margin-top: 12px; margin-bottom: 20px; max-width: 54ch; }
+.wkrotce__tresc { margin-top: 12px; margin-bottom: 22px; max-width: 54ch; }
 .wkrotce .znacznik { border-color: currentColor; color: inherit; margin-left: 12px; }
 
-@media (max-width: 860px) { .wyjazd { grid-template-columns: 1fr; } }
+@media (max-width: 860px) {
+  .wyjazd { grid-template-columns: 1fr; }
+  .wyjazd--odwrotnie .wyjazd__kadr { order: 0; }
+}
 
 /* ==========================================================================
-   KONTAKT
+   KONTAKT — kolaż z wycinanek, karta wskazuje adresata.
    ========================================================================== */
 
 .ludzie {
@@ -994,18 +1025,87 @@
   gap: clamp(10px, 1.2vw, 18px);
   margin-top: clamp(32px, 5vh, 64px);
 }
+
 .czlowiek {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: clamp(18px, 2vw, 28px);
+  overflow: hidden;
   background: var(--kolor-mgla);
   border-radius: var(--r-karta);
+  transition: background-color var(--t-stan) var(--ease);
 }
-.czlowiek__imie { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
-.czlowiek__rola { font-size: 0.9375rem; color: var(--ink-dim); margin-bottom: 8px; }
-.czlowiek__tel { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+/* Wybrana osoba przejmuje pelne pole koloru - wybor ma byc widoczny
+   z drugiego konca ekranu, nie tylko przy karcie. */
+.czlowiek.is-on { background: var(--kolor); color: var(--na-kolorze); }
+.czlowiek.is-on .czlowiek__rola,
+.czlowiek.is-on .czlowiek__tel,
+.czlowiek.is-on .czlowiek__mail { color: inherit; }
+
+.czlowiek__kadr {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  /* Wycinanka stoi na polu wlasnego koloru, jak na ich okladkach. */
+  background: var(--kolor);
+}
+.czlowiek__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  /* Czlowiek czarno-bialy na kolorze - ten sam zabieg co w hero
+     i w sekcji zespolu, wiec jezyk strony zostaje jeden. */
+  filter: grayscale(1) contrast(1.12);
+}
+
+.czlowiek__tresc { display: flex; flex-direction: column; gap: 3px; padding: clamp(16px, 1.8vw, 24px); flex: 1; }
+.czlowiek__imie { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; line-height: 1.05; }
+.czlowiek__rola { font-size: 0.9375rem; color: var(--ink-dim); margin-bottom: 10px; }
+.czlowiek__tel {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
 .czlowiek__mail { font-size: 0.9375rem; overflow-wrap: anywhere; }
+
+.czlowiek__wybierz {
+  margin-top: auto;
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 11px 18px;
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  border-radius: var(--r-pigulka);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color var(--t-mikro) var(--ease), color var(--t-mikro) var(--ease), transform var(--t-mikro) var(--ease-wejscie);
+}
+.czlowiek__wybierz:active { transform: scale(0.97); }
+.czlowiek.is-on .czlowiek__wybierz { background: var(--na-kolorze); color: var(--kolor); }
+
+/* Potwierdzenie wyboru na gorze formularza: czlowiek ma widziec, ze
+   klikniecie cos zrobilo, bez szukania zmiany wzrokiem. */
+.form__adresat {
+  margin-bottom: 18px;
+  padding: 12px 16px;
+  background: var(--paper-gleb);
+  border-radius: var(--r-karta);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 860px) { .ludzie { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .js .wyjazd { opacity: 1; transform: none; transition: none; }
+  .czlowiek__wybierz:active { transform: none; }
+}
 
 /* ---------- formularz ---------- */
 

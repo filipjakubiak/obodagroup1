@@ -1,0 +1,10 @@
+{
+  "name": "obodagroup",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serwer.mjs",
+    "test": "node tests/fundament.mjs"
+  },
+  "devDependencies": { "playwright": "^1.48.0" }
+}

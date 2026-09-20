@@ -1,5 +1,6 @@
 node_modules/
 _scrape/pledge-shots/
 _scrape/pledge.html
+tests/zrzuty/
 .DS_Store
 Thumbs.db

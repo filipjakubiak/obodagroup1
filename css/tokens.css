@@ -1,0 +1,103 @@
+/* ==========================================================================
+   OBODA GROUP — tokeny.
+   Jedyny plik, w którym wolno zdefiniować wartość koloru, rozmiaru albo czasu.
+   Wszystko inne odwołuje się do tych zmiennych.
+
+   Myśl przewodnia: kolor jest metodą, nie dekoracją. Cztery kolory typologii
+   osobowości (narzędzie pracy firmy) = cztery role w gabinecie = cztery ścieżki
+   szkoleniowe. Baza jest niemal monochromatyczna, żeby kolor — gdy się pojawia —
+   coś znaczył.
+   ========================================================================== */
+
+:root {
+  /* ---------- baza ---------- */
+  --ink:        #141210;   /* prawie czarny, ciepły */
+  --paper:      #F4F1EB;   /* ciepła biel */
+  --paper-gleb: #EBE6DD;   /* drugi poziom tła w obrębie tego samego motywu */
+  --ink-dim:    #5E584F;   /* tekst drugorzędny na paper */
+  --line:       rgba(20, 18, 16, 0.14);
+  --line-mocna: rgba(20, 18, 16, 0.32);
+
+  /* ---------- cztery kolory metody ----------
+     Wersja MARKOWA (--x) służy do wypełnień i dużych pól.
+     Wersja CZYTELNA (--x-tekst) to ta sama barwa dociemniona tak, by przeszła
+     4.5:1 na papierze. Rozdzielamy je, bo markowa czerwień jako tekst bywa
+     na granicy, a „prawie przechodzi" to znaczy nie przechodzi. */
+  --ogien:        #E4002B;  --ogien-tekst:  #C40025;  /* lekarz */
+  --ziemia:       #00A758;  --ziemia-tekst: #00703B;  /* przy pacjencie */
+  --slonce:       #FFC72C;  --slonce-tekst: #6B4A00;  /* pierwszy kontakt */
+  --chlod:        #0076BF;  --chlod-tekst:  #005A91;  /* zarządzanie */
+
+  /* Tekst kładziony NA polu danego koloru. Paleta dzieli się sama na dwie pary:
+     ogień i chłód są ciemne, więc biorą biały tekst; ziemia i słońce są jasne,
+     więc biorą tekst atramentowy. Zmierzone: biały na ziemi to tylko 3.15:1,
+     atrament na ziemi 5.89:1. Reguła jest więc systemem, nie wyjątkiem. */
+  --na-ogniu:    #FFFFFF;
+  --na-chlodzie: #FFFFFF;
+  --na-ziemi:    #141210;
+  --na-sloncu:   #141210;
+
+  /* ---------- typografia ---------- */
+  --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-tekst:   "Geist", ui-sans-serif, system-ui, sans-serif;
+
+  --t-display-xl: clamp(3.5rem, 11vw, 13rem);
+  --t-display-l:  clamp(2.5rem, 7vw, 7rem);
+  --t-display-m:  clamp(1.9rem, 4vw, 3.5rem);
+  --t-display-s:  clamp(1.35rem, 2.2vw, 2rem);
+  --t-lead:       clamp(1.15rem, 1.6vw, 1.5rem);
+  --t-body:       1.0625rem;
+  --t-meta:       0.8125rem;
+
+  --lh-display: 0.92;
+  --ls-display: -0.03em;
+
+  /* ---------- przestrzeń ---------- */
+  --max:      1440px;
+  --margines: clamp(20px, 5vw, 80px);
+  --sekcja:   clamp(96px, 14vh, 200px);
+  --rynna:    24px;
+
+  /* ---------- kształt ----------
+     Jeden system narożników na cały projekt: ostry układ, pigułkowe elementy
+     interaktywne. Mieszanie promieni to najczęstszy objaw braku systemu. */
+  --r-plaszczyzna: 0px;
+  --r-karta:       2px;
+  --r-pigulka:     999px;
+
+  /* ---------- ruch ----------
+     Jedno easing na wszystko, trzy czasy. Restrykcja jest tu cechą, nie
+     ograniczeniem: to ona sprawia, że strona sprawia wrażenie jednego wyrobu. */
+  --ease:      cubic-bezier(0.65, 0, 0.35, 1);
+  --t-mikro:   200ms;
+  --t-stan:    420ms;
+  --t-odslona: 760ms;
+
+  /* ---------- warstwy ----------
+     Jawna skala zamiast rozsypanych z-index: 9999 po całym arkuszu. */
+  --z-tlo:      0;
+  --z-tresc:    1;
+  --z-naglowek: 50;
+  --z-okno:     100;
+}
+
+/* ==========================================================================
+   Tryb ciemny. Ten sam system, odwrócona baza: ink staje się powierzchnią,
+   paper tekstem. Kolory markowe zostają (to znaki rozpoznawcze), ale wersje
+   czytelne muszą pojaśnieć — na ciemnym tle ciemna czerwień jest nieczytelna.
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:        #F4F1EB;   /* zamiana ról: „ink" to zawsze kolor tekstu */
+    --paper:      #121110;   /* „paper" to zawsze kolor powierzchni */
+    --paper-gleb: #1C1A17;
+    --ink-dim:    #A49C90;
+    --line:       rgba(244, 241, 235, 0.16);
+    --line-mocna: rgba(244, 241, 235, 0.34);
+
+    --ogien-tekst:  #FF6B80;
+    --ziemia-tekst: #4FD48C;
+    --slonce-tekst: #FFC72C;   /* żółty na ciemnym jest czytelny — jedyny taki przypadek */
+    --chlod-tekst:  #6FB8EE;
+  }
+}

@@ -1,0 +1,106 @@
+/* ==========================================================================
+   OBODA GROUP — baza: reset, typografia, stany globalne.
+   Żadnych wartości wprost — wszystko z tokens.css.
+   ========================================================================== */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  /* Płynne przewijanie wyłączane niżej przy prefers-reduced-motion. */
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-tekst);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Zabezpieczenie przed poziomym przewijaniem: elementy wychodzące poza
+     krawędź (bloki pełnoekranowe, ruch) nie mogą rozpychać strony w bok. */
+  overflow-x: clip;
+}
+
+/* ---------- typografia ---------- */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-display-xl); font-weight: 800; }
+h2 { font-size: var(--t-display-l); }
+h3 { font-size: var(--t-display-m); }
+h4 { font-size: var(--t-display-s); }
+
+p { max-width: 68ch; text-wrap: pretty; }
+
+.lead { font-size: var(--t-lead); line-height: 1.45; color: var(--ink-dim); }
+
+/* Etykieta metatekstowa. Używana oszczędnie — nie nad każdą sekcją. */
+.meta {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+
+strong, b { font-weight: 600; }
+
+/* ---------- media ---------- */
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- stany ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--ogien);
+  outline-offset: 3px;
+  border-radius: var(--r-karta);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+::selection { background: var(--slonce); color: var(--na-sloncu); }
+
+/* Treść wyłącznie dla czytników ekranu. Potrzebna w hero: kinetyczna rola
+   pokazuje jedno słowo naraz, a czytnik musi dostać pełne zdanie. */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Przeskok do treści — pierwszy element w tabulacji. */
+.skip {
+  position: absolute;
+  left: var(--margines);
+  top: -100px;
+  z-index: var(--z-okno);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 20px;
+  border-radius: var(--r-pigulka);
+  transition: top var(--t-mikro) var(--ease);
+}
+.skip:focus { top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

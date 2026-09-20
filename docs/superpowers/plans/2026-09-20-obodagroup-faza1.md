@@ -1,5 +1,95 @@
 # OBODA GROUP — faza 1 (wizualna) — plan wdrożenia
 
+---
+
+# 🔖 STAN SESJI — zapisane 2026-09-20 (koniec sesji)
+
+> **Czytać jako pierwsze po wznowieniu.** Plan niżej opisuje, co było
+> zamierzone; ta sekcja opisuje, co naprawdę stoi.
+
+## Gdzie jesteśmy
+
+**Faza 1 jest zbudowana w całości i wypchnięta.**
+Repozytorium: **https://github.com/filipjakubiak/obodagroup1**, gałąź `main`,
+18 commitów, 133 pliki, wszystko zsynchronizowane z `origin`.
+
+```
+npm run dev     # http://127.0.0.1:4310/obodagroup/
+npm test        # siedem pakietow, 183 sprawdzenia
+npm run build   # przebudowa data/*.json i stron z generatora
+```
+
+⚠️ **Nie edytować plików .html ręcznie** — generuje je `tools/zbuduj-strony.mjs`.
+
+## ⛔ Jedyna rzecz, która czeka na Filipa
+
+**Włączyć GitHub Pages:** Settings → Pages → Source: `main`, katalog `/ (root)`.
+Strona pojawi się pod `https://filipjakubiak.github.io/obodagroup1/`.
+Repozytorium jest publiczne właśnie po to (Pages na darmowym koncie inaczej
+nie działa). Test `wdrozenie.mjs` już sprawdza, że nic się nie wysypie:
+serwer deweloperski podaje stronę pod `/obodagroup/`, dokładnie tak jak Pages.
+
+## Co powstało poza planem
+
+Plan zakładał 13 zadań i rytm sekcji z § 9 specu. W trakcie Filip dołożył
+sporo kierunków i tak wygląda różnica:
+
+| Plan mówił | Jest |
+|---|---|
+| Hero z kinetyczną rolą (automat) | **Suwak** sterowany przewijaniem w bok, automat tylko do pierwszego dotknięcia |
+| Archivo Variable (oś szerokości) | **Sofia Sans** na prośbę Filipa. Nie ma osi szerokości, więc dopasowanie idzie przez cztery szerokości rodziny + stopień pisma |
+| Paleta Insights Discovery | **Kolory odczytane z ich własnych materiałów**, pomarańcz `#EE7F00` prosto z pliku logotypu |
+| GSAP + ScrollTrigger + Lenis | **Nieużyte.** Żaden efekt tego nie potrzebował — sprostowanie w § 7.3 specu |
+| Liczby w rzędzie, opinie w siatce | **Dwa bento** o różnych wysokościach |
+| MEMS jako blok koloru | **Biały** w obu trybach, duże nieprzycinane okładki, tekst obok |
+| Ceny jako trzy kwoty | **Proces zakupu** w czterech krokach + porównanie kosztu całkowitego |
+| — | **Sekcja finałowa** z pięcioma dryfującymi plamami koloru |
+
+## Pakiety testów (`npm test`)
+
+| plik | co pilnuje |
+|---|---|
+| `fundament` | tokeny, kontrasty obu trybów, integralność arkuszy CSS |
+| `kontrast` | 172 węzły tekstowe na wyrenderowanej stronie, z łańcuchem przezroczystości |
+| `piksele` | kontrast na **wymalowanych pikselach** pod sekcją finałową |
+| `dotyk` | cele dotykowe ≥ 44 px na sześciu stronach przy 390 px |
+| `katalog` | filtr, stan w adresie, strona szczegółu |
+| `strony` | osiem stron, formularz, brak wypełniacza, praca bez JS |
+| `wdrozenie` | ścieżki względne, zero 404, sitemap |
+
+## Trzy rzeczy, które warto pamiętać przy dotykaniu tego kodu
+
+1. **Test, który nie pada przy zmianie, nie jest testem.** Pierwsza wersja
+   `fundament.mjs` miała hexy wpisane z ręki i po przebudowie palety dalej
+   świeciła na zielono. Teraz czyta wartości prosto z `tokens.css`.
+2. **Zwykły test kontrastu nie widzi wymalowanych pikseli.** Nad sekcją
+   z plamami koloru czyta tło sekcji i przepuszcza wszystko. Stąd osobny
+   `piksele.mjs`.
+3. **Zielony pakiet nie mówi nic o wyglądzie.** Większość realnych błędów
+   w tej sesji złapały zrzuty, nie testy: portret jako negatyw, cudzysłów
+   na drugim wierszu cytatu, tytuł hero łapiący `p { max-width: 68ch }`.
+
+## Co czeka na klienta
+
+`README.md` ma gotową listę **12 braków** (opinie, logotypy klinik,
+potwierdzenie liczb, prawdziwe terminy wyjazdów, zdjęcia w wyższej
+rozdzielczości, tłumaczenia EN). Wszystkie te miejsca są **zbudowane
+i oznaczone na stronie** plakietką, nic nie zostało zmyślone.
+
+`NOTATKI-LOKALNE.md` (**poza repozytorium**) ma pełną listę wypełniacza
+z ich obecnej strony — do przekazania prywatnie, nie przez publiczne repo.
+
+## Faza 2, gdy klient kupi koncepcję
+
+Architektura jest pod to przygotowana:
+- treść siedzi w `data/*.json`, więc podmiana źródła na API nie rusza układu
+- `js/wyslij.js` to **jedyne miejsce**, które trzeba zmienić, żeby formularz
+  zaczął wysyłać
+- sklep (koszyk, płatności, konta) nie był budowany i jest świadomie poza zakresem
+
+---
+
+
 > **Dla wykonawcy:** WYMAGANY PODSKILL: `superpowers:subagent-driven-development` (zalecane)
 > albo `superpowers:executing-plans`. Kroki mają `- [ ]` do odhaczania.
 

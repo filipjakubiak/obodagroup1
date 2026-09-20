@@ -37,6 +37,15 @@
   height: 72px;
 }
 
+/* Odnosnik logotypu ma miec pelna powierzchnie trafienia, choc sam znak
+   jest niski. Ujemny margines pionowy pilnuje, zeby wypelnienie nie
+   rozpychalo paska naglowka. */
+.naglowek__pas > a:first-child {
+  display: flex;
+  align-items: center;
+  padding: 9px 4px;
+  margin-block: -9px;
+}
 .naglowek__logo { display: block; height: 26px; width: auto; flex: none; }
 /* Ciemne grunty (błękit, fiolet) niosą biały tekst, więc logo też musi
    pojaśnieć. Na czerwieni, kwasie i słońcu tekst jest atramentowy i logo
@@ -246,17 +255,30 @@
 
 .hero__kropki { display: flex; gap: 8px; }
 
+/* Pasek ma 6 px, ale palec musi miec 44. Rozdzielamy wiec to, co widac,
+   od tego, w co sie trafia: wypelnienie powieksza powierzchnie trafienia,
+   a sama kreska jest rysowana pseudoelementem. */
 .hero__kropka {
   width: 44px;
-  height: 6px;
+  height: 44px;
   padding: 0;
   border: 0;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.hero__kropka::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 6px;
   border-radius: var(--r-pigulka);
   background: color-mix(in oklab, currentColor 28%, transparent);
-  cursor: pointer;
   transition: background-color var(--t-mikro) var(--ease), width var(--t-mikro) var(--ease);
 }
-.hero__kropka.is-on { background: currentColor; width: 72px; }
+.hero__kropka.is-on { width: 72px; }
+.hero__kropka.is-on::before { background: currentColor; width: 72px; }
 
 .hero__wskazowka {
   font-family: var(--font-display);
@@ -383,5 +405,5 @@ section { padding-block: var(--sekcja); }
 
   .naglowek__jezyk:hover { color: inherit; }
 
-  .hero__kropka:hover { background: color-mix(in oklab, currentColor 55%, transparent); }
+  .hero__kropka:hover::before { background: color-mix(in oklab, currentColor 55%, transparent); }
 }

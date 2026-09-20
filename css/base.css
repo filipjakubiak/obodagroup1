@@ -11,6 +11,14 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Bez tego przegladarka czeka ok. 300 ms, czy nie nadejdzie drugie
+   tapniecie (zoom do powiekszenia). Strona nie ma nic, co by tego
+   wymagalo, wiec kazdy tap dziala natychmiast. Zoom szczypaniem
+   zostaje - "manipulation" wylacza wylacznie podwojne tapniecie.
+   🚨 touch-action SIE NIE DZIEDZICZY, wiec deklaracja na <html> nie
+   wystarcza - musi byc tam, gdzie sa elementy. */
+html, body { touch-action: manipulation; }
+
 body {
   background: var(--paper);
   color: var(--ink);

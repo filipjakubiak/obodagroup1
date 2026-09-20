@@ -333,11 +333,26 @@ section { padding-block: var(--sekcja); }
      papierze bylo widac ich prostokat. Jedyne miejsce na stronie z czysta
      biela - i ma ku temu powod. */
   background: #FFFFFF;
+
+  /* 🚨 Sekcja jest biala ZAWSZE, takze w trybie ciemnym - okladki modulow
+     maja biale tlo i to one dyktuja warunek. Dlatego przywracamy tu jasne
+     wartosci tokenow lokalnie, zamiast latac element po elemencie.
+     Bez tego w trybie ciemnym --ink zamienia sie w kolor jasny, a odnosnik
+     "Szczegoly modulu" dawal na bieli 2.06:1. Zlapal to test kontrastu. */
+  --ink:       #141210;
+  --paper:     #FFFFFF;
+  --paper-gleb:#EBE6DD;
+  --ink-dim:   #5E584F;
+  --line:      rgba(20, 18, 16, 0.14);
+  --line-mocna: rgba(20, 18, 16, 0.32);
+
+  --ogien-tekst:  #9C4D00;  --ogien-mgla:  #FDEBD6;
+  --kwas-tekst:   #1F6B00;  --kwas-mgla:   #DFF7D6;
+  --slonce-tekst: #6B5200;  --slonce-mgla: #FFF3C4;
+  --chlod-tekst:  #0049B8;  --chlod-mgla:  #DDE8FD;
+  --fiolet-tekst: #6200B0;  --fiolet-mgla: #EEE0FB;
+
   color: var(--ink);
-}
-@media (prefers-color-scheme: dark) {
-  /* Noca okladki na bieli razilyby, wiec sekcja idzie na glebszy papier. */
-  .mems { background: var(--paper-gleb); }
 }
 .mems__etykieta {
   font-family: var(--font-display);

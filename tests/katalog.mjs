@@ -53,8 +53,10 @@ sprawdz("szczegol pokazuje tytul",
   await p.textContent(".szkol__tytul"));
 sprawdz("szczegol ma liste korzysci", (await p.locator(".szkol__korzysc").count()) >= 5,
   String(await p.locator(".szkol__korzysc").count()));
-sprawdz("szczegol ma cene", (await p.textContent(".szkol__kwota")).includes("2620"),
-  await p.textContent(".szkol__kwota"));
+/* Spacje sa niewidoczne, a rozdzielaja tysiace: porownujemy cyfry,
+   zeby test nie padal przy zmianie formatowania kwoty. */
+const kwotaCyfry = (await p.textContent(".szkol__kwota")).replace(/[^0-9]/g, "");
+sprawdz("szczegol ma cene", kwotaCyfry === "2620", await p.textContent(".szkol__kwota"));
 sprawdz("tytul dokumentu niesie nazwe szkolenia", (await p.title()).includes("Inteligencja"), await p.title());
 
 await p.goto(s.url + "szkolenie.html?id=nie-ma-takiego", { waitUntil: "networkidle" });

@@ -75,5 +75,5 @@ export async function zbudujGabinet(host) {
   }
 
   host.appendChild(lista);
-  ujawnij(lista.querySelectorAll(".gabinet__karta"));
+  ujawnij(lista.querySelectorAll(".gabinet__karta"), { odstep: 70 });
 }

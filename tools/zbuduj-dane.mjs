@@ -122,7 +122,12 @@ for (const p of zrodlo) {
   const cena = Math.round(Number(p.prices?.price || 0) / 100);
 
   if (grupa === "WARIANT") {
-    warianty.push({ id: slug(tytul), nazwa_pl: tytul, nazwa_en: "", cena, waluta: "PLN" });
+    /* Liczba rat jest w nazwie i nigdzie indziej. Wyciagamy ja wprost,
+       zeby strona mogla pokazac PELNY koszt, a nie tylko wysokosc raty:
+       trzy raty po 5791 to 17 373, czyli o 2043 wiecej niz jednorazowe
+       15 330. Klient ma prawo to zobaczyc przed decyzja. */
+    const raty = /trzech/i.test(tytul) ? 3 : /dwoch|dwóch/i.test(tytul) ? 2 : 1;
+    warianty.push({ id: slug(tytul), nazwa_pl: tytul, nazwa_en: "", cena, raty, razem: cena * raty, waluta: "PLN" });
     continue;
   }
 

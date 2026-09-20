@@ -22,5 +22,8 @@ export const jezyk = () => (location.pathname.includes("/en/") ? "en" : "pl");
    wersję angielską częściami, bez dziur na stronie. */
 export const pole = (obj, nazwa) => obj[`${nazwa}_${jezyk()}`] || obj[`${nazwa}_pl`] || "";
 
+/* useGrouping: "always" jest tu celowe. Polski domyslny tryb nie grupuje
+   liczb czterocyfrowych, wiec obok "15 330 zl" stalo "8176 zl" - w tabeli
+   porownawczej kwot to zgrzyta i utrudnia zestawienie wzrokiem. */
 export const zlotowki = (n) =>
-  new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 }).format(n) + " zł";
+  new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0, useGrouping: "always" }).format(n) + " zł";

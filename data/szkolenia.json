@@ -791,6 +791,8 @@
       "nazwa_pl": "Mems - cały projekt - płatność w trzech ratach",
       "nazwa_en": "",
       "cena": 5791,
+      "raty": 3,
+      "razem": 17373,
       "waluta": "PLN"
     },
     {
@@ -798,6 +800,8 @@
       "nazwa_pl": "Mems - cały projekt - płatność w dwóch ratach",
       "nazwa_en": "",
       "cena": 8176,
+      "raty": 2,
+      "razem": 16352,
       "waluta": "PLN"
     },
     {
@@ -805,6 +809,8 @@
       "nazwa_pl": "Mems - cały projekt - płatność jednorazowa",
       "nazwa_en": "",
       "cena": 15330,
+      "raty": 1,
+      "razem": 15330,
       "waluta": "PLN"
     }
   ]

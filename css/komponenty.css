@@ -29,23 +29,14 @@
               transform var(--t-mikro) var(--ease);
 }
 
-/* Wypełnienie wjeżdża natychmiast, bez animowania szerokości — animujemy
-   wyłącznie kolor i przesunięcie, czyli rzeczy tanie dla przeglądarki. */
-.btn:hover {
-  background: var(--na-kolorze, var(--ink));
-  color: var(--kolor, var(--paper));
-}
-
-/* Dotknięcie ma dawać wrażenie wciśnięcia, nie tylko zmiany koloru. */
-.btn:active { transform: translateY(1px); }
+/* Wcisniecie: skala, nie przesuniecie o piksel. Skala skaluje tez tresc
+   przycisku, wiec cale pudelko "ugina sie" pod palcem. Czas krotki
+   (160 ms), bo to jest odpowiedz systemu, a nie decyzja czlowieka. */
+.btn:active { transform: scale(0.97); }
 
 .btn--gl {
   background: var(--na-kolorze, var(--ink));
   color: var(--kolor, var(--paper));
-}
-.btn--gl:hover {
-  background: transparent;
-  color: inherit;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,11 +161,6 @@
 
 /* Najazd: kolor grupy przejmuje całą kartę. Jeden ruch, nie pięć. */
 .gabinet__karta { transition: background-color var(--t-stan) var(--ease); }
-.gabinet__link:hover { color: var(--na-kolorze); }
-.gabinet__karta:has(.gabinet__link:hover) { background: var(--kolor); }
-.gabinet__karta:has(.gabinet__link:hover) .gabinet__opis,
-.gabinet__karta:has(.gabinet__link:hover) .gabinet__haslo,
-.gabinet__karta:has(.gabinet__link:hover) .gabinet__ile { color: var(--na-kolorze); }
 
 @media (max-width: 1100px) {
   .gabinet__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -396,98 +382,285 @@
 }
 
 /* ==========================================================================
-   MEMS — siedem modułów jako jedna droga.
+   MEMS — siedem modułów: duże zdjęcie i obok konkret.
    ========================================================================== */
 
-.mems__lista { list-style: none; counter-reset: none; margin-top: clamp(40px, 6vh, 72px); }
+.mems__lista { list-style: none; margin-top: clamp(48px, 7vh, 88px); }
 
 .mems__poz {
   display: grid;
-  grid-template-columns: 5rem 200px minmax(0, 1fr);
-  gap: clamp(16px, 2.5vw, 44px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 72px);
   align-items: center;
-  padding-block: clamp(18px, 2.4vh, 30px);
-  /* Linia bierze sie z koloru tekstu sekcji, wiec dziala i na czerwieni
-     z atramentem, i na blekicie z biela. */
-  border-top: 1px solid color-mix(in oklab, currentColor 26%, transparent);
+  padding-block: clamp(36px, 6vh, 88px);
 }
-.mems__poz:last-child { border-bottom: 1px solid color-mix(in oklab, currentColor 26%, transparent); }
+.mems__poz + .mems__poz { border-top: 1px solid var(--line); }
+/* Strony wymieniaja sie co wiersz: siedem identycznych ukladow czyta sie
+   jak formularz, a nie jak opowiesc. */
+.mems__poz--odwrotnie .mems__kadr { order: 2; }
 
-.js .mems__poz { opacity: 0; transform: translateY(20px); }
-.js .mems__poz.widoczna {
+.mems__kadr {
+  /* Zadnego przycinania: okladki sa kolazami i obciety rog niszczy kompozycje.
+     Zadnego tla: pliki maja biale tlo, wiec na cieplym papierze widac bylo
+     prostokat. Sekcja jest czysto biala i okladka wtapia sie w nia bez szwu. */
+  background: none;
+}
+.mems__kadr img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Zdjecie wchodzi pierwsze, tekst zaraz po nim: najpierw widzisz,
+   potem czytasz. Zdjecie dodatkowo odjezdza ze skali - ruch jest
+   niewielki (1.04 -> 1), bo ma sugerowac osadzanie sie kadru,
+   a nie najazd kamery. */
+/* Zdjecie wchodzi pierwsze, tekst zaraz po nim. Ruch jest wylacznie
+   pionowy i na przezroczystosci - skalowanie odpadlo razem z przycinaniem. */
+.js .mems__poz .mems__kadr { opacity: 0; transform: translateY(24px); }
+.js .mems__poz .mems__tresc { opacity: 0; transform: translateY(20px); }
+
+.js .mems__poz.widoczna .mems__kadr {
   opacity: 1;
   transform: none;
-  transition: opacity var(--t-odslona) var(--ease), transform var(--t-odslona) var(--ease);
+  transition: opacity var(--t-odslona) var(--ease-wejscie),
+              transform var(--t-odslona) var(--ease-wejscie);
 }
+.js .mems__poz.widoczna .mems__tresc {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--t-odslona) var(--ease-wejscie) 160ms,
+              transform var(--t-odslona) var(--ease-wejscie) 160ms;
+}
+
+.mems__tresc { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
 
 .mems__numer {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.4vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1;
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
-  /* Numer moze byc przygaszony: to etykieta porzadkowa, nie tresc.
-     Mieszamy z tlem zamiast uzywac opacity - wynik da sie zmierzyc. */
-  color: color-mix(in oklab, var(--na-kolorze) 55%, var(--kolor));
+  color: var(--ogien);
 }
-.mems__kadr {
-  display: block;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--r-karta);
-  background: rgba(255, 255, 255, 0.1);
-}
-.mems__kadr img { width: 100%; height: 100%; object-fit: cover; object-position: center 24%; }
 
-.mems__tresc { display: flex; flex-direction: column; gap: 6px; }
 .mems__tytul {
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.2vw, 2.1rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.7rem, 3.2vw, 3rem);
   text-transform: uppercase;
+  line-height: 0.96;
+  max-width: 18ch;
 }
-.mems__lead { font-size: 0.9375rem; line-height: 1.45; max-width: 62ch; }
 
-/* ---------- warianty płatności ---------- */
+.mems__korzysci { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.mems__korzysc {
+  position: relative;
+  padding-left: 24px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  max-width: 46ch;
+}
+/* Kreska w kolorze rozdzialu zamiast domyslnej kropki przegladarki. */
+.mems__korzysc::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 13px;
+  height: 3px;
+  background: var(--ogien);
+}
 
-.ceny { margin-top: clamp(48px, 7vh, 88px); }
-.ceny__tytul { font-size: var(--t-display-m); text-transform: uppercase; }
-.ceny__wstep { margin-top: 10px; max-width: 56ch; }
+.mems__lead { font-size: 0.9375rem; line-height: 1.5; color: var(--ink-dim); max-width: 46ch; }
+
+.mems__link {
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ogien-tekst);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+/* ---------- jak zapisac sie: proces ----------
+   Cztery kroki zamiast samych kwot. Trzy liczby bez kontekstu nic nie mowia;
+   czlowiek chce wiedziec, co ma zrobic, a nie ile to kosztuje w oderwaniu. */
+
+.proces { margin-top: clamp(64px, 9vh, 120px); }
+.proces__tytul { font-size: var(--t-display-m); text-transform: uppercase; }
+
+.proces__kroki {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+  margin-top: clamp(24px, 3.5vh, 40px);
+  counter-reset: none;
+}
+
+.krok {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 18px;
+  /* Linia u gory zamiast ramki: kroki maja czytac sie jako jeden ciag,
+     a nie jako cztery osobne pudelka. */
+  border-top: 3px solid var(--ogien);
+}
+.js .krok { opacity: 0; transform: translateY(14px); }
+.js .krok.widoczna {
+  opacity: 1; transform: none;
+  transition: opacity var(--t-stan) var(--ease-wejscie), transform var(--t-stan) var(--ease-wejscie);
+}
+
+.krok__numer {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--ogien-tekst);
+}
+.krok__tytul { font-size: 1.25rem; text-transform: uppercase; letter-spacing: -0.01em; }
+.krok__opis { font-size: 0.9375rem; line-height: 1.5; color: var(--ink-dim); }
+
+/* ---------- trzy sposoby zaplaty ---------- */
+
+.ceny { margin-top: clamp(56px, 8vh, 104px); }
+.ceny__tytul { font-size: var(--t-display-m); text-transform: uppercase; max-width: 22ch; }
+.ceny__wstep { margin-top: 10px; max-width: 62ch; color: var(--ink-dim); }
+
 .ceny__siatka {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 18px);
-  margin-top: clamp(20px, 3vh, 32px);
+  gap: clamp(12px, 1.4vw, 20px);
+  margin-top: clamp(24px, 3.5vh, 40px);
+  align-items: stretch;
 }
+
 .ceny__poz {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: clamp(18px, 2vw, 28px);
-  border: 2px solid currentColor;
+  gap: 6px;
+  padding: clamp(22px, 2.4vw, 34px);
+  border: 2px solid var(--line);
   border-radius: var(--r-karta);
+  background: none;
 }
-.ceny__nazwa { font-size: 0.9375rem; }
+/* Wariant o najnizszym KOSZCIE CALKOWITYM, nie o najnizszej racie.
+   Wyrozniony pelnym polem koloru, zeby decyzja byla widoczna od razu. */
+.ceny__poz--najtanszy {
+  border-color: var(--ogien);
+  background: var(--ogien-mgla);
+}
+
+.ceny__plakietka {
+  position: absolute;
+  top: -11px;
+  left: clamp(22px, 2.4vw, 34px);
+  background: var(--ogien);
+  color: var(--na-ogniu);
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: var(--r-pigulka);
+}
+
+.ceny__ile {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ogien-tekst);
+}
+
 .ceny__kwota {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 3.2vw, 3rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.4rem, 4.4vw, 4rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ceny__zaRate { font-size: 0.875rem; color: var(--ink-dim); }
+
+/* Koszt calkowity jest rownie wazny co rata - dlatego stoi w ramce,
+   a nie drobnym drukiem pod spodem. */
+.ceny__razem {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.ceny__razemEtykieta {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.ceny__razemKwota {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ceny__roznica {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ink-dim);
+}
+.ceny__poz--najtanszy .ceny__roznica { color: var(--ogien-tekst); font-weight: 600; }
+
+.ceny__uwaga { margin-top: 18px; font-size: 0.875rem; color: var(--ink-dim); }
+.ceny .btn { margin-top: 22px; }
+
+.js .ceny__poz { opacity: 0; transform: translateY(16px); }
+.js .ceny__poz.widoczna {
+  opacity: 1; transform: none;
+  transition: opacity var(--t-stan) var(--ease-wejscie), transform var(--t-stan) var(--ease-wejscie);
+}
+
+@media (max-width: 1000px) {
+  .proces__kroki { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ceny__siatka { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .proces__kroki { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .krok, .js .ceny__poz { opacity: 1; transform: none; transition: none; }
 }
 
 @media (max-width: 900px) {
-  .mems__poz { grid-template-columns: 3.2rem minmax(0, 1fr); }
-  .mems__kadr { display: none; }
+  .mems__poz { grid-template-columns: 1fr; gap: 20px; }
+  .mems__poz--odwrotnie .mems__kadr { order: 0; }
   .ceny__siatka { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .js .mems__poz { opacity: 1; transform: none; transition: none; }
+  .js .mems__poz .mems__kadr,
+  .js .mems__poz .mems__tresc,
+  .js .ceny__poz { opacity: 1; transform: none; transition: none; }
 }
 
 /* ==========================================================================
@@ -510,7 +683,6 @@
   cursor: pointer;
   transition: background-color var(--t-mikro) var(--ease), color var(--t-mikro) var(--ease);
 }
-.filtr__btn:hover { background: var(--kolor-mgla, var(--paper-gleb)); }
 /* Wybrany filtr wypełnia się kolorem swojej roli — ten sam klucz barwny
    co w sekcji Twój gabinet i na kartach, więc nie trzeba się go uczyć. */
 .filtr__btn.is-on { background: var(--kolor, var(--ink)); color: var(--na-kolorze, var(--paper)); }
@@ -534,6 +706,12 @@
 }
 
 .karta { border-radius: var(--r-karta); overflow: hidden; }
+/* Karta jest jednym wielkim przyciskiem, wiec reaguje na wcisniecie
+   tak samo jak przycisk. Slabsza skala, bo element jest duzy. */
+.karta__link { transition: transform var(--t-mikro) var(--ease-wejscie); }
+.karta__link:active { transform: scale(0.99); }
+.gabinet__link { transition: transform var(--t-mikro) var(--ease-wejscie); }
+.gabinet__link:active { transform: scale(0.995); }
 .js .karta { opacity: 0; transform: translateY(18px); }
 .js .karta.widoczna {
   opacity: 1;
@@ -552,7 +730,6 @@
   background: var(--kolor-mgla);
   transition: background-color var(--t-stan) var(--ease), color var(--t-stan) var(--ease);
 }
-.karta__link:hover { background: var(--kolor); color: var(--na-kolorze); }
 
 .karta__grupa {
   font-family: var(--font-display);
@@ -562,8 +739,6 @@
   text-transform: uppercase;
   color: var(--kolor-tekst);
 }
-.karta__link:hover .karta__grupa,
-.karta__link:hover .karta__cena { color: var(--na-kolorze); }
 
 .karta__tytul {
   font-family: var(--font-display);
@@ -913,3 +1088,38 @@
 .tekst__tresc a { color: var(--ogien-tekst); }
 .tekst__tresc table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9375rem; }
 .tekst__tresc th, .tekst__tresc td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+
+/* ==========================================================================
+   Najazd tylko tam, gdzie istnieje prawdziwy kursor.
+   Na ekranie dotykowym :hover odpala sie po tapnieciu i ZOSTAJE - karta
+   swieci sie jeszcze dlugo po tym, jak czlowiek ja kliknal i wrocil.
+   Reguly sa przeniesione, a nie zduplikowane: jedno zrodlo prawdy.
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  /* Wypełnienie wjeżdża natychmiast, bez animowania szerokości — animujemy
+     wyłącznie kolor i przesunięcie, czyli rzeczy tanie dla przeglądarki. */
+  .btn:hover {
+    background: var(--na-kolorze, var(--ink));
+    color: var(--kolor, var(--paper));
+  }
+
+  .btn--gl:hover {
+    background: transparent;
+    color: inherit;
+  }
+
+  .gabinet__link:hover { color: var(--na-kolorze); }
+
+  .gabinet__karta:has(.gabinet__link:hover) { background: var(--kolor); }
+
+  .gabinet__karta:has(.gabinet__link:hover) .gabinet__opis,
+  .gabinet__karta:has(.gabinet__link:hover) .gabinet__haslo,
+  .gabinet__karta:has(.gabinet__link:hover) .gabinet__ile { color: var(--na-kolorze); }
+
+  .filtr__btn:hover { background: var(--kolor-mgla, var(--paper-gleb)); }
+
+  .karta__link:hover { background: var(--kolor); color: var(--na-kolorze); }
+
+  .karta__link:hover .karta__grupa,
+  .karta__link:hover .karta__cena { color: var(--na-kolorze); }
+}

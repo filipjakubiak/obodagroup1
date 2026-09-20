@@ -21,7 +21,7 @@ const MNIEJ_RUCHU = () => matchMedia("(prefers-reduced-motion: reduce)").matches
    człowieka, który trafił na stronę z wyłączonym obserwatorem. */
 const RATUNEK_MS = 2500;
 
-export function ujawnij(elementy, { odstep = 110, prog = 0.24, klasa = "widoczna" } = {}) {
+export function ujawnij(elementy, { odstep = 70, prog = 0.24, klasa = "widoczna" } = {}) {
   const lista = [...elementy];
   if (!lista.length) return;
 
@@ -66,7 +66,7 @@ export function ujawnij(elementy, { odstep = 110, prog = 0.24, klasa = "widoczna
    kilkunastu sztukach widać to na telefonie.
    ========================================================================== */
 
-export function ujawnijZRozmyciem(elementy, { odstep = 90, prog = 0.2 } = {}) {
+export function ujawnijZRozmyciem(elementy, { odstep = 60, prog = 0.2 } = {}) {
   const lista = [...elementy];
   if (!lista.length) return;
 

@@ -105,7 +105,7 @@
      na ekran, potrzebuje szybkiego startu, bo to on daje wrazenie
      responsywnosci. Rzecz, ktora juz jest i sie przesuwa, potrzebuje
      rozpedzenia i wyhamowania. To sa dwa rozne zadania. */
-  --ease-wejscie: cubic-bezier(0.165, 0.84, 0.44, 1);   /* odslony, wejscia */
+  --ease-wejscie: cubic-bezier(0.23, 1, 0.32, 1);       /* odslony, wejscia */
   --ease:         cubic-bezier(0.645, 0.045, 0.355, 1); /* przesuniecia, zmiany stanu */
 
   --t-mikro:   200ms;

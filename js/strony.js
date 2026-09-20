@@ -50,7 +50,7 @@ export async function zbudujZespol(host) {
   }
 
   host.appendChild(lista);
-  ujawnij(lista.querySelectorAll(".osoba"), { odstep: 130, prog: 0.18 });
+  ujawnij(lista.querySelectorAll(".osoba"), { odstep: 75, prog: 0.18 });
 }
 
 /* ==========================================================================
@@ -108,7 +108,7 @@ export async function zbudujWyjazdy(host) {
   if (p.do_zatwierdzenia) blok.appendChild(el("span", "znacznik", "czeka na terminy od klienta"));
   host.appendChild(blok);
 
-  ujawnij(lista.querySelectorAll(".wyjazd"), { odstep: 120, prog: 0.18 });
+  ujawnij(lista.querySelectorAll(".wyjazd"), { odstep: 70, prog: 0.18 });
 }
 
 /* ==========================================================================

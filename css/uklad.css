@@ -78,8 +78,6 @@
   transform-origin: left;
   transition: transform var(--t-mikro) var(--ease);
 }
-.naglowek__link:hover::after,
-.naglowek__link[aria-current="page"]::after { transform: scaleX(1); }
 
 .naglowek__jezyk {
   font-family: var(--font-display);
@@ -91,7 +89,6 @@
      i zbija kontrast ponizej progu, czego nie widac w tokenach. */
   color: color-mix(in oklab, currentColor 70%, transparent);
 }
-.naglowek__jezyk:hover { color: inherit; }
 
 /* ==========================================================================
    HERO — maszyna osobowościowa.
@@ -259,7 +256,6 @@
   cursor: pointer;
   transition: background-color var(--t-mikro) var(--ease), width var(--t-mikro) var(--ease);
 }
-.hero__kropka:hover { background: color-mix(in oklab, currentColor 55%, transparent); }
 .hero__kropka.is-on { background: currentColor; width: 72px; }
 
 .hero__wskazowka {
@@ -333,8 +329,15 @@ section { padding-block: var(--sekcja); }
    niosa kolor same z siebie - kazda okladka ma wlasna pare barw. */
 .mems {
   padding-block: var(--sekcja);
-  background: var(--paper);
+  /* Czysta biel, nie cieply papier: okladki modulow maja biale tlo i na
+     papierze bylo widac ich prostokat. Jedyne miejsce na stronie z czysta
+     biela - i ma ku temu powod. */
+  background: #FFFFFF;
   color: var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+  /* Noca okladki na bieli razilyby, wiec sekcja idzie na glebszy papier. */
+  .mems { background: var(--paper-gleb); }
 }
 .mems__etykieta {
   font-family: var(--font-display);
@@ -352,3 +355,18 @@ section { padding-block: var(--sekcja); }
   margin-top: 6px;
 }
 .mems__wstep { margin-top: clamp(14px, 2vh, 24px); max-width: 56ch; color: var(--ink-dim); }
+
+/* ==========================================================================
+   Najazd tylko tam, gdzie istnieje prawdziwy kursor.
+   Na ekranie dotykowym :hover odpala sie po tapnieciu i ZOSTAJE - karta
+   swieci sie jeszcze dlugo po tym, jak czlowiek ja kliknal i wrocil.
+   Reguly sa przeniesione, a nie zduplikowane: jedno zrodlo prawdy.
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  .naglowek__link:hover::after,
+  .naglowek__link[aria-current="page"]::after { transform: scaleX(1); }
+
+  .naglowek__jezyk:hover { color: inherit; }
+
+  .hero__kropka:hover { background: color-mix(in oklab, currentColor 55%, transparent); }
+}

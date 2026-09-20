@@ -184,32 +184,45 @@
   margin-bottom: clamp(20px, 4vh, 44px);
 }
 
+/* Hierarchia: "Szkolimy" jest tylko wprowadzeniem, a ROLA jest komunikatem.
+   Poprzednia wersja trzymala oba wiersze w jednym stopniu i rozciagala role
+   osia szerokosci fontu. Sofia Sans takiej osi nie ma, wiec caly ciezar
+   dopasowania bierze stopien pisma - a wtedy rownanie obu wierszy jest
+   niemozliwe. Zamiast walczyc, robimy z tego mocniejszy uklad. */
 .hero__tytul {
-  /* Sufit nizszy niz globalny display-xl: hero musi zmiescic etykiete,
-     dwa wiersze tytulu, podpis i pasek sterowania w jednym ekranie. */
-  font-size: clamp(3rem, 9.5vw, 9.5rem);
-  font-weight: 800;
-  line-height: 0.86;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
   margin: 0;
+  text-transform: uppercase;
   text-wrap: nowrap;
+  /* 🚨 Tytul hero jest <p>, bo suwak nie moze miec pieciu <h1>. Przez to
+     lapal globalne p { max-width: 68ch } i mierzyl 670 px zamiast 1280 -
+     slowo "wypelnialo" wiec linie, ktora sama byla za waska. Test pokazywal
+     100%, bo porownywal z ta sama bledna wartoscia. Zlapane dopiero
+     na zrzucie. */
+  max-width: none;
 }
 
-.hero__slowo { display: block; }
+.hero__slowo {
+  display: block;
+  font-size: clamp(1.4rem, 3.2vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: clamp(4px, 0.8vh, 12px);
+}
 
 /* Slowo-rola wypelnia linie co do piksela - rozciagane osia szerokosci
    fontu, nie rozstrzelane odstepami. */
 .hero__rola {
   /* width: fit-content jest OBOWIAZKOWE. Element blokowy ma szerokosc
      kontenera, wiec pomiar zwracalby pelna szerokosc wiersza niezaleznie
-     od tresci i bisekcja zbiegalaby do najwezszej osi. */
+     od tresci i dopasowanie nie mialoby czego porownywac. */
   display: block;
   width: fit-content;
-  font-variation-settings: "wdth" 100;
   white-space: nowrap;
-  transition: font-variation-settings var(--tempo, var(--t-odslona)) var(--ease);
-  will-change: font-variation-settings;
+  font-size: clamp(3rem, 9.5vw, 9.5rem);
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
 }
 
 .hero__podpis {
@@ -287,7 +300,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero__tor { scroll-behavior: auto; }
-  .hero__rola { transition: none; }
   .hero__kropka { transition: none; }
 }
 

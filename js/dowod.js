@@ -7,6 +7,7 @@
    ========================================================================== */
 
 import { pobierz, pole } from "./dane.js";
+import { ujawnijZRozmyciem } from "./ruch.js";
 
 const el = (tag, klasa, tekst) => {
   const n = document.createElement(tag);
@@ -21,39 +22,91 @@ export async function zbudujDowod(host) {
   if (!host) return;
   const [ustawienia, dane] = await Promise.all([pobierz("ustawienia"), pobierz("opinie")]);
 
-  /* ---------- liczby ---------- */
+  /* ---------- liczby: bento ----------
+     Piec rownych kolumn czytalo sie jak wiersz tabeli i najdluzsza wartosc
+     wchodzila na sasiednia. Tu jedna komorka jest duza i niesie zdjecie,
+     reszta siedzi wokol niej w kolorach rol. Siatka 4 x 2 miesci dokladnie
+     piec pozycji - zadnej pustej komorki na koncu. */
+  /* Kolor po wartosci, nie po indeksie: kolejnosc renderowania zmienila sie
+     przez przeniesienie duzej komorki na poczatek. */
+  const KOLOR_DLA = { 400: "ogien", 2000: "slonce", 17000: "kwas", 2: "chlod" };
+
+  /* Duza komorka idzie PIERWSZA w kodzie. Automatyczne rozmieszczanie
+     wypelnia siatke po kolei: gdy trzy male zajmowaly pierwszy rzad, komorka
+     "span 2 x 2" nie miescila sie juz w czwartej kolumnie i spadala nizej,
+     zostawiajac dziure. */
+  const posortowane = [...ustawienia.liczby].sort((a, b) => (b.wartosc === 20) - (a.wartosc === 20));
+
   const liczby = el("ul", "liczby");
-  for (const l of ustawienia.liczby) {
-    const li = el("li", "liczby__poz");
+  posortowane.forEach((l, i) => {
+    /* Kolejnosc w danych: 400, 2000, 17000, 20 lat, 2 medale.
+       Duza komorka dostaje "20 lat", bo to jest zdanie o firmie, a nie
+       kolejna liczba w rzedzie. */
+    const duza = l.wartosc === 20;
+    const li = el("li", "liczby__poz" + (duza ? " liczby__poz--duza" : "")
+      + (KOLOR_DLA[l.wartosc] ? " pole pole--" + KOLOR_DLA[l.wartosc] : " pole"));
+
+    if (duza) {
+      const img = document.createElement("img");
+      img.className = "liczby__foto";
+      img.src = "./assets/mems/psychologia-motywacji.webp";
+      img.alt = "";
+      img.width = 1860;
+      img.height = 1866;
+      img.loading = "lazy";
+      li.appendChild(img);
+      li.appendChild(el("span", "liczby__zaslona"));
+    }
+
+    const tresc = el("span", "liczby__tresc");
     const w = el("span", "liczby__wartosc", liczbaPl(l.wartosc));
     w.dataset.do = String(l.wartosc);
-    li.appendChild(w);
-    li.appendChild(el("span", "liczby__etykieta", pole(l, "etykieta")));
+    tresc.appendChild(w);
+    tresc.appendChild(el("span", "liczby__etykieta", pole(l, "etykieta")));
     if (l.do_potwierdzenia) {
       const z = el("span", "znacznik", "do potwierdzenia");
       z.title = "Liczba pochodzi ze starej strony. Czeka na potwierdzenie przez klienta.";
-      li.appendChild(z);
+      tresc.appendChild(z);
     }
+    li.appendChild(tresc);
     liczby.appendChild(li);
-  }
+  });
   host.appendChild(liczby);
   policz(liczby);
+  ujawnijZRozmyciem(liczby.querySelectorAll(".liczby__poz"), { odstep: 70 });
 
-  /* ---------- opinie ---------- */
+  /* ---------- opinie: bento o roznych wysokosciach ----------
+     Szesc identycznych kafelkow w rowniutkiej siatce czyta sie jak tabela.
+     Tu kazda kolumna ma inny podzial (duzy + maly, trzy rowne, maly + duzy),
+     wiec oko ma po czym wodzic. Wagi sa w danych kolejnosci, nie losowe -
+     uklad ma byc ten sam przy kazdym wejsciu. */
+  const WAGI = ["duza", "mala", "srednia", "srednia", "mala", "duza"];
+
   const opinie = el("ul", "opinie");
-  for (const o of dane.opinie) {
-    const li = el("li", `opinie__poz pole pole--${grupaNaKolor(o.grupa)}`);
+  dane.opinie.forEach((o, i) => {
+    const li = el("li", `opinie__poz opinie__poz--${WAGI[i] || "srednia"} pole pole--${grupaNaKolor(o.grupa)}`);
+
     const cyt = el("blockquote", "opinie__tresc", pole(o, "tresc"));
+
     const pod = el("figcaption", "opinie__podpis");
-    pod.appendChild(el("span", "opinie__rola", pole(o, "rola")));
-    pod.appendChild(el("span", "opinie__miasto", o.miasto));
+    const kto = el("span", "opinie__kto");
+    kto.appendChild(el("span", "opinie__rola", pole(o, "rola")));
+    kto.appendChild(el("span", "opinie__miasto", o.miasto));
+
+    /* Kafel w kolorze roli zamiast zdjecia. Te opinie to PROPOZYCJE tekstu,
+       nie cytaty prawdziwych osob - wstawienie im twarzy byloby fabrykowaniem
+       dowodu spolecznego. Gdy przyjda prawdziwe opinie ze zgodami, kafel
+       zamienia sie w zdjecie i nic poza tym sie nie zmienia. */
+    const kafel = el("span", "opinie__kafel");
+    kafel.setAttribute("aria-hidden", "true");
+
+    pod.append(kto, kafel);
     li.append(cyt, pod);
-    /* Propozycja tekstu jest oznaczona WPROST. Klient ma widzieć, co jest
-       jego treścią, a co naszą propozycją do akceptacji. */
     if (o.do_zatwierdzenia) li.appendChild(el("span", "znacznik", "propozycja do zatwierdzenia"));
     opinie.appendChild(li);
-  }
+  });
   host.appendChild(opinie);
+  ujawnijZRozmyciem(opinie.querySelectorAll(".opinie__poz"));
 
   /* ---------- logotypy ---------- */
   const lg = dane.logotypy;

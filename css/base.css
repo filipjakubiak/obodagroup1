@@ -28,13 +28,15 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 700;
+  /* Sofia Sans jest optycznie lzejsza od Archivo przy tej samej wadze,
+     wiec naglowki ida o stopien wyzej: 700 wygladalo blado. */
+  font-weight: 800;
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
   text-wrap: balance;
 }
 
-h1 { font-size: var(--t-display-xl); font-weight: 800; }
+h1 { font-size: var(--t-display-xl); font-weight: 900; }
 h2 { font-size: var(--t-display-l); }
 h3 { font-size: var(--t-display-m); }
 h4 { font-size: var(--t-display-s); }

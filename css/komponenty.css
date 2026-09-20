@@ -194,87 +194,179 @@
    DOWÓD — liczby, opinie, logotypy.
    ========================================================================== */
 
+/* ---------- liczby: bento ----------
+   Piec rownych kolumn czytalo sie jak wiersz tabeli i najdluzsza wartosc
+   wchodzila na sasiednia. Siatka 4 x 2 z jedna duza komorka miesci dokladnie
+   piec pozycji - zadnej pustej komorki na koncu, co jest najczestszym
+   objawem bento zrobionego z rozpedu. */
+
 .liczby {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(16px, 2vw, 32px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, auto);
+  gap: clamp(8px, 1vw, 14px);
   margin-top: clamp(40px, 6vh, 72px);
-  border-top: 2px solid var(--ink);
-  padding-top: clamp(20px, 3vh, 36px);
 }
-.liczby__poz { display: flex; flex-direction: column; gap: 4px; }
+
+.liczby__poz {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: var(--r-karta);
+  background: var(--kolor-mgla);
+  padding: clamp(16px, 1.8vw, 26px);
+}
+/* Komorka bez wlasnego koloru dostaje glebszy papier, zeby nie zlewala sie
+   z tlem sekcji. Duza komorka jest wyjeta jawnie: selektor atrybutu w :not()
+   liczy sie do specyficznosci jak klasa, wiec ta regula wygrywala z
+   .liczby__poz--duza i rozjasniala jej ciemne tlo - jasny tekst zostawal,
+   kontrast spadal do 1.28. Zlapal to test kontrastu, nie oko. */
+.liczby__poz:not([class*="pole--"]):not(.liczby__poz--duza) { background: var(--paper-gleb); }
+
+.liczby__poz--duza {
+  grid-column: span 2;
+  grid-row: span 2;
+  align-items: flex-end;
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(22px, 2.4vw, 36px);
+}
+
+.liczby__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+/* Zaslona, a nie przezroczystosc na zdjeciu: tekst musi miec zmierzony
+   kontrast, a przygaszone zdjecie pod bialym napisem go nie gwarantuje. */
+.liczby__zaslona {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    color-mix(in oklab, var(--ink) 92%, transparent) 18%,
+    color-mix(in oklab, var(--ink) 62%, transparent) 62%,
+    color-mix(in oklab, var(--ink) 34%, transparent) 100%);
+}
+
+.liczby__tresc { position: relative; display: flex; flex-direction: column; gap: 4px; }
+
 .liczby__wartosc {
   font-family: var(--font-display);
-  /* Piec liczb w rzedzie przy 1440 px daje kolumne ok. 230 px. Najdluzsza
-     wartosc to "17 000" - szesc znakow, wiec gorny limit musi zejsc do ok.
-     3.9rem, inaczej sasiednie liczby na siebie wchodza. Zmierzone, nie
-     dobrane na oko. */
-  font-size: clamp(2.2rem, 4.3vw, 3.9rem);
-  white-space: nowrap;
-  font-weight: 800;
+  font-size: clamp(2.4rem, 4.6vw, 4.2rem);
+  font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.04em;
-  /* Cyfry nie mogą skakać w trakcie odliczania. */
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-.liczby__etykieta { font-size: 0.9375rem; line-height: 1.35; color: var(--ink-dim); max-width: 22ch; }
+.liczby__poz--duza .liczby__wartosc { font-size: clamp(4rem, 8vw, 8rem); }
 
-/* Znacznik treści, której klient jeszcze nie zatwierdził. Ma być widoczny,
-   nie schowany: to jest informacja dla klienta, a nie nasza notatka. */
-.znacznik {
-  align-self: flex-start;
-  margin-top: 8px;
-  font-family: var(--font-display);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 8px;
-  border: 1px dashed var(--line-mocna);
-  border-radius: var(--r-pigulka);
-  color: var(--ink-dim);
+.liczby__etykieta { font-size: 0.9375rem; line-height: 1.35; color: var(--ink-dim); max-width: 24ch; }
+.liczby__poz--duza .liczby__etykieta {
+  color: color-mix(in oklab, var(--paper) 86%, var(--ink));
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  max-width: 28ch;
 }
 
-/* ---------- opinie ---------- */
+/* Odslona z rozmyciem: tresc "wchodzi w kadr", a nie "przesuwa sie". */
+.js .liczby__poz, .js .opinie__poz {
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(10px);
+}
+.js .liczby__poz.widoczna, .js .opinie__poz.widoczna {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+  transition: opacity var(--t-odslona) var(--ease-wejscie),
+              transform var(--t-odslona) var(--ease-wejscie),
+              filter var(--t-odslona) var(--ease-wejscie);
+}
+
+/* ---------- opinie: bento o roznych wysokosciach ---------- */
 
 .opinie {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.4vw, 20px);
+  gap: clamp(8px, 1vw, 14px);
   margin-top: clamp(48px, 7vh, 88px);
+  align-items: start;
 }
+
 .opinie__poz {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   padding: clamp(20px, 2vw, 30px);
   background: var(--kolor-mgla);
   border-radius: var(--r-karta);
 }
-/* Kolor roli niesie duzy znak cudzyslowu, a nie pasek przy krawedzi.
-   Gruby kolorowy border-left jest najbardziej rozpoznawalnym objawem
-   interfejsu zrobionego maszynowo - i tutaj byl zbedny, bo tlo karty
-   ma juz barwe swojej roli. */
+/* Rozne wysokosci daja oku po czym wodzic. Wagi sa stale, nie losowe -
+   uklad ma byc ten sam przy kazdym wejsciu. */
+.opinie__poz--duza   { min-height: 340px; }
+.opinie__poz--srednia { min-height: 280px; }
+.opinie__poz--mala   { min-height: 230px; }
+
 .opinie__poz::before {
   content: "„";
   display: block;
   font-family: var(--font-display);
   font-size: clamp(3rem, 4.4vw, 4.2rem);
-  font-weight: 800;
-  /* Blok w normalnym przeplywie, nie warstwa nad tekstem. Wersja
-     pozycjonowana bezwzglednie liczyla sie od karty, wiec znak ladowal
-     na drugim wierszu cytatu. */
+  font-weight: 900;
   line-height: 0.55;
   color: var(--kolor);
   margin-bottom: 2px;
 }
+
 .opinie__tresc { font-size: 1.0625rem; line-height: 1.5; }
-.opinie__podpis { display: flex; flex-direction: column; margin-top: auto; padding-top: 6px; }
+.opinie__poz--duza .opinie__tresc { font-size: clamp(1.0625rem, 1.3vw, 1.2rem); }
+
+.opinie__podpis {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.opinie__kto { display: flex; flex-direction: column; min-width: 0; }
 .opinie__rola { font-weight: 600; font-size: 0.9375rem; }
 .opinie__miasto { font-size: 0.875rem; color: var(--ink-dim); }
+
+/* Kwadrat w kolorze roli zamiast zdjecia. Te opinie to PROPOZYCJE tekstu,
+   nie cytaty prawdziwych osob - twarz bylaby fabrykowanym dowodem. Gdy
+   przyjda prawdziwe opinie ze zgodami, kafel staje sie zdjeciem i nic
+   poza tym sie nie zmienia. */
+.opinie__kafel {
+  flex: none;
+  margin-left: auto;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-karta);
+  background: var(--kolor);
+}
+
+@media (max-width: 1100px) {
+  .liczby { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .liczby__poz--duza { grid-column: span 2; grid-row: span 1; min-height: 300px; }
+  .opinie { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .liczby { grid-template-columns: 1fr; }
+  .liczby__poz--duza { grid-column: span 1; }
+  .opinie { grid-template-columns: 1fr; }
+  .opinie__poz--duza, .opinie__poz--srednia, .opinie__poz--mala { min-height: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .liczby__poz, .js .opinie__poz {
+    opacity: 1; transform: none; filter: none; transition: none;
+  }
+}
 
 /* ---------- logotypy ---------- */
 

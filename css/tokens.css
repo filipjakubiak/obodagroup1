@@ -55,8 +55,21 @@
   --na-fiolecie:#FFFFFF;
 
   /* ---------- typografia ---------- */
-  --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
-  --font-tekst:   "Geist", ui-sans-serif, system-ui, sans-serif;
+  /* JEDNA rodzina na cala strone, w pelnym zakresie wag 100-1000.
+     Sofia Sans zamiast pary Archivo + Geist: prosba klienta o Sofie jako
+     font przewodni. Sofia PRO jest komercyjna (Mostardesign) i nie ma jej
+     na Google Fonts - Sofia SANS jest wolna, wariacyjna i z tej samej
+     rodziny ksztaltow. Po dostarczeniu licencjonowanych plikow Sofia Pro
+     podmiana to jedna linia tutaj plus @font-face.
+
+     Cztery szerokosci to OSOBNE rodziny, nie os wariacyjna. Hero korzysta
+     z tego przy dopasowywaniu slowa do linii. */
+  --font-display: "Sofia Sans", system-ui, sans-serif;
+  --font-tekst:   "Sofia Sans", system-ui, sans-serif;
+  --font-w-100:   "Sofia Sans", system-ui, sans-serif;
+  --font-w-87:    "Sofia Sans Semi Condensed", "Sofia Sans", system-ui, sans-serif;
+  --font-w-75:    "Sofia Sans Condensed", "Sofia Sans", system-ui, sans-serif;
+  --font-w-62:    "Sofia Sans Extra Condensed", "Sofia Sans", system-ui, sans-serif;
 
   --t-display-xl: clamp(3.5rem, 11vw, 13rem);
   --t-display-l:  clamp(2.5rem, 7vw, 7rem);

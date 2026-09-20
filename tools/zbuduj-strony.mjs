@@ -37,7 +37,7 @@ export function glowa({ tytul, opis, plik, dodatkowe = "" }) {
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100..1000&family=Sofia+Sans+Semi+Condensed:wght@100..1000&family=Sofia+Sans+Condensed:wght@100..1000&family=Sofia+Sans+Extra+Condensed:wght@100..1000&display=swap">
 
 <link rel="stylesheet" href="./css/tokens.css">
 <link rel="stylesheet" href="./css/base.css">
@@ -343,7 +343,7 @@ fs.writeFileSync(path.join(KORZEN, "en/index.html"), `<!DOCTYPE html>
 <link rel="alternate" hreflang="en" href="./index.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100..1000&family=Sofia+Sans+Semi+Condensed:wght@100..1000&family=Sofia+Sans+Condensed:wght@100..1000&family=Sofia+Sans+Extra+Condensed:wght@100..1000&display=swap">
 <link rel="stylesheet" href="../css/tokens.css">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/uklad.css">

@@ -13,14 +13,13 @@
    implementacja tego wszystkiego jest gorsza i cięższa.
 
    Dwie rzeczy, na których stoi efekt:
-   1. Słowo-rola wypełnia linię CO DO PIKSELA, rozciągając oś szerokości
-      fontu (Archivo, wdth 62-125). Wiersz stoi, litery oddychają.
+   1. Słowo-rola wypełnia linię CO DO PIKSELA. Sofia Sans nie ma osi
+      szerokości, więc dobieramy jedną z czterech szerokości rodziny
+      (zwykła, semi condensed, condensed, extra condensed), a resztę
+      dociągamy stopniem pisma. Wiersz stoi, słowo zawsze sięga krawędzi.
    2. Każdy kolor ma własne tempo (--tempo-*). Czerwony przełącza się szybko
       i twardo, niebieski wolno i miękko. Temperament jest w ruchu.
    ========================================================================== */
-
-const MIN = 62;
-const MAX = 125;
 
 export const ROLE = [
   { slowo: "lekarza",       pole: "pole--ogien",  opis: "MEMS i psychologia pracy z pacjentem" },
@@ -32,23 +31,57 @@ export const ROLE = [
 
 const POLA = ROLE.map((r) => r.pole);
 
-/* Bisekcja po osi szerokości. */
+/* Cztery szerokosci Sofia Sans, od najszerszej do najwezszej. To NIE jest
+   os wariacyjna, tylko cztery osobne rodziny - Sofia Sans nie ma osi wdth.
+   Dobieramy rodzine tak, zeby slowo bylo jak najblizej docelowej szerokosci,
+   a reszte dociagamy stopniem pisma. */
+const SZEROKOSCI = ["--font-w-100", "--font-w-87", "--font-w-75", "--font-w-62"];
+
+/* Granice skalowania stopnia. Ponizej 0.78 krotkie slowo bylo wyraznie
+   mniejsze od wiersza "Szkolimy" i wiersze sie rozjezdzaly; powyzej 1.45
+   dwa wiersze przestawaly miescic sie w ekranie. */
+/* Szeroki zakres, bo bez osi szerokosci caly ciezar dopasowania spada na
+   stopien pisma: "LEKARZA" musi urosnac ok. 2.5x wzgledem "REJESTRATORKI",
+   zeby obie wypelnily te sama linie. Rozne stopnie miedzy slajdami nie
+   przeszkadzaja - czlowiek nigdy nie widzi dwoch slajdow naraz. */
+const SKALA_MIN = 0.5;
+const SKALA_MAX = 3.0;
+
+function zmienna(el, nazwa) {
+  return getComputedStyle(el).getPropertyValue(nazwa).trim();
+}
+
+/* Dopasowanie slowa do linii: najpierw rodzina, potem stopien.
+   Pomiar idzie z wylaczonym przejsciem, bo w trakcie animacji
+   getBoundingClientRect zwraca wartosc posrednia. */
 function dopasuj(el, docelowa) {
-  /* Pomiar MUSI iść z wyłączonym przejściem: oś jest animowana, więc
-     getBoundingClientRect w trakcie animacji zwraca wartość pośrednią. */
   const bylo = el.style.transition;
   el.style.transition = "none";
-  let lo = MIN;
-  let hi = MAX;
-  for (let i = 0; i < 14; i++) {
-    const sr = (lo + hi) / 2;
-    el.style.fontVariationSettings = `"wdth" ${sr}`;
-    if (el.getBoundingClientRect().width < docelowa) lo = sr;
-    else hi = sr;
+  el.style.fontSize = "";
+
+  const bazowy = parseFloat(getComputedStyle(el).fontSize);
+
+  /* Krok 1: rodzina, ktora przy bazowym stopniu jest najblizej celu
+     i jeszcze go nie przekracza. Jesli nawet najszersza jest za waska
+     (krotkie slowo), zostaje najszersza i robote konczy stopien. */
+  let wybrana = SZEROKOSCI[0];
+  for (const w of SZEROKOSCI) {
+    el.style.fontFamily = zmienna(el, w);
+    wybrana = w;
+    if (el.getBoundingClientRect().width <= docelowa) break;
   }
+  el.style.fontFamily = zmienna(el, wybrana);
+
+  /* Krok 2: stopien pisma dociaga do linii co do piksela. */
+  const po = el.getBoundingClientRect().width;
+  if (po > 0 && Math.abs(po - docelowa) / docelowa > 0.005) {
+    const skala = Math.min(SKALA_MAX, Math.max(SKALA_MIN, docelowa / po));
+    el.style.fontSize = (bazowy * skala).toFixed(2) + "px";
+  }
+
   void el.offsetWidth;
   el.style.transition = bylo;
-  return (lo + hi) / 2;
+  return wybrana;
 }
 
 export function uruchomHero(host) {
@@ -76,42 +109,27 @@ export function uruchomHero(host) {
 
   /* ---------- dopasowanie szerokości ---------- */
 
-  /* Dopasowanie jest DWUSTOPNIOWE i drugi stopień jest konieczny.
-     Sama oś szerokości daje tylko zakres 62-125 %, czyli mniej więcej
-     dwukrotność. Krótkie słowo („LEKARZA") przy maksymalnej osi wypełniało
-     linię w 72 %, a długie („REJESTRATORKĘ") przy minimalnej wystawało.
-     Dlatego po bisekcji osi skalujemy jeszcze stopień pisma i bisekcję
-     powtarzamy. Granice 0.72-1.5 pilnują, żeby wiersze nie rozjechały się
-     między sobą wysokością. */
-  const przeliczSlajd = (s) => {
-    const rola = s.querySelector(".hero__rola");
-    const tytul = s.querySelector(".hero__tytul");
+  const przeliczSlajd = (sl) => {
+    const rola = sl.querySelector(".hero__rola");
+    const tytul = sl.querySelector(".hero__tytul");
     if (!rola || !tytul) return;
-
     const st = getComputedStyle(tytul);
     const dostepna = Math.max(120, tytul.getBoundingClientRect().width
       - parseFloat(st.paddingLeft) - parseFloat(st.paddingRight));
-
-    rola.style.fontSize = "";
-    const bazowy = parseFloat(getComputedStyle(rola).fontSize);
-
     dopasuj(rola, dostepna);
-    const po = rola.getBoundingClientRect().width;
-
-    /* Poniżej 2 % różnicy nie ma czego poprawiać, a zmiana stopnia pisma
-       kosztowałaby więcej, niż daje. */
-    if (Math.abs(po - dostepna) / dostepna > 0.02) {
-      const skala = Math.min(1.5, Math.max(0.72, dostepna / po));
-      rola.style.fontSize = (bazowy * skala).toFixed(2) + "px";
-      dopasuj(rola, dostepna);
-    }
   };
   const przeliczWszystkie = () => slajdy.forEach(przeliczSlajd);
 
   przeliczWszystkie();
-  /* Pomiar przed dojściem fontu jest fałszywy: metryka kroju zastępczego
-     jest inna i słowo rozjeżdża się po podmianie. */
-  document.fonts.ready.then(przeliczWszystkie);
+
+  /* Pomiar przed dojściem fontów jest bezwartościowy: metryka kroju
+     zastępczego jest inna. Co więcej, przeglądarka pobiera krój dopiero
+     wtedy, gdy jakiś element go używa - a trzy węższe rodziny pojawiają się
+     wyłącznie w trakcie dopasowywania. Dlatego prosimy o nie WPROST. */
+  const rodziny = SZEROKOSCI.map((w) => zmienna(document.documentElement, w).split(",")[0].replace(/"/g, "").trim());
+  Promise.all(rodziny.map((r) => document.fonts.load('900 100px "' + r + '"').catch(() => null)))
+    .then(() => document.fonts.ready)
+    .then(przeliczWszystkie);
   new ResizeObserver(przeliczWszystkie).observe(tor);
 
   /* ---------- zmiana koloru całego ekranu ---------- */

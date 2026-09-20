@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "node tools/serwer.mjs",
-    "test": "node tests/fundament.mjs && node tests/kontrast.mjs && node tests/dotyk.mjs && node tests/katalog.mjs && node tests/strony.mjs && node tests/wdrozenie.mjs",
+    "test": "node tests/fundament.mjs && node tests/kontrast.mjs && node tests/piksele.mjs && node tests/dotyk.mjs && node tests/katalog.mjs && node tests/strony.mjs && node tests/wdrozenie.mjs",
     "build": "node tools/zbuduj-dane.mjs && node tools/zbuduj-strony.mjs"
   },
   "devDependencies": {

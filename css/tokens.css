@@ -89,10 +89,14 @@
   --rynna:    24px;
 
   /* ---------- kształt ----------
-     Jeden system na cały projekt: płaszczyzny ostre, elementy interaktywne
-     pigułkowe. Mieszanie promieni to najczęstszy objaw braku systemu. */
+     Trzy stopnie, nie dowolne wartosci. Karty sa zaokraglone szeroko
+     (jezyk bento), male elementy - pola formularza, kwadraciki, obrys
+     fokusu - dostaja lagodniejszy promien, bo szeroki na wysokosci 44 px
+     wyglada jak pastylka. Elementy interaktywne sa pigulkowe.
+     Mieszanie promieni bez reguly to najczestszy objaw braku systemu. */
   --r-plaszczyzna: 0px;
-  --r-karta:       2px;
+  --r-karta:       clamp(16px, 1.6vw, 24px);
+  --r-male:        10px;
   --r-pigulka:     999px;
 
   /* ---------- ruch ----------

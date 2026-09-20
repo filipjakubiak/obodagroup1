@@ -87,7 +87,7 @@ img, svg, video {
 :focus-visible {
   outline: 3px solid var(--ogien);
   outline-offset: 3px;
-  border-radius: var(--r-karta);
+  border-radius: var(--r-male);
 }
 :focus:not(:focus-visible) { outline: none; }
 

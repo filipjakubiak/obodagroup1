@@ -332,7 +332,7 @@
   margin-left: auto;
   width: 56px;
   height: 56px;
-  border-radius: var(--r-karta);
+  border-radius: var(--r-male);
   background: var(--kolor);
 }
 
@@ -490,8 +490,19 @@
    Cztery kroki zamiast samych kwot. Trzy liczby bez kontekstu nic nie mowia;
    czlowiek chce wiedziec, co ma zrobic, a nie ile to kosztuje w oderwaniu. */
 
-.proces { margin-top: clamp(64px, 9vh, 120px); }
-.proces__tytul { font-size: var(--t-display-m); text-transform: uppercase; }
+/* 🚨 .proces i .ceny sa elementami <section> ZAGNIEZDZONYMI w sekcji MEMS,
+   wiec lapaly globalne section { padding-block: var(--sekcja) } - do 200 px
+   z gory i z dolu w srodku innej sekcji. Stad pusta biala placha nad
+   finalem. Odstepy tych blokow niesie margines, nie dopelnienie. */
+.proces, .ceny { padding-block: 0; }
+
+.proces {
+  margin-top: clamp(64px, 9vh, 120px);
+  padding: clamp(28px, 3.4vw, 56px);
+  background: var(--paper-gleb);
+  border-radius: var(--r-karta);
+}
+.proces__tytul { font-size: var(--t-display-m); text-transform: uppercase; max-width: 20ch; }
 
 .proces__kroki {
   list-style: none;
@@ -506,10 +517,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding-top: 18px;
-  /* Linia u gory zamiast ramki: kroki maja czytac sie jako jeden ciag,
-     a nie jako cztery osobne pudelka. */
-  border-top: 3px solid var(--ogien);
+  /* Karty, nie same linie: reszta strony mowi jezykiem zaokraglonych
+     kafelkow, wiec kroki tez. Numer w kolku niesie porzadek, ktory
+     wczesniej niosla kreska u gory. */
+  padding: clamp(18px, 1.8vw, 26px);
+  background: var(--ogien-mgla);
+  border-radius: var(--r-karta);
 }
 .js .krok { opacity: 0; transform: translateY(14px); }
 .js .krok.widoczna {
@@ -518,27 +531,38 @@
 }
 
 .krok__numer {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 4px;
+  border-radius: var(--r-pigulka);
+  background: var(--ogien);
+  color: var(--na-ogniu);
   font-family: var(--font-display);
-  font-size: var(--t-meta);
+  font-size: 1rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--ogien-tekst);
+  font-variant-numeric: tabular-nums;
 }
 .krok__tytul { font-size: 1.25rem; text-transform: uppercase; letter-spacing: -0.01em; }
 .krok__opis { font-size: 0.9375rem; line-height: 1.5; color: var(--ink-dim); }
 
 /* ---------- trzy sposoby zaplaty ---------- */
 
-.ceny { margin-top: clamp(56px, 8vh, 104px); }
-.ceny__tytul { font-size: var(--t-display-m); text-transform: uppercase; max-width: 22ch; }
-.ceny__wstep { margin-top: 10px; max-width: 62ch; color: var(--ink-dim); }
+/* Ceny sa ciagiem dalszym procesu, nie nowa sekcja - stad mniejszy odstep
+   i mniejszy naglowek. Krok czwarty prowadzi prosto tutaj. */
+.ceny { margin-top: clamp(28px, 4vh, 48px); }
+.ceny__tytul { font-size: var(--t-display-s); text-transform: uppercase; max-width: 26ch; }
+.ceny__wstep { margin-top: 8px; max-width: 62ch; color: var(--ink-dim); }
 
 .ceny__siatka {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Najtansza karta jest szersza od pozostalych: to zakonczenie decyzji,
+     wiec ma wage w ukladzie, a nie tylko plakietke. */
+  grid-template-columns: 1.3fr 1fr 1fr;
   gap: clamp(12px, 1.4vw, 20px);
-  margin-top: clamp(24px, 3.5vh, 40px);
+  margin-top: clamp(20px, 3vh, 32px);
   align-items: stretch;
 }
 
@@ -1115,7 +1139,7 @@
 .form__pole {
   padding: 12px 14px;
   border: 2px solid var(--line-mocna);
-  border-radius: var(--r-karta);
+  border-radius: var(--r-male);
   background: var(--paper);
   color: var(--ink);
   font-family: inherit;
@@ -1244,4 +1268,112 @@
 
   .karta__link:hover .karta__grupa,
   .karta__link:hover .karta__cena { color: var(--na-kolorze); }
+}
+
+/* ==========================================================================
+   FINAŁ — ostatnia sekcja przed stopką.
+   Jedyne miejsce, gdzie pięć kolorów metody występuje razem: to jest
+   podsumowanie, a nie kolejna rola.
+   ========================================================================== */
+
+.final {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  padding-block: clamp(80px, 14vh, 180px);
+  isolation: isolate;
+}
+
+.final__plamy {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  /* Rozmycie na rodzicu, nie na kazdej plamie osobno: jedno przejscie
+     filtra zamiast pieciu. Na telefonie to jest roznica widoczna w FPS. */
+  filter: blur(90px);
+  opacity: 0.9;
+}
+
+/* 🚨 Zaslona miedzy plamami a trescia. Bez niej bialy naglowek nad zolta
+   plama dawal 1.75:1 - zmierzone na WYMALOWANYCH pikselach, bo zwykly test
+   kontrastu czyta kolor tla sekcji i tego nie widzi. Zaslona przyciemnia
+   plamy na tyle, ile trzeba, a kolory dalej sa mocne. */
+.final::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Warstwa MUSI byc wyzsza niz plamy. Pseudoelement ::before jest
+     generowany jako pierwszy potomek, wiec przy tym samym z-index maluje
+     sie POD nimi - pierwsza wersja zaslony nie zmienila nic, a pomiar
+     pokazal nawet gorszy wynik. */
+  z-index: 1;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--ink) 58%, transparent);
+}
+
+.final__plama {
+  position: absolute;
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  will-change: transform;
+}
+/* Pozycje sa stale, nie losowe: sekcja ma wygladac tak samo przy kazdym
+   wejsciu, a ruch bierze sie z kursora, nie z przypadku. */
+.final__plama:nth-child(1) { background: var(--ogien);  top: -6%;  left: 2%; }
+.final__plama:nth-child(2) { background: var(--slonce); top: 30%;  left: 28%; }
+.final__plama:nth-child(3) { background: var(--kwas);   top: -2%;  left: 52%; }
+.final__plama:nth-child(4) { background: var(--chlod);  top: 42%;  left: 62%; }
+.final__plama:nth-child(5) { background: var(--fiolet); top: 16%;  left: 78%; }
+
+.final__tresc {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(18px, 2.6vh, 32px);
+}
+
+.final__nadtytul {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.final__tytul {
+  font-size: clamp(2.6rem, 7.5vw, 7rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  max-width: 16ch;
+}
+
+.final__lead { font-size: var(--t-lead); line-height: 1.4; max-width: 46ch; }
+
+.final__akcje { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+
+/* Przycisk na ciemnym polu: wypelniony papierem, zeby byl pierwsza rzecza,
+   ktora widac po plamach koloru. */
+.final .btn--gl { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+.final__telefon {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+  border-bottom: 3px solid currentColor;
+  padding-bottom: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Plamy zostaja tam, gdzie postawil je CSS. Sekcja dalej jest kolorowa,
+     tylko nic sie nie rusza. */
+  .final__plama { will-change: auto; }
 }

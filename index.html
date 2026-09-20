@@ -163,6 +163,33 @@
     <div class="pas" id="memsTresc"></div>
   </section>
 
+
+  <!-- FINAL. Jedyne miejsce, gdzie piec kolorow metody wystepuje razem:
+       to jest podsumowanie, nie kolejna rola. Plamy dryfuja za kursorem
+       z wyrazna bezwladnoscia. -->
+  <section class="final" id="final">
+    <div class="final__plamy" aria-hidden="true">
+      <span class="final__plama"></span>
+      <span class="final__plama"></span>
+      <span class="final__plama"></span>
+      <span class="final__plama"></span>
+      <span class="final__plama"></span>
+    </div>
+
+    <div class="pas final__tresc">
+      <p class="final__nadtytul">Pięć ról, jedna rozmowa z pacjentem</p>
+      <h2 class="final__tytul">Zacznij od jednej osoby w zespole</h2>
+      <p class="final__lead">
+        Nie musisz od razu decydować o całym cyklu ani o całej praktyce.
+        Zadzwoń i powiedz, co Cię uwiera - Marlena podpowie, od czego zacząć.
+      </p>
+      <div class="final__akcje">
+        <a class="btn btn--gl" href="./kontakt.html">Napisz do nas</a>
+        <a class="final__telefon" href="tel:+48601370962">601 370 962</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 
@@ -193,12 +220,14 @@
   import { zbudujDowod } from "./js/dowod.js";
   import { zbudujGabinet } from "./js/gabinet.js";
   import { zbudujMems } from "./js/mems.js";
+  import { uruchomFinal } from "./js/final.js";
 
   document.documentElement.classList.add("js");
   uruchomHero(document.getElementById("hero"));
   zbudujDowod(document.getElementById("dowodTresc"));
   zbudujGabinet(document.getElementById("gabinetLista"));
   zbudujMems(document.getElementById("memsTresc"));
+  uruchomFinal(document.getElementById("final"));
 </script>
 
 </body>

@@ -332,6 +332,30 @@ section { padding-block: var(--sekcja); }
   .siatka { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
+/* ---------- wyjazdy na bieli ----------
+   Zdjecia z wyjazdow to sklejki na bialym tle, tak samo jak okladki MEMS.
+   Na cieplym papierze widac ich prostokat, wiec sekcja idzie na czysta biel
+   i - jak MEMS - przywraca lokalnie jasne tokeny, zeby w trybie ciemnym
+   tekst nie zniknal. */
+.wyjazdy {
+  background: #FFFFFF;
+
+  --ink:       #141210;
+  --paper:     #FFFFFF;
+  --paper-gleb:#EBE6DD;
+  --ink-dim:   #5E584F;
+  --line:      rgba(20, 18, 16, 0.14);
+  --line-mocna: rgba(20, 18, 16, 0.32);
+
+  --ogien-tekst:  #9C4D00;  --ogien-mgla:  #FDEBD6;
+  --kwas-tekst:   #1F6B00;  --kwas-mgla:   #DFF7D6;
+  --slonce-tekst: #6B5200;  --slonce-mgla: #FFF3C4;
+  --chlod-tekst:  #0049B8;  --chlod-mgla:  #DDE8FD;
+  --fiolet-tekst: #6200B0;  --fiolet-mgla: #EEE0FB;
+
+  color: var(--ink);
+}
+
 /* ---------- sekcja Twoj gabinet ---------- */
 
 .gabinet { padding-block: var(--sekcja); background: var(--paper); }
@@ -350,7 +374,9 @@ section { padding-block: var(--sekcja); }
    uzywamy punktowo: numer modulu, linia, etykieta. Duze zdjecia modulow
    niosa kolor same z siebie - kazda okladka ma wlasna pare barw. */
 .mems {
-  padding-block: var(--sekcja);
+  /* Mniejsze dopelnienie od dolu na stronie glownej: zaraz pod sekcja
+     zaczyna sie ciemny final i pelny odstep zostawial pusta biala plache. */
+  padding-block: var(--sekcja) clamp(56px, 8vh, 110px);
   /* Czysta biel, nie cieply papier: okladki modulow maja biale tlo i na
      papierze bylo widac ich prostokat. Jedyne miejsce na stronie z czysta
      biela - i ma ku temu powod. */

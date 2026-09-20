@@ -10,6 +10,7 @@
    SKĄD KOLORY
    Nie z palety korporacyjnej, tylko ODCZYTANE Z ICH WŁASNYCH MATERIAŁÓW.
    Zmierzone udziały w kadrze na okładkach i zdjęciach:
+     logotyp OBODA GROUP       #EE7F00 (dominanta nasyconych pikseli)
      „Psychologia motywacji"   #ff1800 29% · #ff9000 22% · #fff000 7%
      „Przekonania"             #00d800 54% · #7800d8 21%
      zdjęcia rejestratorki     #ff7830 63%
@@ -35,7 +36,7 @@
        --x-tekst  CZYTELNA  dociemniona tak, by przeszła 4.5:1 na gruncie
      Rozdzielenie jest konieczne: markowa czerwień jako tekst jest na granicy,
      a „prawie przechodzi" znaczy nie przechodzi. */
-  --ogien:  #FF1800;  --ogien-mgla:  #FFE4DE;  --ogien-tekst:  #C21200;  /* lekarz, MEMS */
+  --ogien:  #EE7F00;  --ogien-mgla:  #FDEBD6;  --ogien-tekst:  #9C4D00;  /* lekarz, MEMS */
   --kwas:   #00D800;  --kwas-mgla:   #DFF7D6;  --kwas-tekst:   #1F6B00;  /* przy pacjencie */
   --slonce: #FFD800;  --slonce-mgla: #FFF3C4;  --slonce-tekst: #6B5200;  /* pierwszy kontakt */
   --chlod:  #0060F0;  --chlod-mgla:  #DDE8FD;  --chlod-tekst:  #0049B8;  /* zarządzanie */
@@ -44,8 +45,9 @@
   /* Tekst kładziony NA pełnym polu koloru. Paleta dzieli się sama na dwie
      grupy: ciemne barwy biorą biel, jasne biorą atrament. To nie jest wyjątek,
      tylko reguła i jest pilnowana testem kontrastu, nie dobrą wolą.
-     Ich czerwień jest jaskrawa: biel daje na niej 3.90 (za mało), a atrament
-     4.79 (przechodzi). Zmieniamy więc kolor tekstu, a nie ich kolor marki. */
+     Pomarańcz jest odczytany prosto z pliku logotypu (#EE7F00, dominanta
+     nasyconych pikseli). Biel daje na nim 2.74, atrament 6.83 - więc pole
+     pomarańczowe bierze tekst atramentowy, z wygodnym zapasem. */
   --na-ogniu:   #141210;
   --na-kwasie:  #141210;
   --na-sloncu:  #141210;
@@ -85,7 +87,14 @@
      własne tempo, bo w tej metodzie kolor oznacza typ człowieka. Czerwony
      jest szybki i twardy, niebieski wolny i miękki. Temperament jest
      w animacji, a nie w akapicie, który o nim opowiada. */
-  --ease:      cubic-bezier(0.65, 0, 0.35, 1);
+  /* DWA easingi, nie jedno. Pierwsza wersja miala jedno na wszystko
+     (ease-in-out) i uzywala go rowniez do odslon - a rzecz, ktora WCHODZI
+     na ekran, potrzebuje szybkiego startu, bo to on daje wrazenie
+     responsywnosci. Rzecz, ktora juz jest i sie przesuwa, potrzebuje
+     rozpedzenia i wyhamowania. To sa dwa rozne zadania. */
+  --ease-wejscie: cubic-bezier(0.165, 0.84, 0.44, 1);   /* odslony, wejscia */
+  --ease:         cubic-bezier(0.645, 0.045, 0.355, 1); /* przesuniecia, zmiany stanu */
+
   --t-mikro:   200ms;
   --t-stan:    420ms;
   --t-odslona: 760ms;
@@ -117,7 +126,7 @@
     --line:       rgba(244, 241, 235, 0.16);
     --line-mocna: rgba(244, 241, 235, 0.34);
 
-    --ogien-tekst:  #FF7A66;
+    --ogien-tekst:  #FF9E3D;
     --kwas-tekst:   #57E33D;
     --slonce-tekst: #FFD800;
     --chlod-tekst:  #6FA6FF;
@@ -125,7 +134,7 @@
 
     /* Grunty nocą są przyciemnionymi barwami, nie rozbielonymi. Sekcja dalej
        ma swój kolor — inaczej po zmroku strona traciłaby to, na czym stoi. */
-    --ogien-mgla:  #2C1310;
+    --ogien-mgla:  #2B1A08;
     --kwas-mgla:   #112A0C;
     --slonce-mgla: #2A2408;
     --chlod-mgla:  #0D1A33;

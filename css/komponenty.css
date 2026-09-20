@@ -79,7 +79,7 @@
 .js .gabinet__karta.widoczna {
   opacity: 1;
   transform: none;
-  transition: opacity var(--tempo) var(--ease), transform var(--tempo) var(--ease);
+  transition: opacity var(--tempo) var(--ease-wejscie), transform var(--tempo) var(--ease-wejscie);
 }
 
 .gabinet__karta--pelna { grid-column: 1 / -1; }
@@ -124,7 +124,7 @@
 }
 .js .gabinet__karta.widoczna .gabinet__zalew {
   clip-path: inset(0 0 0 0);
-  transition: clip-path var(--tempo) var(--ease) 180ms;
+  transition: clip-path var(--tempo) var(--ease-wejscie) 180ms;
 }
 
 /* ---------- treść karty ---------- */
@@ -446,7 +446,7 @@
 .js .karta.widoczna {
   opacity: 1;
   transform: none;
-  transition: opacity var(--t-stan) var(--ease), transform var(--t-stan) var(--ease);
+  transition: opacity var(--t-stan) var(--ease-wejscie), transform var(--t-stan) var(--ease-wejscie);
 }
 
 .karta__link {
@@ -576,10 +576,15 @@
 .katalog__tytul { font-size: var(--t-display-l); text-transform: uppercase; }
 .katalog__wstep { margin-top: 14px; max-width: 54ch; }
 
-.stopka { background: var(--ink); color: var(--paper); padding-block: clamp(48px, 7vh, 88px); }
+.stopka {
+  background: var(--paper-gleb);
+  color: var(--ink);
+  padding-block: clamp(48px, 7vh, 88px);
+  border-top: 2px solid var(--ink);
+}
 .stopka__pas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); }
 .stopka__nazwa { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; text-transform: uppercase; line-height: 1.05; }
-.stopka__adres { margin-top: 12px; font-size: 0.9375rem; color: color-mix(in oklab, var(--paper) 74%, var(--ink)); }
+.stopka__adres { margin-top: 12px; font-size: 0.9375rem; color: var(--ink-dim); }
 .stopka__naglowek {
   font-family: var(--font-display);
   font-size: var(--t-meta);
@@ -612,7 +617,7 @@
 .js .osoba { opacity: 0; transform: translateY(22px); }
 .js .osoba.widoczna {
   opacity: 1; transform: none;
-  transition: opacity var(--tempo) var(--ease), transform var(--tempo) var(--ease);
+  transition: opacity var(--tempo) var(--ease-wejscie), transform var(--tempo) var(--ease-wejscie);
 }
 
 .osoba__kadr { position: relative; overflow: hidden; border-radius: var(--r-karta); background: var(--kolor-mgla); }
@@ -626,8 +631,10 @@
   clip-path: inset(100% 0 0 0);
 }
 .js .osoba.widoczna .osoba__zalew {
-  clip-path: inset(0 0 0 0);
-  transition: clip-path var(--tempo) var(--ease) 160ms;
+  /* 66% od gory: kolor zajmuje dolna trzecia kadru. Pelny zalew zjadal
+     rysy twarzy, a tu chodzi o to, zeby bylo widac czlowieka. */
+  clip-path: inset(66% 0 0 0);
+  transition: clip-path var(--tempo) var(--ease-wejscie) 160ms;
 }
 
 .osoba__rola {
@@ -667,7 +674,7 @@
 .js .wyjazd { opacity: 0; transform: translateY(20px); }
 .js .wyjazd.widoczna {
   opacity: 1; transform: none;
-  transition: opacity var(--tempo) var(--ease), transform var(--tempo) var(--ease);
+  transition: opacity var(--tempo) var(--ease-wejscie), transform var(--tempo) var(--ease-wejscie);
 }
 /* Sklejki z telefonu: pokazujemy je w kafelku w oryginalnych proporcjach,
    nigdy przyciete na pelna szerokosc - jakosc by tego nie udzwignela. */
@@ -784,7 +791,7 @@
 @media (max-width: 860px) { .ludzie { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) {
   .js .osoba, .js .wyjazd { opacity: 1; transform: none; transition: none; }
-  .js .osoba .osoba__zalew { clip-path: inset(0 0 0 0); transition: none; }
+  .js .osoba .osoba__zalew { clip-path: inset(66% 0 0 0); transition: none; }
 }
 
 /* ---------- strony tekstowe (polityka) ---------- */

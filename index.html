@@ -46,31 +46,76 @@
   <img class="hero__portret" src="./assets/zespol/about-mariusz.webp"
        alt="" aria-hidden="true" width="766" height="963" fetchpriority="high">
 
-  <div class="pas hero__srodek" id="tresc">
-    <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
-
-    <h1 class="hero__tytul">
-      <span class="hero__slowo">Szkolimy</span><!--
-   --><span class="hero__rola"
-             data-role='["lekarza","rejestratorkę","higienistkę","menedżera","cały zespół"]'>lekarza</span>
-    </h1>
-
-    <p class="sr-only">
-      Szkolimy lekarzy, rejestratorki, higienistki, menedżerów i całe zespoły
-      praktyk stomatologicznych.
-    </p>
+  <!-- Suwak: piec rol na poziomym torze ze snapowaniem. Natywne przewijanie
+       daje za darmo gladz, dotyk, strzalki i bezwladnosc na telefonie. -->
+  <div class="hero__tor" id="tresc" tabindex="0"
+       role="region" aria-roledescription="karuzela" aria-label="Kogo szkolimy">
+      <div class="hero__slajd" role="group" aria-roledescription="slajd"
+           aria-label="1 z 5: szkolimy lekarza">
+        <div class="pas hero__srodek">
+          <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
+          <p class="hero__tytul" aria-hidden="true">
+            <span class="hero__slowo">Szkolimy</span><span class="hero__rola">lekarza</span>
+          </p>
+          <p class="hero__podpis">MEMS i psychologia pracy z pacjentem</p>
+        </div>
+      </div>
+      <div class="hero__slajd" role="group" aria-roledescription="slajd"
+           aria-label="2 z 5: szkolimy rejestratorkę">
+        <div class="pas hero__srodek">
+          <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
+          <p class="hero__tytul" aria-hidden="true">
+            <span class="hero__slowo">Szkolimy</span><span class="hero__rola">rejestratorkę</span>
+          </p>
+          <p class="hero__podpis">pierwsze trzydzieści sekund rozmowy</p>
+        </div>
+      </div>
+      <div class="hero__slajd" role="group" aria-roledescription="slajd"
+           aria-label="3 z 5: szkolimy higienistkę">
+        <div class="pas hero__srodek">
+          <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
+          <p class="hero__tytul" aria-hidden="true">
+            <span class="hero__slowo">Szkolimy</span><span class="hero__rola">higienistkę</span>
+          </p>
+          <p class="hero__podpis">struktura wizyty i budowanie motywacji</p>
+        </div>
+      </div>
+      <div class="hero__slajd" role="group" aria-roledescription="slajd"
+           aria-label="4 z 5: szkolimy menedżera">
+        <div class="pas hero__srodek">
+          <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
+          <p class="hero__tytul" aria-hidden="true">
+            <span class="hero__slowo">Szkolimy</span><span class="hero__rola">menedżera</span>
+          </p>
+          <p class="hero__podpis">procesy, rekrutacja, rentowność</p>
+        </div>
+      </div>
+      <div class="hero__slajd" role="group" aria-roledescription="slajd"
+           aria-label="5 z 5: szkolimy cały zespół">
+        <div class="pas hero__srodek">
+          <p class="hero__etykieta">Od 2003 roku uczymy psychologii. Dentystów.</p>
+          <p class="hero__tytul" aria-hidden="true">
+            <span class="hero__slowo">Szkolimy</span><span class="hero__rola">cały zespół</span>
+          </p>
+          <p class="hero__podpis">jeden standard dla całej praktyki</p>
+        </div>
+      </div>
   </div>
 
-  <div class="pas hero__stopka">
-    <p class="hero__lead">
-      Gabinet to nie fotel i kalendarz. To pięcioro ludzi, z których każdy
-      może rozwinąć inną część tej samej rozmowy z pacjentem.
-    </p>
+  <h1 class="sr-only">
+    Szkolimy lekarzy, rejestratorki, higienistki, menedżerów i całe zespoły
+    praktyk stomatologicznych.
+  </h1>
+
+  <div class="pas hero__sterowanie">
+    <div class="hero__kropki" role="tablist" aria-label="Wybierz rolę"></div>
+    <p class="hero__wskazowka" aria-hidden="true">Przewiń w bok</p>
     <div class="hero__akcje">
       <a class="btn btn--gl" href="./szkolenia.html">Zobacz szkolenia</a>
       <a class="btn" href="./mems.html">Czym jest MEMS</a>
     </div>
   </div>
+
 </header>
 
 <main>

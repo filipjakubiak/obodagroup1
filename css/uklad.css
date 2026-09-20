@@ -136,17 +136,38 @@
   .hero__plachta, .hero__plachta.jedzie { transition: none; clip-path: inset(0 100% 0 0); }
 }
 
-.hero__srodek {
+/* ---------- tor suwaka ----------
+   Natywne przewijanie ze snapowaniem. Pasek przewijania chowamy, bo mamy
+   kropki i wskazowke, ale samo przewijanie zostaje w pelni sprawne. */
+
+.hero__tor {
   flex: 1;
   display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hero__tor::-webkit-scrollbar { display: none; }
+.hero__tor:focus-visible { outline: 3px solid currentColor; outline-offset: -6px; }
+
+.hero__slajd {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.hero__srodek {
+  width: 100%;
+  display: flex;
   flex-direction: column;
-  /* Do dołu, nie na środek: nagłówek ma siedzieć tuż nad leadem, a powietrze
-     zbierać się nad nim. Wyśrodkowanie zostawiało dziurę między napisem
-     a akapitem i hero rozpadało się na dwa oddzielne kawałki. */
-  justify-content: center;
   position: relative;
   z-index: var(--z-tresc);
-  padding-block: clamp(16px, 3vh, 36px) clamp(12px, 2vh, 24px);
+  padding-block: clamp(16px, 3vh, 36px);
 }
 
 .hero__etykieta {
@@ -163,89 +184,111 @@
   margin-bottom: clamp(20px, 4vh, 44px);
 }
 
-/* ---------- nagłówek hero ---------- */
-
 .hero__tytul {
-  font-size: var(--t-display-xl);
+  /* Sufit nizszy niz globalny display-xl: hero musi zmiescic etykiete,
+     dwa wiersze tytulu, podpis i pasek sterowania w jednym ekranie. */
+  font-size: clamp(3rem, 9.5vw, 9.5rem);
   font-weight: 800;
   line-height: 0.86;
   letter-spacing: -0.035em;
   text-transform: uppercase;
   margin: 0;
-  /* Nagłówek musi móc mierzyć swoją szerokość — stąd blokowy układ
-     i brak balansowania, które zmieniałoby wynik pomiaru. */
   text-wrap: nowrap;
 }
 
 .hero__slowo { display: block; }
 
-/* Słowo-rola dostaje własny wiersz i wypełnia go co do piksela. Nie jest
-   wyśrodkowane ani rozstrzelone — jest ROZCIĄGNIĘTE osią szerokości fontu. */
+/* Slowo-rola wypelnia linie co do piksela - rozciagane osia szerokosci
+   fontu, nie rozstrzelane odstepami. */
 .hero__rola {
-  /* 🚨 width: fit-content jest OBOWIAZKOWE. Element blokowy ma szerokosc
-     kontenera, wiec getBoundingClientRect zwracalby zawsze pelna szerokosc
-     wiersza niezaleznie od tresci - bisekcja porownywalaby 1296 z 1296
-     i zbiegala do najwezszej osi. Pudelko musi obejmowac sam tekst. */
+  /* width: fit-content jest OBOWIAZKOWE. Element blokowy ma szerokosc
+     kontenera, wiec pomiar zwracalby pelna szerokosc wiersza niezaleznie
+     od tresci i bisekcja zbiegalaby do najwezszej osi. */
   display: block;
   width: fit-content;
   font-variation-settings: "wdth" 100;
   white-space: nowrap;
-  transition: font-variation-settings var(--tempo, var(--t-odslona)) var(--ease),
-              opacity var(--t-mikro) var(--ease);
+  transition: font-variation-settings var(--tempo, var(--t-odslona)) var(--ease);
   will-change: font-variation-settings;
 }
 
-/* Lead i przyciski stoją w jednej kolumnie po lewej i NIE wchodzą pod
-   sylwetkę — wcześniej przycisk "Czym jest MEMS" lądował na ciemnej
-   marynarce i był nieczytelny. Kolumna kończy się tam, gdzie zaczyna
-   się portret. */
-.hero__stopka {
-  position: relative;
-  z-index: var(--z-tresc);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(18px, 3vh, 30px);
-  padding-bottom: clamp(28px, 6vh, 64px);
-}
-/* 🚨 Ograniczenie szerokosci NIE moze siedziec na .pas: .pas ma
-   margin-inline:auto, wiec wezszy blok zostalby wysrodkowany zamiast
-   przyklejony do lewej. Limit idzie na zawartosc. */
-.hero__stopka > * { max-width: min(52ch, 56vw); }
-
-.hero__lead {
+.hero__podpis {
+  margin-top: clamp(16px, 2.6vh, 28px);
   font-size: var(--t-lead);
-  line-height: 1.35;
-  max-width: 34ch;
   font-weight: 500;
+  max-width: 36ch;
 }
 
-.hero__akcje { display: flex; gap: 12px; flex-wrap: wrap; }
+/* ---------- sterowanie ---------- */
+
+.hero__sterowanie {
+  position: relative;
+  /* Nad portretem, nie pod nim: wczesniej wskazowka wchodzila na sylwetke
+     i byla nieczytelna. */
+  z-index: var(--z-naglowek);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  padding-bottom: clamp(20px, 4vh, 44px);
+}
+.hero__akcje { display: flex; gap: 12px; flex-wrap: wrap; margin-left: auto; }
+
+.hero__kropki { display: flex; gap: 8px; }
+
+.hero__kropka {
+  width: 44px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-pigulka);
+  background: color-mix(in oklab, currentColor 28%, transparent);
+  cursor: pointer;
+  transition: background-color var(--t-mikro) var(--ease), width var(--t-mikro) var(--ease);
+}
+.hero__kropka:hover { background: color-mix(in oklab, currentColor 55%, transparent); }
+.hero__kropka.is-on { background: currentColor; width: 72px; }
+
+.hero__wskazowka {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 /* ---------- portret ----------
-   Człowiek zostaje czarno-biały przez CAŁY czas, na każdym kolorze. To jest
-   sedno: ten sam człowiek, inny kolor wokół niego. Dlatego żadnego
-   mix-blend-mode — multiply barwił sylwetkę na kolor gruntu i cały sens
-   znikał. Wycinanka ma przezroczyste tło, więc wystarczy odbarwienie. */
+   Czlowiek zostaje czarno-bialy na kazdym kolorze. To jest sedno: ten sam
+   czlowiek, inny kolor wokol niego. Zadnego mix-blend-mode - multiply
+   barwil sylwetke na kolor gruntu i sens znikal. */
 
 .hero__portret {
   position: absolute;
-  /* Wycinanka ma wtopione kolorowe bryly przy krawedziach. Po odbarwieniu
-     czytaly sie jak szary brud, wiec powiekszamy kadr i wypychamy je poza
-     ekran - w widoku zostaje sam czlowiek. Klient dostanie prosbe
-     o oryginaly bez tla, wtedy ten zabieg zniknie. */
-  right: -10vw;
-  bottom: -6vh;
-  width: clamp(320px, 46vw, 760px);
+  right: -8vw;
+  /* Nad paskiem sterowania, nie pod nim: przycisk z obrysem na sylwetce
+     byl nieczytelny. */
+  bottom: clamp(88px, 13vh, 132px);
+  width: clamp(280px, 40vw, 640px);
   z-index: var(--z-tlo);
   pointer-events: none;
   filter: grayscale(1) contrast(1.22) brightness(0.97);
 }
+/* Na ciemnych gruntach tylko delikatne rozjasnienie, ZADNEGO invert:
+   odwrocenie tonow robilo z portretu negatyw i lamalo cala mysl sekcji. */
+.pole--chlod .hero__portret,
+.pole--fiolet .hero__portret { filter: grayscale(1) contrast(1.08) brightness(1.12); }
 
 @media (max-width: 860px) {
-  .hero__portret { width: 74vw; right: -12vw; opacity: 0.28; }
-  .hero__stopka { max-width: none; }
+  .hero__portret { width: 70vw; right: -14vw; bottom: 96px; opacity: 0.24; }
+  .hero__wskazowka { display: none; }
   .naglowek__nawigacja { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__tor { scroll-behavior: auto; }
+  .hero__rola { transition: none; }
+  .hero__kropka { transition: none; }
 }
 
 /* ---------- sekcje ---------- */
@@ -273,10 +316,13 @@ section { padding-block: var(--sekcja); }
 
 /* ---------- rozdzial MEMS ---------- */
 
+/* Sekcja MEMS stoi na papierze, nie na pelnym polu koloru. Pomaranczu
+   uzywamy punktowo: numer modulu, linia, etykieta. Duze zdjecia modulow
+   niosa kolor same z siebie - kazda okladka ma wlasna pare barw. */
 .mems {
   padding-block: var(--sekcja);
-  background: var(--kolor);
-  color: var(--na-kolorze);
+  background: var(--paper);
+  color: var(--ink);
 }
 .mems__etykieta {
   font-family: var(--font-display);
@@ -284,9 +330,7 @@ section { padding-block: var(--sekcja); }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  /* Bez przygaszania: zmierzone 3.79:1 przy 78% to ponizej progu 4.5.
-     Etykieta jest mala i wersalikowa, wiec potrzebuje pelnego kontrastu. */
-  color: var(--na-kolorze);
+  color: var(--kolor-tekst);
 }
 .mems__naglowek {
   font-size: clamp(5rem, 18vw, 18rem);
@@ -295,4 +339,4 @@ section { padding-block: var(--sekcja); }
   letter-spacing: -0.045em;
   margin-top: 6px;
 }
-.mems__wstep { margin-top: clamp(14px, 2vh, 24px); max-width: 56ch; color: inherit; }
+.mems__wstep { margin-top: clamp(14px, 2vh, 24px); max-width: 56ch; color: var(--ink-dim); }

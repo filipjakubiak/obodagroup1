@@ -13,8 +13,8 @@
       "id": "pacjent",
       "nazwa_pl": "Przy pacjencie",
       "nazwa_en": "",
-      "kolor": "ziemia",
-      "zmienna": "--ziemia",
+      "kolor": "kwas",
+      "zmienna": "--kwas",
       "haslo_pl": "Asystentka, higienistka, opiekun",
       "opis_pl": "Ludzie w bezpośrednim kontakcie z pacjentem. Struktura wizyty, charyzma, praca z emocjami."
     },
@@ -40,8 +40,8 @@
       "id": "zespol",
       "nazwa_pl": "Cały zespół",
       "nazwa_en": "",
-      "kolor": "ink",
-      "zmienna": "--ink",
+      "kolor": "fiolet",
+      "zmienna": "--fiolet",
       "haslo_pl": "Gabinet jako jeden organizm",
       "opis_pl": "Szkolenia, na których wszystkie role spotykają się przy jednym stole i ustalają wspólny standard."
     }

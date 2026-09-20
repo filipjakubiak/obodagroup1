@@ -39,6 +39,10 @@
     </div>
   </div>
 
+  <!-- Plachta zamiatajaca: przykrywa stary grunt kolorem nowej osobowosci,
+       zeby nie powstawal kolor posredni. Czysto dekoracyjna. -->
+  <div class="hero__plachta" aria-hidden="true"></div>
+
   <img class="hero__portret" src="./assets/zespol/about-mariusz.webp"
        alt="" aria-hidden="true" width="766" height="963" fetchpriority="high">
 
@@ -70,18 +74,30 @@
 </header>
 
 <main>
-  <section class="pole pole--ogien sekcja--grunt">
+
+  <!-- TWOJ GABINET. Serce strony: praktyka jako piecioro ludzi. Dopiero stad
+       prowadzi droga do katalogu - najpierw "kto", potem "co". -->
+  <section class="gabinet" id="gabinet">
     <div class="pas">
-      <h2>Tu staną kolejne sekcje</h2>
-      <p class="lead">Dowód, MEMS, Twój gabinet, katalog, wyjazdy, zespół, kontakt.</p>
+      <h2 class="gabinet__tytul">Twój gabinet to pięcioro ludzi</h2>
+      <p class="lead gabinet__wstep">
+        Pacjent rozmawia z każdym z nich i za każdym razem wyrabia sobie zdanie
+        o całej praktyce. Dlatego nie szkolimy stanowisk osobno - szkolimy
+        rozmowę, którą prowadzą wspólnie.
+      </p>
     </div>
+    <div class="pas" id="gabinetLista"></div>
   </section>
+
 </main>
 
 <script type="module">
   import { uruchomHero } from "./js/hero.js";
+  import { zbudujGabinet } from "./js/gabinet.js";
+
   document.documentElement.classList.add("js");
   uruchomHero(document.getElementById("hero"));
+  zbudujGabinet(document.getElementById("gabinetLista"));
 </script>
 
 </body>

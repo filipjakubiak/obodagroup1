@@ -52,3 +52,140 @@
   .btn { transition: none; }
   .btn:active { transform: none; }
 }
+
+/* ==========================================================================
+   TWÓJ GABINET — pięć ról, pięć kolorów obok siebie.
+   ========================================================================== */
+
+.gabinet__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 18px);
+  margin-top: clamp(40px, 6vh, 72px);
+}
+
+.gabinet__karta {
+  position: relative;
+  background: var(--kolor-mgla);
+  border-radius: var(--r-karta);
+  overflow: hidden;
+  /* Karty wjeżdżają po kolei — stan startowy siedzi pod .js, żeby bez
+     JavaScriptu treść była po prostu widoczna. */
+  opacity: 1;
+  transform: none;
+}
+.js .gabinet__karta { opacity: 0; transform: translateY(26px); }
+.js .gabinet__karta.widoczna {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--tempo) var(--ease), transform var(--tempo) var(--ease);
+}
+
+.gabinet__karta--pelna { grid-column: 1 / -1; }
+
+.gabinet__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+/* ---------- kadr i UJAWNIENIE ---------- */
+
+.gabinet__kadr {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--kolor-mgla);
+}
+.gabinet__karta--pelna .gabinet__kadr { aspect-ratio: 21 / 6; }
+
+.gabinet__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  /* Człowiek jest czarno-biały. Kolor przychodzi osobno, warstwą wyżej. */
+  filter: grayscale(1) contrast(1.12);
+}
+
+/* Zalew: warstwa koloru odsłaniana od dołu. Multiply barwi zdjęcie zamiast
+   je zakrywać, więc po odsłonięciu dalej widać ludzi — tylko już w kolorze
+   swojej roli. To jest obietnica firmy wykonana ruchem, nie ozdoba. */
+.gabinet__zalew {
+  position: absolute;
+  inset: 0;
+  background: var(--kolor);
+  mix-blend-mode: multiply;
+  clip-path: inset(100% 0 0 0);
+}
+.js .gabinet__karta.widoczna .gabinet__zalew {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--tempo) var(--ease) 180ms;
+}
+
+/* ---------- treść karty ---------- */
+
+.gabinet__tresc {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: clamp(16px, 1.6vw, 24px);
+  flex: 1;
+}
+
+.gabinet__haslo {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kolor-tekst);
+}
+
+.gabinet__nazwa {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2.4rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.gabinet__opis { font-size: 0.9375rem; line-height: 1.45; color: var(--ink-dim); }
+
+.gabinet__ile {
+  margin-top: auto;
+  padding-top: 12px;
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kolor-tekst);
+}
+
+/* Najazd: kolor grupy przejmuje całą kartę. Jeden ruch, nie pięć. */
+.gabinet__karta { transition: background-color var(--t-stan) var(--ease); }
+.gabinet__link:hover { color: var(--na-kolorze); }
+.gabinet__karta:has(.gabinet__link:hover) { background: var(--kolor); }
+.gabinet__karta:has(.gabinet__link:hover) .gabinet__opis,
+.gabinet__karta:has(.gabinet__link:hover) .gabinet__haslo,
+.gabinet__karta:has(.gabinet__link:hover) .gabinet__ile { color: var(--na-kolorze); }
+
+@media (max-width: 1100px) {
+  .gabinet__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gabinet__karta--pelna .gabinet__kadr { aspect-ratio: 16 / 7; }
+}
+@media (max-width: 620px) {
+  .gabinet__lista { grid-template-columns: 1fr; }
+  .gabinet__kadr, .gabinet__karta--pelna .gabinet__kadr { aspect-ratio: 16 / 9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .gabinet__karta { opacity: 1; transform: none; transition: none; }
+  .js .gabinet__karta .gabinet__zalew { clip-path: inset(0 0 0 0); transition: none; }
+}

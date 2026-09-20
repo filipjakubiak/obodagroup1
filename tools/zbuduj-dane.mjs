@@ -87,7 +87,7 @@ const GRUPY = [
   { id: "lekarz", nazwa_pl: "Lekarz", nazwa_en: "", kolor: "ogien", zmienna: "--ogien",
     haslo_pl: "Ty przy fotelu",
     opis_pl: "Motywacja pacjenta do leczenia, komunikacja, przekonania, przywództwo. Rdzeń metody: cykl MEMS." },
-  { id: "pacjent", nazwa_pl: "Przy pacjencie", nazwa_en: "", kolor: "ziemia", zmienna: "--ziemia",
+  { id: "pacjent", nazwa_pl: "Przy pacjencie", nazwa_en: "", kolor: "kwas", zmienna: "--kwas",
     haslo_pl: "Asystentka, higienistka, opiekun",
     opis_pl: "Ludzie w bezpośrednim kontakcie z pacjentem. Struktura wizyty, charyzma, praca z emocjami." },
   { id: "kontakt", nazwa_pl: "Pierwszy kontakt", nazwa_en: "", kolor: "slonce", zmienna: "--slonce",
@@ -96,7 +96,7 @@ const GRUPY = [
   { id: "zarzad", nazwa_pl: "Zarządzanie", nazwa_en: "", kolor: "chlod", zmienna: "--chlod",
     haslo_pl: "Właściciel i menedżer",
     opis_pl: "Procesy, rekrutacja, rentowność. Praktyka jako firma, nie jako gabinet z kalendarzem." },
-  { id: "zespol", nazwa_pl: "Cały zespół", nazwa_en: "", kolor: "ink", zmienna: "--ink",
+  { id: "zespol", nazwa_pl: "Cały zespół", nazwa_en: "", kolor: "fiolet", zmienna: "--fiolet",
     haslo_pl: "Gabinet jako jeden organizm",
     opis_pl: "Szkolenia, na których wszystkie role spotykają się przy jednym stole i ustalają wspólny standard." },
 ];

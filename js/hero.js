@@ -76,17 +76,54 @@ export function uruchomHero(host) {
 
   const przelicz = () => dopasuj(rola, Math.max(120, dostepna()));
 
-  const pokaz = (n) => {
+  /* Płachta zamiatająca. Jest jedna i wraca w kółko: dostaje kolor następnej
+     osobowości, przejeżdża nad starym gruntem i po dojeździe oddaje mu swój
+     kolor. Dzięki temu nigdy nie powstaje kolor pośredni. */
+  const plachta = host.querySelector(".hero__plachta");
+
+  /* Kolor gruntu czytamy z klasy przez zmienną --kolor, a nie z tablicy —
+     paleta ma jedno źródło prawdy i jest nim CSS. */
+  const kolorPola = (pole) => {
+    const probka = document.createElement("div");
+    probka.className = "pole " + pole;
+    probka.style.cssText = "position:absolute;visibility:hidden";
+    host.appendChild(probka);
+    const k = getComputedStyle(probka).getPropertyValue("--kolor").trim();
+    probka.remove();
+    return k;
+  };
+
+  const ustawTresc = (n) => {
     const r = ROLE[n];
     rola.textContent = r.slowo;
-    /* Grunt zmienia całe hero, nie sam wyraz. Klasa niesie kolor, kolor
-       tekstu ORAZ tempo — wszystko wynika z jednego podmienionego słowa. */
     host.classList.remove(...POLA);
     host.classList.add(r.pole);
     przelicz();
   };
 
-  pokaz(0);
+  const zamiec = (n) => {
+    if (!plachta) { ustawTresc(n); return; }
+    const r = ROLE[n];
+    const tempo = parseFloat(getComputedStyle(host).getPropertyValue("--tempo")) || 760;
+
+    plachta.style.setProperty("--plachta", kolorPola(r.pole));
+    plachta.classList.remove("jedzie");
+    void plachta.offsetWidth;            /* restart animacji */
+    plachta.classList.add("jedzie");
+
+    /* Tekst przeskakuje w połowie przejazdu — płachta zasłania wtedy już
+       większość napisu, więc zmiany koloru liter nie widać. */
+    setTimeout(() => ustawTresc(n), tempo * 0.5);
+
+    /* Po dojeździe grunt jest już właściwy, więc płachtę chowamy bez
+       animacji — inaczej przy następnym cyklu wyjeżdżałaby wstecz. */
+    setTimeout(() => {
+      plachta.classList.remove("jedzie");
+      plachta.style.setProperty("--plachta", "transparent");
+    }, tempo + 40);
+  };
+
+  ustawTresc(0);
 
   /* Pomiar przed dojściem fontu jest fałszywy: metryka zastępczego kroju jest
      inna i słowo rozjeżdża się w momencie podmiany. Stąd fonts.ready. */
@@ -101,7 +138,7 @@ export function uruchomHero(host) {
   const tik = () => {
     if (stoi || document.hidden) return;
     i = (i + 1) % ROLE.length;
-    pokaz(i);
+    zamiec(i);
   };
   const licznik = setInterval(tik, 2800);
 

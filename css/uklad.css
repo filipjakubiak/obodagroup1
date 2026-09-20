@@ -106,10 +106,32 @@
   background: var(--kolor);
   color: var(--na-kolorze);
   overflow: hidden;
-  /* Tempo przejścia gruntu ustawia JS osobno dla każdego koloru — czerwony
-     przełącza się szybko i twardo, niebieski wolno i miękko. */
-  transition: background-color var(--tempo, var(--t-odslona)) var(--ease),
-              color var(--tempo, var(--t-odslona)) var(--ease);
+  /* Kolor tekstu przeskakuje krótko i w połowie zamiatania — wtedy płachta
+     zasłania już większość napisu i zmiana jest niewidoczna. */
+  transition: color 160ms var(--ease);
+}
+
+/* Zamiatanie zamiast przenikania.
+   Przenikanie czerwieni w zieleń prowadzi przez brudny teal, a żółci w fiolet
+   przez szarobure — na pełnym ekranie to widać i wygląda tanio. Płachta nowego
+   koloru WJEŻDŻA nad stary i go przykrywa, więc żaden kolor pośredni nie
+   powstaje. Po dojeździe płachta staje się tłem, a sama znika bez animacji. */
+.hero__plachta {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-tlo);
+  pointer-events: none;
+  background: var(--plachta, transparent);
+  clip-path: inset(0 100% 0 0);
+}
+.hero__plachta.jedzie {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--tempo, var(--t-odslona)) var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { transition: none; }
+  .hero__plachta, .hero__plachta.jedzie { transition: none; clip-path: inset(0 100% 0 0); }
 }
 
 .hero__srodek {
@@ -234,3 +256,9 @@ section { padding-block: var(--sekcja); }
 @media (max-width: 860px) {
   .siatka { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* ---------- sekcja Twoj gabinet ---------- */
+
+.gabinet { padding-block: var(--sekcja); background: var(--paper); }
+.gabinet__tytul { font-size: var(--t-display-l); text-transform: uppercase; max-width: 16ch; }
+.gabinet__wstep { margin-top: clamp(16px, 2vh, 26px); max-width: 58ch; }

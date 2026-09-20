@@ -325,3 +325,94 @@ ${stopka}
 </body>
 </html>
 `);
+
+/* ---------- WERSJA ANGIELSKA ----------
+   Struktura istnieje od pierwszego dnia, zeby dolozenie EN bylo tlumaczeniem,
+   a nie przebudowa. Publikujemy jedna strone-zapowiedz: puste kopie stron PL
+   z angielska nawigacja byloby gorsze niz uczciwe "w przygotowaniu". */
+
+fs.mkdirSync(path.join(KORZEN, "en"), { recursive: true });
+fs.writeFileSync(path.join(KORZEN, "en/index.html"), `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oboda Group - training for dentistry</title>
+<meta name="description" content="The longest-established training and consulting firm for dentistry in Poland. English version in preparation.">
+<link rel="alternate" hreflang="pl" href="../index.html">
+<link rel="alternate" hreflang="en" href="./index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Geist:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/uklad.css">
+<link rel="stylesheet" href="../css/komponenty.css">
+</head>
+<body>
+
+<div class="naglowek naglowek--staly">
+  <div class="pas naglowek__pas">
+    <a href="../index.html" aria-label="Oboda Group, home">
+      <img class="naglowek__logo" src="../assets/marka/logo.webp" alt="Oboda Group" width="452" height="122">
+    </a>
+    <nav class="naglowek__nawigacja" aria-label="Main">
+      <a class="naglowek__jezyk" href="../index.html" hreflang="pl">PL</a>
+    </nav>
+  </div>
+</div>
+
+<main id="tresc">
+  <section class="tekst pole pole--chlod">
+    <div class="pas">
+      <h1 class="katalog__tytul">English version in preparation</h1>
+      <p class="lead katalog__wstep">
+        Oboda Group is the longest-established training and consulting firm for
+        dentistry in Poland. We teach psychology to dentists and their teams:
+        patient motivation, communication, practice standards and leadership.
+      </p>
+      <p class="lead katalog__wstep">
+        The full English site is being translated. In the meantime, write to
+        <a href="mailto:biuro@oboda.pl">biuro@oboda.pl</a> or browse the
+        <a href="../index.html">Polish version</a>.
+      </p>
+    </div>
+  </section>
+</main>
+${stopka.replace(/\.\/polityka-prywatnosci\.html/, "../polityka-prywatnosci.html")}
+
+</body>
+</html>
+`, "utf8");
+console.log("  en/index.html");
+
+/* ---------- SITEMAP i ROBOTS ----------
+   Adres produkcyjny nie jest jeszcze znany (najpierw GitHub Pages, docelowo
+   oboda.pl), wiec sciezki sa wzgledne wzgledem jednej stalej. Zmiana adresu
+   to zmiana jednej linii tutaj i ponowne uruchomienie generatora. */
+
+const ADRES = "https://oboda.pl";
+const WSITEMAPIE = [
+  ["", "1.0"], ["mems.html", "0.9"], ["szkolenia.html", "0.9"],
+  ["zespol.html", "0.6"], ["wyjazdy.html", "0.6"], ["kontakt.html", "0.7"],
+  ["en/", "0.3"],
+];
+fs.writeFileSync(path.join(KORZEN, "sitemap.xml"),
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${WSITEMAPIE.map(([p, w]) => `  <url><loc>${ADRES}/${p}</loc><priority>${w}</priority></url>`).join("\n")}
+</urlset>
+`, "utf8");
+console.log("  sitemap.xml");
+
+fs.writeFileSync(path.join(KORZEN, "robots.txt"),
+`User-agent: *
+Allow: /
+
+# Strona szczegolu buduje tresc z parametru ?id=, wiec nie ma czego indeksowac.
+# Stroną, ktora ma sie wyswietlac w wynikach, jest katalog.
+Disallow: /szkolenie.html
+
+Sitemap: ${ADRES}/sitemap.xml
+`, "utf8");
+console.log("  robots.txt");

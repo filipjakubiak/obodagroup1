@@ -225,7 +225,17 @@ assets/  marka/  zespol/  wyjazdy/
 
 ### 7.3 Stack
 - Czysty HTML/CSS/JS, **bez frameworka i bez kroku budowania** — GitHub Pages serwuje pliki wprost.
-- **GSAP + ScrollTrigger + Lenis** z CDN (domowy zestaw z Perun Tac i TCC).
+- ⚠️ **SPROSTOWANIE po wykonaniu: GSAP i Lenis NIE zostały użyte.**
+  Pierwotnie plan zakładał domowy zestaw z Perun Tac i TCC. W trakcie budowy
+  okazało się, że żaden z efektów tego nie potrzebuje: zamiatanie kolorem to
+  `clip-path` + `transition`, ujawnianie to `IntersectionObserver`, kinetyczna
+  rola to pomiar szerokości i oś wariacyjna fontu. Dokładnie ta sama lekcja,
+  którą dał rozbiór referencji (`theclimatepledge.com` nie ma żadnej biblioteki
+  animacji). Dokładanie 70 kB CDN-a po to, żeby zrobić to samo, byłoby kosztem
+  bez zysku — a przy statyku na GitHub Pages każdy kilobajt widać w czasie
+  pierwszego renderu.
+  Gdyby faza 2 wymagała przypinania sekcji albo scroll-scrubbingu, ScrollTrigger
+  wchodzi wtedy, punktowo.
 - **Wszystkie ścieżki względne** (`./css/...`, nie `/css/...`) — musi działać i w korzeniu domeny,
   i pod `/obodagroup/` na GitHub Pages. To jest wymóg testowany, nie wytyczna.
 - Fonty z Google Fonts, `display=swap`, `preconnect`.

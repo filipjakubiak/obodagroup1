@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Strona szczegolu buduje tresc z parametru ?id=, wiec nie ma czego indeksowac.
+# Stroną, ktora ma sie wyswietlac w wynikach, jest katalog.
+Disallow: /szkolenie.html
+
+Sitemap: https://oboda.pl/sitemap.xml

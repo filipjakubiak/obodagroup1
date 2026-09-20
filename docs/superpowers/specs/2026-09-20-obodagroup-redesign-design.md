@@ -67,10 +67,10 @@ Diagnoza z rozpoznania — to jest lista rzeczy, które nowa strona ma naprawić
    grafika. Kolaż w stylu memphis/graffiti: róż, limonka, fiolet, bryzgi farby.
 2. **Rozjazd między ceną a sygnałem.** Firma bierze 2620–15330 zł od właścicieli klinik,
    a strona wygląda jak plakat festiwalu studenckiego.
-3. 🚨 **Strona „Tu będziemy" jest w połowie wypełniaczem po poprzednim wykonawcy** i wisi publicznie:
-   „Jan Kowalski", „Jolanta Kowalska", „Misia Yogi", „Gajowego Maruchę", „Babę z wozu",
-   „Krzywego Mariana", „Sierotkę Marysię", „Seans spirytystyczny", „Stwora ze snów".
-   **Nic z tego nie przechodzi do nowej strony.**
+3. 🚨 **Strona „Tu będziemy" jest w połowie wypełniaczem po poprzednim wykonawcy** i wisi
+   publicznie: nazwiska prowadzących i pozycje w ofercie są tekstem zastępczym.
+   **Nic z tego nie przechodzi do nowej strony** - pilnuje tego test.
+   Pełna lista fragmentów: `NOTATKI-LOKALNE.md`, poza repozytorium.
 4. **Brak hierarchii nagłówków** — pięć `<h1>` na stronie głównej.
 5. **Zero dowodu społecznego** mimo zaproszenia „zobacz opinie" w treści. Opinii nie ma.
 6. **38 szkoleń wrzuconych na głowę** w 9 płaskich kategoriach produktowych. Odwiedzający nie ma

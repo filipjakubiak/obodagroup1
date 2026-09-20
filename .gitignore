@@ -1,6 +1,16 @@
 node_modules/
-_scrape/pledge-shots/
-_scrape/pledge.html
+
+# Surowy material ze starej strony: pelna biblioteka zdjec w oryginalnych
+# rozdzielczosciach, zrzuty HTML, klatki z referencji. Ok. 18 MB, potrzebne
+# tylko przy ponownym rozpoznaniu. Zostaje na dysku, nie w repozytorium.
+# Dwa pliki zrodlowe, ktorych wymagaja generatory, leza w zrodla/.
+_scrape/
+
+# Zrzuty ekranu z testow
 tests/zrzuty/
+
+# Notatki, ktore nie maja isc do publicznego repozytorium
+NOTATKI-LOKALNE.md
+
 .DS_Store
 Thumbs.db

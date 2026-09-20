@@ -40,6 +40,8 @@ js/     dane.js      jedno wejście do treści (faza 2 podmieni źródło na API
         wyslij.js    adapter formularzy, JEDYNE miejsce dla fazy 2
 
 data/   szkolenia.json  zespol.json  wyjazdy.json  opinie.json  ustawienia.json
+zrodla/ products.json (38 szkolen z WooCommerce) + polityka.html
+        — jedyne pliki ze starej strony, ktorych wymagaja generatory
 tools/  serwer.mjs  zbuduj-dane.mjs  zbuduj-strony.mjs
 tests/  fundament  kontrast  katalog  strony  wdrozenie
 ```
@@ -83,11 +85,13 @@ Wszystkie miejsca poniżej są **zbudowane i widoczne na stronie**, oznaczone pl
 
 ## 🚨 Znalezione na obecnej stronie, wymaga reakcji niezależnie od re-designu
 
-Strona **„Tu będziemy" jest w połowie wypełniaczem** po poprzednim wykonawcy i wisi
-publicznie: „Jan Kowalski", „Jolanta Kowalska", „Misia Yogi", „Gajowego Maruchę",
-„Babę z wozu", „Krzywego Mariana", „Sierotkę Marysię", „Seans spirytystyczny",
-„Stwora ze snów". **Nic z tego nie przeszło do nowego serwisu** i test tego pilnuje,
-ale na starej stronie to nadal widać.
+Strona **„Tu będziemy" zawiera treści zastępcze** po poprzednim wykonawcy: nazwiska
+prowadzących i pozycje w ofercie są wypełniaczem, nie prawdziwym programem.
+Nic z tego nie przeszło do nowego serwisu, a test tego pilnuje.
+
+Pełna lista fragmentów jest w `NOTATKI-LOKALNE.md` (poza repozytorium) i idzie do
+klienta bezpośrednio. To repozytorium jest publiczne, a wytykanie tego tutaj nie
+pomaga nikomu.
 
 ---
 

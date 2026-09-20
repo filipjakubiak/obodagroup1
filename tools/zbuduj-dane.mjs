@@ -13,7 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const KORZEN = path.resolve(import.meta.dirname, "..");
-const zrodlo = JSON.parse(fs.readFileSync(path.join(KORZEN, "_scrape/products.json"), "utf8"));
+const zrodlo = JSON.parse(fs.readFileSync(path.join(KORZEN, "zrodla/products.json"), "utf8"));
 
 /* ---------- mapa kategorii -> pięć grup rolowych ----------
    Stare kategorie są produktowe. Nowe są rolami w gabinecie, bo tak myśli

@@ -289,7 +289,7 @@ ${stopka}
    infrastrukturę WordPressa i wymaga aktualizacji pod nową - to zadanie
    prawnika klienta, nie nasze. Mówimy o tym wprost na stronie. */
 
-const politykaZrodlo = fs.readFileSync(path.join(KORZEN, "_scrape/polityka.html"), "utf8");
+const politykaZrodlo = fs.readFileSync(path.join(KORZEN, "zrodla/polityka.html"), "utf8");
 const politykaTresc = politykaZrodlo
   .replace(/<!--[\s\S]*?-->/g, "")
   .replace(/\sclass="[^"]*"/g, "")

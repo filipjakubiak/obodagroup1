@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Szkolenia - Oboda Group</title>
+<meta name="description" content="35 szkoleń dla praktyki stomatologicznej, ułożonych według ról w gabinecie: lekarz, przy pacjencie, pierwszy kontakt, zarządzanie, cały zespół.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Geist:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="./css/tokens.css">
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/uklad.css">
+<link rel="stylesheet" href="./css/komponenty.css">
+</head>
+<body>
+
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<div class="naglowek naglowek--staly">
+  <div class="pas naglowek__pas">
+    <a href="./index.html" aria-label="Oboda Group, strona główna">
+      <img class="naglowek__logo" src="./assets/marka/logo.webp" alt="Oboda Group" width="452" height="122">
+    </a>
+    <nav class="naglowek__nawigacja" aria-label="Główna">
+      <a class="naglowek__link" href="./mems.html">MEMS</a>
+      <a class="naglowek__link" href="./szkolenia.html">Szkolenia</a>
+      <a class="naglowek__link" href="./zespol.html">Zespół</a>
+      <a class="naglowek__link" href="./wyjazdy.html">Wyjazdy</a>
+      <a class="naglowek__link" href="./kontakt.html">Kontakt</a>
+      <a class="naglowek__jezyk" href="./en/" hreflang="en">EN</a>
+    </nav>
+  </div>
+</div>
+
+<main id="tresc">
+  <section class="katalog">
+    <div class="pas">
+      <h1 class="katalog__tytul">Szkolenia</h1>
+      <p class="lead katalog__wstep">
+        Ułożone według ról w gabinecie, nie według kategorii w cenniku.
+        Zacznij od tego, kogo chcesz rozwinąć.
+      </p>
+    </div>
+    <div class="pas" id="katalogTresc"></div>
+  </section>
+</main>
+
+<footer class="stopka">
+  <div class="pas stopka__pas">
+    <div class="stopka__blok">
+      <p class="stopka__nazwa">Mariusz Oboda<br>Consulting &amp; Training Group</p>
+      <p class="stopka__adres">ul. Kazimierza Wielkiego 5C/159<br>61-863 Poznań<br>NIP 778-104-09-65</p>
+    </div>
+    <div class="stopka__blok">
+      <p class="stopka__naglowek">Kontakt</p>
+      <p><a href="mailto:biuro@oboda.pl">biuro@oboda.pl</a></p>
+      <p><a href="tel:+48601370962">601 370 962</a> Marlena Majewska</p>
+      <p><a href="tel:+48662082800">662 082 800</a> Lidia Kaźmierczak</p>
+      <p><a href="tel:+48660619099">660 619 099</a> Adrian Majewski</p>
+    </div>
+    <div class="stopka__blok">
+      <p class="stopka__naglowek">Więcej</p>
+      <p><a href="https://www.facebook.com/obodagroup" rel="noopener">Facebook</a></p>
+      <p><a href="https://www.instagram.com/obodagroup" rel="noopener">Instagram</a></p>
+      <p><a href="./polityka-prywatnosci.html">Polityka prywatności</a></p>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { zbudujKatalog } from "./js/katalog.js";
+  document.documentElement.classList.add("js");
+  zbudujKatalog(document.getElementById("katalogTresc"));
+</script>
+
+</body>
+</html>

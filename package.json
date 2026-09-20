@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "node tools/serwer.mjs",
-    "test": "node tests/fundament.mjs && node tests/kontrast.mjs"
+    "test": "node tests/fundament.mjs && node tests/kontrast.mjs && node tests/katalog.mjs"
   },
   "devDependencies": {
     "playwright": "^1.48.0"

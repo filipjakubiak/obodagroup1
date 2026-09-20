@@ -1,0 +1,5 @@
+node_modules/
+_scrape/pledge-shots/
+_scrape/pledge.html
+.DS_Store
+Thumbs.db

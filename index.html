@@ -75,6 +75,20 @@
 
 <main>
 
+  <!-- DOWOD. Stara strona chowa te liczby w srodku akapitu, a zaproszenie
+       "zobacz opinie" prowadzi donikad. Tu sa pierwszym argumentem. -->
+  <section class="dowod" id="dowod">
+    <div class="pas">
+      <h2 class="dowod__tytul">Dwadzieścia lat, policzone</h2>
+      <p class="lead dowod__wstep">
+        Nie jesteśmy nową firmą szkoleniową z ofertą dla medycyny. Jesteśmy
+        pierwszą, która wprowadziła psychologię do polskiej stomatologii, i od
+        tego czasu nie robimy nic innego.
+      </p>
+    </div>
+    <div class="pas" id="dowodTresc"></div>
+  </section>
+
   <!-- TWOJ GABINET. Serce strony: praktyka jako piecioro ludzi. Dopiero stad
        prowadzi droga do katalogu - najpierw "kto", potem "co". -->
   <section class="gabinet" id="gabinet">
@@ -89,15 +103,34 @@
     <div class="pas" id="gabinetLista"></div>
   </section>
 
+  <!-- MEMS. Jedyny blok pelnego koloru na stronie glownej - flagowiec
+       ma dostac inny status niz reszta, a nie kolejna biala sekcje. -->
+  <section class="mems pole pole--ogien" id="mems">
+    <div class="pas">
+      <p class="mems__etykieta">Multilevel Engagement &amp; Motivation Strategy</p>
+      <h2 class="mems__naglowek">MEMS</h2>
+      <p class="lead mems__wstep">
+        Siedem dwudniowych modułów, po których lekarz przestaje tłumaczyć plan
+        leczenia, a zaczyna rozmawiać o tym, na czym pacjentowi zależy.
+        Autorski cykl bez odpowiednika w Polsce.
+      </p>
+    </div>
+    <div class="pas" id="memsTresc"></div>
+  </section>
+
 </main>
 
 <script type="module">
   import { uruchomHero } from "./js/hero.js";
+  import { zbudujDowod } from "./js/dowod.js";
   import { zbudujGabinet } from "./js/gabinet.js";
+  import { zbudujMems } from "./js/mems.js";
 
   document.documentElement.classList.add("js");
   uruchomHero(document.getElementById("hero"));
+  zbudujDowod(document.getElementById("dowodTresc"));
   zbudujGabinet(document.getElementById("gabinetLista"));
+  zbudujMems(document.getElementById("memsTresc"));
 </script>
 
 </body>

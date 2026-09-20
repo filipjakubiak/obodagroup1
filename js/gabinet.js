@@ -11,6 +11,7 @@
    ========================================================================== */
 
 import { pobierz, pole } from "./dane.js";
+import { ujawnij } from "./ruch.js";
 
 /* Zdjęcie dla każdej grupy — z ich własnych materiałów, nie ze stocku. */
 const FOTO = {
@@ -74,30 +75,5 @@ export async function zbudujGabinet(host) {
   }
 
   host.appendChild(lista);
-  ujawnij(lista);
-}
-
-/* UJAWNIENIE. IntersectionObserver, nie nasłuch scrolla — nasłuch odpala się
-   na każdej klatce i dławi telefon. */
-function ujawnij(zakres) {
-  const mniejRuchu = matchMedia("(prefers-reduced-motion: reduce)");
-  const karty = [...zakres.querySelectorAll(".gabinet__karta")];
-
-  if (mniejRuchu.matches) {
-    karty.forEach((k) => k.classList.add("widoczna"));
-    return;
-  }
-
-  const obs = new IntersectionObserver((wpisy) => {
-    wpisy.forEach((w) => {
-      if (!w.isIntersecting) return;
-      /* Kolejność, nie wszystko naraz: 110 ms odstępu czyta się jak
-         przedstawianie ludzi po kolei. */
-      const i = karty.indexOf(w.target);
-      setTimeout(() => w.target.classList.add("widoczna"), Math.max(0, i) * 110);
-      obs.unobserve(w.target);
-    });
-  }, { threshold: 0.24 });
-
-  karty.forEach((k) => obs.observe(k));
+  ujawnij(lista.querySelectorAll(".gabinet__karta"));
 }

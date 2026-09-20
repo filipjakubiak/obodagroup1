@@ -43,10 +43,9 @@
 
   /* Tekst kładziony NA pełnym polu koloru. Paleta dzieli się sama na dwie
      grupy: ciemne barwy biorą biel, jasne biorą atrament. To nie jest wyjątek,
-     tylko reguła — i jest pilnowana testem kontrastu, nie dobrą wolą. */
+     tylko reguła i jest pilnowana testem kontrastu, nie dobrą wolą.
      Ich czerwień jest jaskrawa: biel daje na niej 3.90 (za mało), a atrament
-     4.79 (przechodzi). Zmieniamy więc kolor tekstu, a nie ich kolor marki —
-     czarny na jaskrawej czerwieni jest zresztą mocniejszy plakatowo. */
+     4.79 (przechodzi). Zmieniamy więc kolor tekstu, a nie ich kolor marki. */
   --na-ogniu:   #141210;
   --na-kwasie:  #141210;
   --na-sloncu:  #141210;

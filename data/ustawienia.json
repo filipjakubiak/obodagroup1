@@ -1,0 +1,30 @@
+{
+  "firma": {
+    "nazwa": "Mariusz Oboda Consulting & Training Group",
+    "skrot": "Oboda Group",
+    "ulica": "ul. Kazimierza Wielkiego 5C/159",
+    "kod": "61-863",
+    "miasto": "Poznań",
+    "nip": "778-104-09-65",
+    "email": "biuro@oboda.pl"
+  },
+  "liczby": [
+    { "wartosc": 400,   "sufiks": "",  "etykieta_pl": "klinik, z którymi pracowaliśmy", "do_potwierdzenia": true },
+    { "wartosc": 2000,  "sufiks": "",  "etykieta_pl": "praktyk po konsultacji i doradztwie", "do_potwierdzenia": true },
+    { "wartosc": 17000, "sufiks": "",  "etykieta_pl": "osób na naszych szkoleniach", "do_potwierdzenia": true },
+    { "wartosc": 20,    "sufiks": "",  "etykieta_pl": "lat psychologii w stomatologii", "do_potwierdzenia": false },
+    { "wartosc": 2,     "sufiks": "",  "etykieta_pl": "złote medale Krakdent, 2015 i 2025", "do_potwierdzenia": false }
+  ],
+  "ludzie": [
+    { "imie": "Marlena Majewska", "rola_pl": "koordynator i doradca do spraw szkoleń",
+      "telefon": "601 370 962", "email": "marlena.majewska@oboda.pl", "foto": "kontakt-marlena.webp" },
+    { "imie": "Lidia Kaźmierczak", "rola_pl": "organizacja szkoleń, faktury, certyfikaty",
+      "telefon": "662 082 800", "email": "lidia.kazmierczak@oboda.pl", "foto": "kontakt-lidia.webp" },
+    { "imie": "Adrian Majewski", "rola_pl": "analiza rentowności gabinetu, rekrutacja",
+      "telefon": "660 619 099", "email": "adrian.majewski@oboda.pl", "foto": "kontakt-adrian.webp" }
+  ],
+  "spoleczne": [
+    { "nazwa": "Facebook",  "adres": "https://www.facebook.com/obodagroup" },
+    { "nazwa": "Instagram", "adres": "https://www.instagram.com/obodagroup" }
+  ]
+}

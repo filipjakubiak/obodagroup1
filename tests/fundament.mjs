@@ -7,9 +7,10 @@
    nie pada przy zmianie, nie jest testem. Teraz wartości czytamy ze źródła. */
 
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import { startSerwera } from "../tools/serwer.mjs";
-import { kontrast, naRgb, zCss, sprawdz, wynik } from "./pomocniki.mjs";
+import { kontrast, naRgb, zCss, sprawdz, wynik, sprawdzArkusze } from "./pomocniki.mjs";
 
 /* ---------- odczyt palety prosto z tokens.css ---------- */
 
@@ -27,7 +28,10 @@ const tokenCiemny = (n) => token(blokCiemny, n) || token(blokJasny, n);
 const KOLORY = ["ogien", "kwas", "slonce", "chlod", "fiolet"];
 const para = (a, b) => kontrast(naRgb(a), naRgb(b));
 
-console.log("== paleta: tryb jasny ==");
+console.log("== integralnosc arkuszy ==");
+sprawdzArkusze(fileURLToPath(new URL("../css", import.meta.url)), sprawdz);
+
+console.log("\n== paleta: tryb jasny ==");
 const paper = token(blokJasny, "paper");
 const ink = token(blokJasny, "ink");
 sprawdz("tokens.css da sie odczytac", !!paper && !!ink, JSON.stringify({ paper, ink }));

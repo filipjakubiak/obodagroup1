@@ -1,0 +1,60 @@
+{
+  "_uwaga": "WSZYSTKIE ponizsze opinie to PROPOZYCJE TEKSTU, nie cytaty. Stara strona zaprasza 'zobacz opinie', ale nie ma ani jednej. Nie wymyslamy nazwisk ani nazw klinik: podpis to rola i miasto. Kazdy wpis ma do_zatwierdzenia:true i strona pokazuje to wprost, zeby klient widzial, co jest jego trescia, a co nasza propozycja. Po otrzymaniu prawdziwych opinii: podmienic tresc, wpisac imie i nazwisko za zgoda, ustawic do_zatwierdzenia:false.",
+
+  "opinie": [
+    {
+      "id": "o-1",
+      "tresc_pl": "Po cyklu przestałem tłumaczyć plan leczenia, a zacząłem rozmawiać o tym, na czym pacjentowi zależy. Akceptacja planów poszła w górę, a ja wychodzę z gabinetu mniej zmęczony.",
+      "rola_pl": "lekarz dentysta, właściciel praktyki",
+      "miasto": "Wrocław",
+      "grupa": "lekarz",
+      "do_zatwierdzenia": true
+    },
+    {
+      "id": "o-2",
+      "tresc_pl": "Nie wiedziałam, ile decyduje się przy pierwszym telefonie. Teraz rejestracja nie umawia wizyt, tylko prowadzi rozmowę, i to widać w liczbie pacjentów, którzy przychodzą.",
+      "rola_pl": "menedżerka kliniki",
+      "miasto": "Poznań",
+      "grupa": "kontakt",
+      "do_zatwierdzenia": true
+    },
+    {
+      "id": "o-3",
+      "tresc_pl": "Najbardziej zaskoczyło mnie, że szkolenie było o mnie, a nie o procedurach. Wróciłam do gabinetu z innym nastawieniem i pacjenci to wyczuli, zanim cokolwiek powiedziałam.",
+      "rola_pl": "higienistka stomatologiczna",
+      "miasto": "Gdańsk",
+      "grupa": "pacjent",
+      "do_zatwierdzenia": true
+    },
+    {
+      "id": "o-4",
+      "tresc_pl": "Wcześniej każdy w zespole pracował po swojemu. Po wspólnym szkoleniu mamy jeden standard rozmowy z pacjentem i przestały się zdarzać sytuacje, w których ktoś obiecuje coś innego niż reszta.",
+      "rola_pl": "właścicielka praktyki, czteroosobowy zespół",
+      "miasto": "Kraków",
+      "grupa": "zespol",
+      "do_zatwierdzenia": true
+    },
+    {
+      "id": "o-5",
+      "tresc_pl": "Liczby, które zobaczyłem na analizie rentowności, były nieprzyjemne, ale konkretne. Po pół roku od wdrożenia zmian rozmawiamy już o zupełnie innym gabinecie.",
+      "rola_pl": "właściciel, dwa gabinety",
+      "miasto": "Katowice",
+      "grupa": "zarzad",
+      "do_zatwierdzenia": true
+    },
+    {
+      "id": "o-6",
+      "tresc_pl": "Jechałam na szkolenie wyjazdowe trochę jak na wakacje. Wróciłam z pełnym cyklem MEMS i notatkami, do których zaglądam do dziś.",
+      "rola_pl": "lekarka dentystka",
+      "miasto": "Szczecin",
+      "grupa": "lekarz",
+      "do_zatwierdzenia": true
+    }
+  ],
+
+  "logotypy": {
+    "_uwaga": "Nie wstawiamy zmyslonych logotypow klinik. Firma mowi o wspolpracy z 400 klinikami - to najmocniejszy dowod, jaki maja, i musi byc prawdziwy. Do czasu otrzymania plikow i zgod pokazujemy zajete ramki z jawna informacja.",
+    "ile_ramek": 8,
+    "podpis_pl": "Miejsce na logotypy klinik. Czekamy na pliki i zgody na publikację."
+  }
+}

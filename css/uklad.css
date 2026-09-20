@@ -86,10 +86,12 @@
   font-size: var(--t-meta);
   font-weight: 600;
   letter-spacing: 0.06em;
-  opacity: 0.55;
   text-decoration: none;
+  /* Przygaszenie kolorem, nie przezroczystoscia - opacity mnozy sie po cichu
+     i zbija kontrast ponizej progu, czego nie widac w tokenach. */
+  color: color-mix(in oklab, currentColor 70%, transparent);
 }
-.naglowek__jezyk:hover { opacity: 1; }
+.naglowek__jezyk:hover { color: inherit; }
 
 /* ==========================================================================
    HERO — maszyna osobowościowa.
@@ -262,3 +264,33 @@ section { padding-block: var(--sekcja); }
 .gabinet { padding-block: var(--sekcja); background: var(--paper); }
 .gabinet__tytul { font-size: var(--t-display-l); text-transform: uppercase; max-width: 16ch; }
 .gabinet__wstep { margin-top: clamp(16px, 2vh, 26px); max-width: 58ch; }
+
+/* ---------- sekcja Dowod ---------- */
+
+.dowod { padding-block: var(--sekcja); background: var(--paper); }
+.dowod__tytul { font-size: var(--t-display-l); text-transform: uppercase; max-width: 14ch; }
+.dowod__wstep { margin-top: clamp(16px, 2vh, 26px); max-width: 60ch; }
+
+/* ---------- rozdzial MEMS ---------- */
+
+.mems {
+  padding-block: var(--sekcja);
+  background: var(--kolor);
+  color: var(--na-kolorze);
+}
+.mems__etykieta {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--na-kolorze) 78%, var(--kolor));
+}
+.mems__naglowek {
+  font-size: clamp(5rem, 18vw, 18rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  margin-top: 6px;
+}
+.mems__wstep { margin-top: clamp(14px, 2vh, 24px); max-width: 56ch; color: inherit; }

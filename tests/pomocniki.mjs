@@ -42,3 +42,27 @@ export function wynik() {
    Sprawdzamy mechanicznie, bo przy przepisywaniu treści z WooCommerce
    wchodzą same — tytuły na starej stronie są ich pełne. */
 export const MYSLNIKI = /[–—]/;
+
+/* Strażnik integralności arkuszy.
+   Powstał po realnym uszkodzeniu: edycja zostawiła w tokens.css osierocony
+   tekst i nadmiarowy znacznik końca komentarza, przez co parser odrzucał
+   deklaracje aż do odzyskania. Tokeny --na-* przestały działać, a test
+   kontrastu pokazywał tajemnicze 3.46 zamiast policzonych 4.79.
+
+   (Pierwsza wersja tego komentarza miała ten znacznik wpisany dosłownie
+   i zamknęła sama siebie w połowie zdania. Stąd opis słowny.)
+
+   Liczenie znaczników i klamer jest tanie i wyklucza całą klasę błędów,
+   w której edycja psuje arkusz, a strona wygląda „prawie dobrze". */
+import fs from "node:fs";
+export function sprawdzArkusze(katalog, sprawdzFn) {
+  for (const plik of fs.readdirSync(katalog).filter((f) => f.endsWith(".css"))) {
+    const s = fs.readFileSync(katalog + "/" + plik, "utf8");
+    const otw = (s.match(/\/\*/g) || []).length;
+    const zam = (s.match(/\*\//g) || []).length;
+    sprawdzFn(`${plik}: komentarze domkniete (${otw}/${zam})`, otw === zam, otw + " vs " + zam);
+    const kl = (s.match(/\{/g) || []).length;
+    const kp = (s.match(/\}/g) || []).length;
+    sprawdzFn(`${plik}: klamry domkniete (${kl}/${kp})`, kl === kp, kl + " vs " + kp);
+  }
+}

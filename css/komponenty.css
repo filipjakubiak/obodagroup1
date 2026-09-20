@@ -189,3 +189,196 @@
   .js .gabinet__karta { opacity: 1; transform: none; transition: none; }
   .js .gabinet__karta .gabinet__zalew { clip-path: inset(0 0 0 0); transition: none; }
 }
+
+/* ==========================================================================
+   DOWÓD — liczby, opinie, logotypy.
+   ========================================================================== */
+
+.liczby {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 32px);
+  margin-top: clamp(40px, 6vh, 72px);
+  border-top: 2px solid var(--ink);
+  padding-top: clamp(20px, 3vh, 36px);
+}
+.liczby__poz { display: flex; flex-direction: column; gap: 4px; }
+.liczby__wartosc {
+  font-family: var(--font-display);
+  /* Piec liczb w rzedzie przy 1440 px daje kolumne ok. 230 px. Najdluzsza
+     wartosc to "17 000" - szesc znakow, wiec gorny limit musi zejsc do ok.
+     3.9rem, inaczej sasiednie liczby na siebie wchodza. Zmierzone, nie
+     dobrane na oko. */
+  font-size: clamp(2.2rem, 4.3vw, 3.9rem);
+  white-space: nowrap;
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  /* Cyfry nie mogą skakać w trakcie odliczania. */
+  font-variant-numeric: tabular-nums;
+}
+.liczby__etykieta { font-size: 0.9375rem; line-height: 1.35; color: var(--ink-dim); max-width: 22ch; }
+
+/* Znacznik treści, której klient jeszcze nie zatwierdził. Ma być widoczny,
+   nie schowany: to jest informacja dla klienta, a nie nasza notatka. */
+.znacznik {
+  align-self: flex-start;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px dashed var(--line-mocna);
+  border-radius: var(--r-pigulka);
+  color: var(--ink-dim);
+}
+
+/* ---------- opinie ---------- */
+
+.opinie {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 20px);
+  margin-top: clamp(48px, 7vh, 88px);
+}
+.opinie__poz {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(20px, 2vw, 30px);
+  background: var(--kolor-mgla);
+  border-radius: var(--r-karta);
+  /* Lewa krawędź w kolorze roli, której opinia dotyczy — ten sam klucz
+     co w sekcji Twój gabinet, więc czytelnik nie musi się go uczyć drugi raz. */
+  border-left: 5px solid var(--kolor);
+}
+.opinie__tresc { font-size: 1.0625rem; line-height: 1.5; }
+.opinie__podpis { display: flex; flex-direction: column; margin-top: auto; padding-top: 6px; }
+.opinie__rola { font-weight: 600; font-size: 0.9375rem; }
+.opinie__miasto { font-size: 0.875rem; color: var(--ink-dim); }
+
+/* ---------- logotypy ---------- */
+
+.logotypy { margin-top: clamp(48px, 7vh, 88px); }
+.logotypy__siatka {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.logotypy__ramka {
+  aspect-ratio: 5 / 2;
+  border: 1px dashed var(--line-mocna);
+  border-radius: var(--r-karta);
+  background: var(--paper-gleb);
+}
+.logotypy__podpis { margin-top: 14px; font-size: 0.875rem; color: var(--ink-dim); }
+
+@media (max-width: 1100px) {
+  .liczby { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .opinie { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .liczby { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opinie { grid-template-columns: 1fr; }
+  .logotypy__siatka { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ==========================================================================
+   MEMS — siedem modułów jako jedna droga.
+   ========================================================================== */
+
+.mems__lista { list-style: none; counter-reset: none; margin-top: clamp(40px, 6vh, 72px); }
+
+.mems__poz {
+  display: grid;
+  grid-template-columns: 5rem 200px minmax(0, 1fr);
+  gap: clamp(16px, 2.5vw, 44px);
+  align-items: center;
+  padding-block: clamp(18px, 2.4vh, 30px);
+  /* Linia bierze sie z koloru tekstu sekcji, wiec dziala i na czerwieni
+     z atramentem, i na blekicie z biela. */
+  border-top: 1px solid color-mix(in oklab, currentColor 26%, transparent);
+}
+.mems__poz:last-child { border-bottom: 1px solid color-mix(in oklab, currentColor 26%, transparent); }
+
+.js .mems__poz { opacity: 0; transform: translateY(20px); }
+.js .mems__poz.widoczna {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--t-odslona) var(--ease), transform var(--t-odslona) var(--ease);
+}
+
+.mems__numer {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  /* Numer moze byc przygaszony: to etykieta porzadkowa, nie tresc.
+     Mieszamy z tlem zamiast uzywac opacity - wynik da sie zmierzyc. */
+  color: color-mix(in oklab, var(--na-kolorze) 55%, var(--kolor));
+}
+.mems__kadr {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--r-karta);
+  background: rgba(255, 255, 255, 0.1);
+}
+.mems__kadr img { width: 100%; height: 100%; object-fit: cover; object-position: center 24%; }
+
+.mems__tresc { display: flex; flex-direction: column; gap: 6px; }
+.mems__tytul {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+.mems__lead { font-size: 0.9375rem; line-height: 1.45; max-width: 62ch; }
+
+/* ---------- warianty płatności ---------- */
+
+.ceny { margin-top: clamp(48px, 7vh, 88px); }
+.ceny__tytul { font-size: var(--t-display-m); text-transform: uppercase; }
+.ceny__wstep { margin-top: 10px; max-width: 56ch; }
+.ceny__siatka {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 18px);
+  margin-top: clamp(20px, 3vh, 32px);
+}
+.ceny__poz {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(18px, 2vw, 28px);
+  border: 2px solid currentColor;
+  border-radius: var(--r-karta);
+}
+.ceny__nazwa { font-size: 0.9375rem; }
+.ceny__kwota {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .mems__poz { grid-template-columns: 3.2rem minmax(0, 1fr); }
+  .mems__kadr { display: none; }
+  .ceny__siatka { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .mems__poz { opacity: 1; transform: none; transition: none; }
+}

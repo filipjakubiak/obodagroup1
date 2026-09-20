@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Szkolenia - Oboda Group</title>
-<meta name="description" content="35 szkoleń dla praktyki stomatologicznej, ułożonych według ról w gabinecie: lekarz, przy pacjencie, pierwszy kontakt, zarządzanie, cały zespół.">
-<meta property="og:title" content="Szkolenia - Oboda Group">
-<meta property="og:description" content="35 szkoleń dla praktyki stomatologicznej, ułożonych według ról w gabinecie: lekarz, przy pacjencie, pierwszy kontakt, zarządzanie, cały zespół.">
+<title>Wyjazdy szkoleniowe - Oboda Group</title>
+<meta name="description" content="Sri Lanka, Malta, Zanzibar, Dominikana, Indie. Pełny cykl MEMS podczas jednej podróży zamiast siedmiu wyjazdów do Poznania.">
+<meta property="og:title" content="Wyjazdy szkoleniowe - Oboda Group">
+<meta property="og:description" content="Sri Lanka, Malta, Zanzibar, Dominikana, Indie. Pełny cykl MEMS podczas jednej podróży zamiast siedmiu wyjazdów do Poznania.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 
@@ -30,9 +30,9 @@
     </a>
     <nav class="naglowek__nawigacja" aria-label="Główna">
       <a class="naglowek__link" href="./mems.html">MEMS</a>
-      <a class="naglowek__link" href="./szkolenia.html" aria-current="page">Szkolenia</a>
+      <a class="naglowek__link" href="./szkolenia.html">Szkolenia</a>
       <a class="naglowek__link" href="./zespol.html">Zespół</a>
-      <a class="naglowek__link" href="./wyjazdy.html">Wyjazdy</a>
+      <a class="naglowek__link" href="./wyjazdy.html" aria-current="page">Wyjazdy</a>
       <a class="naglowek__link" href="./kontakt.html">Kontakt</a>
       <a class="naglowek__jezyk" href="./en/" hreflang="en">EN</a>
     </nav>
@@ -40,15 +40,16 @@
 </div>
 
 <main id="tresc">
-  <section class="katalog">
+  <section class="wyjazdy">
     <div class="pas">
-      <h1 class="katalog__tytul">Szkolenia</h1>
+      <h1 class="katalog__tytul">Wyjazdy</h1>
       <p class="lead katalog__wstep">
-        Ułożone według ról w gabinecie, nie według kategorii w cenniku.
-        Zacznij od tego, kogo chcesz rozwinąć.
+        Cykl, który w Polsce zajmuje siedem dwudniowych zjazdów, da się odbyć
+        podczas jednej podróży. Byliśmy z tym na Sri Lance, Malcie, Zanzibarze,
+        Dominikanie i w Indiach.
       </p>
     </div>
-    <div class="pas" id="katalogTresc"></div>
+    <div class="pas" id="wyjazdyTresc"></div>
   </section>
 </main>
 
@@ -75,9 +76,9 @@
 </footer>
 
 <script type="module">
-  import { zbudujKatalog } from "./js/katalog.js";
+  import { zbudujWyjazdy } from "./js/strony.js";
   document.documentElement.classList.add("js");
-  zbudujKatalog(document.getElementById("katalogTresc"));
+  zbudujWyjazdy(document.getElementById("wyjazdyTresc"));
 </script>
 
 </body>

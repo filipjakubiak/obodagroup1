@@ -1,0 +1,68 @@
+{
+  "_uwaga": "Piec odbytych wyjazdow przepisanych ze starej strony. Sekcja 'Tu bedziemy' NIE zostala przeniesiona: na starej stronie jest w polowie wypelniaczem po poprzednim wykonawcy ('Jan Kowalski', 'Jolanta Kowalska', 'Misia Yogi', 'Gajowego Marucha', 'Babe z wozu', 'Krzywego Mariana', 'Sierotke Marysie', 'Seans spirytystyczny', 'Stwora ze snow'). Zamiast tego pokazujemy uczciwa zapowiedz i czekamy na prawdziwe terminy.",
+
+  "odbyte": [
+    {
+      "id": "sri-lanka",
+      "kraj_pl": "Sri Lanka",
+      "termin_pl": "26 kwietnia - 6 maja",
+      "rok": 2022,
+      "program_pl": "MEMS oraz Process Communication Model",
+      "opis_pl": "Do tego zakątka świata przyciągnęła nas bogata kultura, przyroda i smak prawdziwej cejlońskiej herbaty. Podczas wyjazdu odbyły się dwa szkolenia: cykl MEMS z Mariuszem Obodą oraz PCM prowadzony przez Kingę Mann.",
+      "foto": "sri-lanka-photos.webp",
+      "foto_w": 705,
+      "foto_h": 742
+    },
+    {
+      "id": "malta",
+      "kraj_pl": "Malta",
+      "termin_pl": "17 - 24 marca",
+      "rok": null,
+      "program_pl": "Profesjonalna higienistka",
+      "opis_pl": "Malta przywitała nas sztormem, ale pogoda z dnia na dzień była coraz piękniejsza. Zostało miejsce na długie wędrówki i zwiedzanie, a przede wszystkim na pełny cykl szkoleniowy dla higienistek pod okiem Mariusza Obody.",
+      "foto": "malta-photos.webp",
+      "foto_w": 673,
+      "foto_h": 674
+    },
+    {
+      "id": "zanzibar",
+      "kraj_pl": "Zanzibar",
+      "termin_pl": "",
+      "rok": null,
+      "program_pl": "MEMS oraz Mindfulness",
+      "opis_pl": "Plaże, jaskinie, przypływy i odpływy, sport i nauka. Uczestnicy brali udział w cyklu MEMS albo w prowadzonym równolegle warsztacie Mindfulness Wiolety Łągowskiej.",
+      "foto": "zanzibar-photos.webp",
+      "foto_w": 541,
+      "foto_h": 592
+    },
+    {
+      "id": "dominikana",
+      "kraj_pl": "Dominikana",
+      "termin_pl": "30 kwietnia - 8 maja",
+      "rok": 2021,
+      "program_pl": "MEMS",
+      "opis_pl": "Karaiby nie bez przyczyny bywają nazywane rajem na ziemi: plaże, jedzenie, przyjaźni mieszkańcy i ich kultura. W takich okolicznościach uczestnicy odbyli pełny cykl MEMS.",
+      "foto": "dominikana-photos.webp",
+      "foto_w": 599,
+      "foto_h": 608
+    },
+    {
+      "id": "indie",
+      "kraj_pl": "Indie",
+      "termin_pl": "",
+      "rok": null,
+      "program_pl": "MEMS",
+      "opis_pl": "Wyjazd szkoleniowy do Indii. Pełny opis czeka na uzupełnienie przez klienta.",
+      "foto": "indie-photos.webp",
+      "foto_w": 786,
+      "foto_h": 474,
+      "do_zatwierdzenia": true
+    }
+  ],
+
+  "planowane": {
+    "naglowek_pl": "Kolejny wyjazd ogłosimy wkrótce",
+    "tresc_pl": "Terminy i kierunki na najbliższy sezon są w przygotowaniu. Jeśli chcesz dowiedzieć się pierwszy, napisz do Marleny Majewskiej.",
+    "do_zatwierdzenia": true
+  }
+}

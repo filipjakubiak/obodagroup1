@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Szkolenia - Oboda Group</title>
-<meta name="description" content="35 szkoleń dla praktyki stomatologicznej, ułożonych według ról w gabinecie: lekarz, przy pacjencie, pierwszy kontakt, zarządzanie, cały zespół.">
-<meta property="og:title" content="Szkolenia - Oboda Group">
-<meta property="og:description" content="35 szkoleń dla praktyki stomatologicznej, ułożonych według ról w gabinecie: lekarz, przy pacjencie, pierwszy kontakt, zarządzanie, cały zespół.">
+<title>MEMS - autorski cykl Oboda Group</title>
+<meta name="description" content="Siedem dwudniowych modułów o psychologii pracy z pacjentem. Autorski standard, który stanowi kanon zawodowego profesjonalizmu lekarza.">
+<meta property="og:title" content="MEMS - autorski cykl Oboda Group">
+<meta property="og:description" content="Siedem dwudniowych modułów o psychologii pracy z pacjentem. Autorski standard, który stanowi kanon zawodowego profesjonalizmu lekarza.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 
@@ -29,8 +29,8 @@
       <img class="naglowek__logo" src="./assets/marka/logo.webp" alt="Oboda Group" width="452" height="122">
     </a>
     <nav class="naglowek__nawigacja" aria-label="Główna">
-      <a class="naglowek__link" href="./mems.html">MEMS</a>
-      <a class="naglowek__link" href="./szkolenia.html" aria-current="page">Szkolenia</a>
+      <a class="naglowek__link" href="./mems.html" aria-current="page">MEMS</a>
+      <a class="naglowek__link" href="./szkolenia.html">Szkolenia</a>
       <a class="naglowek__link" href="./zespol.html">Zespół</a>
       <a class="naglowek__link" href="./wyjazdy.html">Wyjazdy</a>
       <a class="naglowek__link" href="./kontakt.html">Kontakt</a>
@@ -40,15 +40,29 @@
 </div>
 
 <main id="tresc">
-  <section class="katalog">
+  <section class="mems pole pole--ogien">
     <div class="pas">
-      <h1 class="katalog__tytul">Szkolenia</h1>
-      <p class="lead katalog__wstep">
-        Ułożone według ról w gabinecie, nie według kategorii w cenniku.
-        Zacznij od tego, kogo chcesz rozwinąć.
+      <p class="mems__etykieta">Multilevel Engagement &amp; Motivation Strategy</p>
+      <h1 class="mems__naglowek">MEMS</h1>
+      <p class="lead mems__wstep">
+        Siedem dwudniowych modułów, po których lekarz przestaje tłumaczyć plan
+        leczenia, a zaczyna rozmawiać o tym, na czym pacjentowi zależy.
+        Standard, który stanowi dziś kanon zawodowego profesjonalizmu lekarza.
       </p>
     </div>
-    <div class="pas" id="katalogTresc"></div>
+    <div class="pas" id="memsTresc"></div>
+  </section>
+
+  <section class="dowod">
+    <div class="pas">
+      <h2 class="dowod__tytul">Dla kogo</h2>
+      <p class="lead dowod__wstep">
+        Dla lekarza dentysty, który ma pełen grafik, a mimo to widzi, że
+        pacjenci odkładają leczenie, o którym rozmawiali w gabinecie.
+        Cykl można odbyć w Polsce albo w całości podczas jednego
+        <a href="./wyjazdy.html">wyjazdu szkoleniowego</a>.
+      </p>
+    </div>
   </section>
 </main>
 
@@ -75,9 +89,9 @@
 </footer>
 
 <script type="module">
-  import { zbudujKatalog } from "./js/katalog.js";
+  import { zbudujMems } from "./js/mems.js";
   document.documentElement.classList.add("js");
-  zbudujKatalog(document.getElementById("katalogTresc"));
+  zbudujMems(document.getElementById("memsTresc"));
 </script>
 
 </body>

@@ -579,3 +579,212 @@
 .stopka__blok a { color: inherit; }
 
 @media (max-width: 760px) { .stopka__pas { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   ZESPÓŁ
+   ========================================================================== */
+
+.zespol, .wyjazdy, .kontakt { padding-block: clamp(40px, 6vh, 80px) var(--sekcja); }
+.zespol__lista { display: flex; flex-direction: column; gap: clamp(28px, 4vh, 56px); margin-top: clamp(32px, 5vh, 64px); }
+
+.osoba {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 52px);
+  align-items: start;
+  padding: clamp(20px, 2.4vw, 36px);
+  background: var(--kolor-mgla);
+  border-radius: var(--r-karta);
+  border-left: 5px solid var(--kolor);
+}
+.js .osoba { opacity: 0; transform: translateY(22px); }
+.js .osoba.widoczna {
+  opacity: 1; transform: none;
+  transition: opacity var(--tempo) var(--ease), transform var(--tempo) var(--ease);
+}
+
+.osoba__kadr { position: relative; overflow: hidden; border-radius: var(--r-karta); background: var(--kolor-mgla); }
+.osoba__foto { width: 100%; height: auto; filter: grayscale(1) contrast(1.1); }
+/* UJAWNIENIE: kolor roli zalewa portret od dołu. Ten sam ruch co na stronie
+   głównej, więc jest rozpoznawalny, a nie wymyślony drugi raz. */
+.osoba__zalew {
+  position: absolute; inset: 0;
+  background: var(--kolor);
+  mix-blend-mode: multiply;
+  clip-path: inset(100% 0 0 0);
+}
+.js .osoba.widoczna .osoba__zalew {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--tempo) var(--ease) 160ms;
+}
+
+.osoba__rola {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kolor-tekst);
+}
+.osoba__imie {
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  text-transform: uppercase;
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+.osoba__bio + .osoba__bio { margin-top: 12px; }
+.osoba__bio { line-height: 1.6; }
+
+@media (max-width: 860px) { .osoba { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   WYJAZDY
+   ========================================================================== */
+
+.wyjazdy__lista { display: flex; flex-direction: column; gap: clamp(16px, 2.4vh, 32px); margin-top: clamp(32px, 5vh, 64px); }
+
+.wyjazd {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 48px);
+  align-items: center;
+  padding: clamp(18px, 2vw, 30px);
+  background: var(--kolor-mgla);
+  border-radius: var(--r-karta);
+  border-left: 5px solid var(--kolor);
+}
+.js .wyjazd { opacity: 0; transform: translateY(20px); }
+.js .wyjazd.widoczna {
+  opacity: 1; transform: none;
+  transition: opacity var(--tempo) var(--ease), transform var(--tempo) var(--ease);
+}
+/* Sklejki z telefonu: pokazujemy je w kafelku w oryginalnych proporcjach,
+   nigdy przyciete na pelna szerokosc - jakosc by tego nie udzwignela. */
+.wyjazd__kadr img { width: 100%; height: auto; border-radius: var(--r-karta); }
+
+.wyjazd__glowa { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; }
+.wyjazd__kraj { font-size: clamp(1.9rem, 3.4vw, 3.2rem); text-transform: uppercase; }
+.wyjazd__termin {
+  font-family: var(--font-display);
+  font-size: var(--t-meta);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kolor-tekst);
+}
+.wyjazd__program {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+}
+.wyjazd__opis { margin-top: 10px; line-height: 1.6; }
+
+.wkrotce {
+  margin-top: clamp(28px, 4vh, 56px);
+  padding: clamp(24px, 3vw, 48px);
+  background: var(--kolor);
+  color: var(--na-kolorze);
+  border-radius: var(--r-karta);
+}
+.wkrotce__tytul { font-size: var(--t-display-m); text-transform: uppercase; }
+.wkrotce__tresc { margin-top: 12px; margin-bottom: 20px; max-width: 54ch; }
+.wkrotce .znacznik { border-color: currentColor; color: inherit; margin-left: 12px; }
+
+@media (max-width: 860px) { .wyjazd { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   KONTAKT
+   ========================================================================== */
+
+.ludzie {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 18px);
+  margin-top: clamp(32px, 5vh, 64px);
+}
+.czlowiek {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: clamp(18px, 2vw, 28px);
+  background: var(--kolor-mgla);
+  border-radius: var(--r-karta);
+  border-left: 5px solid var(--kolor);
+}
+.czlowiek__imie { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; }
+.czlowiek__rola { font-size: 0.9375rem; color: var(--ink-dim); margin-bottom: 8px; }
+.czlowiek__tel { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.czlowiek__mail { font-size: 0.9375rem; overflow-wrap: anywhere; }
+
+/* ---------- formularz ---------- */
+
+.form { max-width: 62ch; margin-top: clamp(40px, 6vh, 72px); }
+.form__grupa { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.form__etykieta { font-weight: 600; font-size: 0.9375rem; }
+.form__pole {
+  padding: 12px 14px;
+  border: 2px solid var(--line-mocna);
+  border-radius: var(--r-karta);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+}
+.form__pole:focus-visible { border-color: var(--ogien); }
+.form__pole[aria-invalid="true"] { border-color: var(--ogien-tekst); }
+.form__pole--dlugie { resize: vertical; min-height: 7em; }
+
+/* Blad opisany SLOWEM, nie samym kolorem: kolor nie dociera do osob
+   z zaburzeniami widzenia barw ani do czytnika ekranu. */
+.form__blad:not(:empty) {
+  font-size: 0.875rem;
+  color: var(--ogien-tekst);
+  font-weight: 600;
+}
+.form__blad:not(:empty)::before { content: "Błąd: "; }
+
+.form__zgoda { display: flex; gap: 10px; align-items: flex-start; font-size: 0.9375rem; margin-block: 8px 6px; }
+.form__zgoda input { margin-top: 4px; width: 18px; height: 18px; flex: none; accent-color: var(--ogien); }
+
+.form__stan:not(:empty) { margin-top: 14px; font-weight: 600; }
+.form__demo {
+  margin-top: 20px;
+  padding: 14px 16px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background: var(--slonce-mgla);
+  border-left: 4px solid var(--slonce);
+  border-radius: var(--r-karta);
+  color: var(--ink);
+}
+
+@media (max-width: 860px) { .ludzie { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  .js .osoba, .js .wyjazd { opacity: 1; transform: none; transition: none; }
+  .js .osoba .osoba__zalew { clip-path: inset(0 0 0 0); transition: none; }
+}
+
+/* ---------- strony tekstowe (polityka) ---------- */
+
+.tekst { padding-block: clamp(40px, 6vh, 80px) var(--sekcja); }
+.uwaga-prawna {
+  margin-top: 20px;
+  padding: 16px 18px;
+  background: var(--slonce-mgla);
+  border-left: 4px solid var(--slonce);
+  border-radius: var(--r-karta);
+  max-width: 72ch;
+}
+.tekst__tresc { margin-top: clamp(28px, 4vh, 48px); max-width: 72ch; }
+.tekst__tresc h2 { font-size: var(--t-display-s); text-transform: uppercase; margin-top: clamp(28px, 4vh, 48px); margin-bottom: 10px; }
+.tekst__tresc h3 { font-size: 1.15rem; margin-top: 24px; margin-bottom: 8px; }
+.tekst__tresc p { margin-bottom: 12px; line-height: 1.65; }
+.tekst__tresc ul, .tekst__tresc ol { margin: 12px 0 18px 22px; }
+.tekst__tresc li { margin-bottom: 7px; line-height: 1.6; }
+.tekst__tresc a { color: var(--ogien-tekst); }
+.tekst__tresc table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9375rem; }
+.tekst__tresc th, .tekst__tresc td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }

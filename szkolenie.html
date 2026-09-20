@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Szkolenie - Oboda Group</title>
 <meta name="description" content="Szczegóły szkolenia Oboda Group: program, efekty, cena i kontakt do koordynatora.">
+<meta property="og:title" content="Szkolenie - Oboda Group">
+<meta property="og:description" content="Szczegóły szkolenia Oboda Group: program, efekty, cena i kontakt do koordynatora.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +31,7 @@
     </a>
     <nav class="naglowek__nawigacja" aria-label="Główna">
       <a class="naglowek__link" href="./mems.html">MEMS</a>
-      <a class="naglowek__link" href="./szkolenia.html">Szkolenia</a>
+      <a class="naglowek__link" href="./szkolenia.html" aria-current="page">Szkolenia</a>
       <a class="naglowek__link" href="./zespol.html">Zespół</a>
       <a class="naglowek__link" href="./wyjazdy.html">Wyjazdy</a>
       <a class="naglowek__link" href="./kontakt.html">Kontakt</a>
@@ -69,7 +73,7 @@
 <script type="module">
   import { zbudujSzkolenie } from "./js/katalog.js";
   document.documentElement.classList.add("js");
-  zbudujSzkolenie(document.querySelector("#szkolTresc .pas") || document.getElementById("szkolTresc"));
+  zbudujSzkolenie(document.querySelector("#szkolTresc .pas"));
 </script>
 
 </body>

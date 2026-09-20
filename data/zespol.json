@@ -1,0 +1,67 @@
+{
+  "_uwaga": "Biogramy przepisane ze starej strony bez zmiany sensu. Poprawione wylacznie literowki i sklejone slowa z oryginalu ('zespolamisprzedazowymi', 'Oboda Groupniemal', 'postepowania', 'z zakresy', 'zdobytym z miedzynarodowych'). Myslniki i polpauzy zamienione na dywiz zgodnie z zasada calego projektu. Na starej stronie sa jeszcze portrety Kingi, Marty i Ewy, ale bez zadnej tresci - do wyjasnienia z klientem, czy nadal wspolpracuja.",
+
+  "osoby": [
+    {
+      "id": "mariusz-oboda",
+      "imie": "Mariusz Oboda",
+      "rola_pl": "Założyciel, twórca metody MEMS",
+      "rola_en": "",
+      "kolor": "ogien",
+      "foto": "about-mariusz.webp",
+      "foto_w": 766,
+      "foto_h": 963,
+      "bio_pl": [
+        "Założyciel Oboda Group i twórca jej projektów szkoleniowych. Od niemal trzydziestu lat zawodowo związany ze stomatologią. Stworzył trzy przychodnie stomatologiczne, którymi zarządzał przez kilkanaście lat.",
+        "Od ponad dwudziestu lat uczy się psychologii, coachingu i trenerstwa od wybitnych specjalistów w Polsce i za granicą. Certyfikowany trener NLP, Master Practitioner in the Art of NLP (The Society of NLP). Jako jeden z kilkudziesięciu coachów w Polsce ma akredytację International Coach Federation na poziomie Professional Certified Coach.",
+        "W 2003 roku połączył wiedzę psychologiczną ze stomatologiczną i skupił się wyłącznie na standardach pracy z pacjentem. Prekursor badań nad wpływem postępowania lekarza na decyzje medyczne pacjentów. Opracowany przez niego standard MEMS stanowi dziś kanon zawodowego profesjonalizmu lekarza. Autor kilkudziesięciu artykułów o psychologicznych aspektach pracy z pacjentem.",
+        "Pasjonuje się żeglarstwem, podróżami i filmem dokumentalnym."
+      ]
+    },
+    {
+      "id": "adrian-majewski",
+      "imie": "dr Adrian Majewski",
+      "rola_pl": "Ekspert zarządzania w stomatologii",
+      "rola_en": "",
+      "kolor": "chlod",
+      "foto": "about-adrian.webp",
+      "foto_w": 708,
+      "foto_h": 964,
+      "bio_pl": [
+        "Łączy wiedzę akademicką z doświadczeniem menedżerskim zdobytym w międzynarodowych firmach finansowych i e-commerce. Absolwent studiów MBA, doktor nauk o zarządzaniu.",
+        "W Oboda Group odpowiada za kompleksową optymalizację pracy klinik: układanie procesów, rekrutację i motywowanie zespołu tak, by działał efektywnie bez ciągłej kontroli. Równolegle wdraża standardy obsługi pacjenta dla asystentek i rejestratorek.",
+        "Certyfikowany Erickson Professional Coach z uprawnieniami pedagogicznymi, ekspert od odporności psychicznej (MTQ Plus). W pracy naukowej zajmuje się wpływem czynników pozamedycznych na konkurencyjność klinik stomatologicznych. Regularnie publikuje w prasie medycznej."
+      ]
+    },
+    {
+      "id": "marlena-majewska",
+      "imie": "Marlena Majewska",
+      "rola_pl": "Doradca do spraw szkoleń",
+      "rola_en": "",
+      "kolor": "slonce",
+      "foto": "about-marlena.webp",
+      "foto_w": 785,
+      "foto_h": 919,
+      "bio_pl": [
+        "Studiowała bankowość w poznańskiej Wyższej Szkole Bankowej oraz zarządzanie zasobami ludzkimi na Akademii Ekonomicznej w Poznaniu. Ma kilkunastoletnie doświadczenie w zarządzaniu zespołami sprzedażowymi w międzynarodowych korporacjach.",
+        "Planowanie ścieżki rozwoju, wybór najbardziej odpowiednich szkoleń dla konkretnej osoby, organizacja szkoleń zamkniętych, oferta wyjazdowa. Nikt nie wie o tym tyle, co Marlena.",
+        "Kocha koty i podróże."
+      ]
+    },
+    {
+      "id": "lidia-kazmierczak",
+      "imie": "Lidia Kaźmierczak",
+      "rola_pl": "Organizacja szkoleń i sprawy biurowe",
+      "rola_en": "",
+      "kolor": "kwas",
+      "foto": "about-lidia.webp",
+      "foto_w": 800,
+      "foto_h": 957,
+      "bio_pl": [
+        "Absolwentka filologii polskiej na Uniwersytecie Adama Mickiewicza w Poznaniu. W Oboda Group niemal od początku istnienia firmy, którą zna od podszewki.",
+        "Zajmuje się organizacją szkoleń i sprawami administracyjno-biurowymi. Prowadzi profil firmy na Instagramie i wspiera swoim talentem artystycznym stronę na Facebooku.",
+        "Kocha muzykę i taniec, a zwłaszcza rytmy latynoskie."
+      ]
+    }
+  ]
+}

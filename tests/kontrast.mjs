@@ -11,7 +11,7 @@
    ========================================================================== */
 import { chromium } from "playwright";
 import { startSerwera } from "../tools/serwer.mjs";
-import { kontrast, zCss, sprawdz, wynik } from "./pomocniki.mjs";
+import { kontrast, sprawdz, wynik } from "./pomocniki.mjs";
 
 const s = await startSerwera(4315);
 const b = await chromium.launch();
@@ -32,6 +32,30 @@ for (const schemat of ["light", "dark"]) {
 
   const zle = await p.evaluate(() => {
     const wynik = [];
+
+    /* 🚨 Kolory MUSZA byc sprowadzone do sRGB przez przegladarke.
+       getComputedStyle zwraca to, co zapisano: color-mix oddaje
+       "oklab(0.757 0.001 0.008)". Pierwsza wersja testu wycinala trzy
+       pierwsze liczby i czytala 0.757 jako skladowa 0-255, czyli prawie
+       czern - i zglaszala kontrast 1.12 tam, gdzie realnie bylo ponad 10.
+       Malujemy kolor na plotnie i odczytujemy piksel: to dziala dla kazdego
+       zapisu, ktory przegladarka rozumie. */
+    const plotno = document.createElement("canvas");
+    plotno.width = plotno.height = 1;
+    const ctx2 = plotno.getContext("2d", { willReadFrequently: true });
+    const pamiec = new Map();
+    const doRgb = (kolor) => {
+      if (pamiec.has(kolor)) return pamiec.get(kolor);
+      ctx2.clearRect(0, 0, 1, 1);
+      ctx2.fillStyle = "#000";
+      ctx2.fillStyle = kolor;
+      ctx2.fillRect(0, 0, 1, 1);
+      const d = ctx2.getImageData(0, 0, 1, 1).data;
+      const v = [d[0], d[1], d[2]];
+      pamiec.set(kolor, v);
+      return v;
+    };
+
     const widoczny = (e) => {
       const r = e.getBoundingClientRect();
       return r.width > 2 && r.height > 2;
@@ -58,8 +82,8 @@ for (const schemat of ["light", "dark"]) {
       if (st.visibility === "hidden" || st.display === "none") return;
       wynik.push({
         tekst: tekst.slice(0, 42),
-        kolor: st.color,
-        tlo: tlo(e),
+        kolor: doRgb(st.color),
+        tlo: doRgb(tlo(e)),
         alfa: +alfa(e).toFixed(3),
         rozmiar: parseFloat(st.fontSize),
         waga: st.fontWeight,
@@ -71,8 +95,8 @@ for (const schemat of ["light", "dark"]) {
 
   let bledy = 0;
   for (const w of zle) {
-    const kol = zCss(w.kolor);
-    const bg = zCss(w.tlo);
+    const kol = w.kolor;
+    const bg = w.tlo;
     if (!kol || !bg) continue;
     /* Skladamy alfe recznie: tekst przygaszony opacity realnie miesza sie z tlem. */
     const efekt = kol.map((c, i) => c * w.alfa + bg[i] * (1 - w.alfa));

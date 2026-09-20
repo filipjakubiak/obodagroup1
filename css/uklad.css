@@ -284,7 +284,9 @@ section { padding-block: var(--sekcja); }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: color-mix(in oklab, var(--na-kolorze) 78%, var(--kolor));
+  /* Bez przygaszania: zmierzone 3.79:1 przy 78% to ponizej progu 4.5.
+     Etykieta jest mala i wersalikowa, wiec potrzebuje pelnego kontrastu. */
+  color: var(--na-kolorze);
 }
 .mems__naglowek {
   font-size: clamp(5rem, 18vw, 18rem);
